@@ -1,0 +1,28 @@
+@import "../base/all";
+
+.main-feed {
+    @extend %box-container;
+    // padding: 2%;
+    // width: `calc(100% - ${menuBarWidth}px)`;
+    
+    // marginLeft: menuBarWidth,
+    width: calc(100% - #{$menu-bar-width});
+    margin-left: $menu-bar-width;
+    width: 100%;
+    height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // margin: 0%;
+    &table {
+        margin: 0%;
+    }
+    &span {
+        width: 100%;
+    }
+    &section {
+        width: 100%;
+    }
+
+}
+

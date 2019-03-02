@@ -1,0 +1,19 @@
+
+{% extends "frontend/base.html" %}
+
+{% block title %}About{% endblock %}
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet" href='{% static "frontend/about.css" %}'>
+{% endblock %}
+
+{% block container %}
+    <div id="about">
+        <p>ByThePeople is a platform dedicated to bridging the gap between constituents and representatives by enabling
+            voters to
+            express opinions, socialize political views, and gather policy information in a simple, comprehensive manner,
+            shifting
+            the democratic process back into the hands of those that matter most, The People.</p>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+@import "color";
+
+$menu-bar-width: 241px;
+$font-menu-bar-item: 'Times New Roman', Times, serif;
+
+%box-container {
+    border: 2px solid $color-border;
+    border-collapse: collapse;
+    background-color: $color-background;
+    align-items: center;
+    list-style: none;
+    margin: 0%;
+
+
+}

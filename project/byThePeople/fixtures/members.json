@@ -1,0 +1,18 @@
+[
+    {
+        "model": "byThePeople.member",
+        "pk": 1,
+        "fields": {
+            "firstName": "David",
+            "lastName": "Trone"
+        }
+    },
+    {
+        "model": "byThePeople.member",
+        "pk": 2,
+        "fields": {
+            "firstName": "Alexandria",
+            "lastName": "Ocasio-Cortez"
+        }
+    }
+]

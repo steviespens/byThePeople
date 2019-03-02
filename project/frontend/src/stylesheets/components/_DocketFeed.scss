@@ -1,0 +1,22 @@
+@import "../base/all";
+
+.docket-feed {
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 0%;
+    border: 2px solid $color-border;
+    border-collapse: collapse;
+    th {
+        position: absolute;
+        margin-top: -2%;
+        visibility: hidden;
+        border-collapse: collapse;
+
+    }
+    h2 {
+        font-size: 20px;
+        border: 2px solid $color-border;
+
+
+    }
+}
