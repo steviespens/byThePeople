@@ -7,6 +7,7 @@ urlpatterns = [
     path('docket/', views.docket),
     path('polls/', views.polls),
     path('news/', views.news),
+    path('user/', views.user),
 
 
 ]

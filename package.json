@@ -24,5 +24,7 @@
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-pdf": "^4.0.5"
+  }
 }

@@ -9,7 +9,9 @@ router = DefaultRouter()
 # router.register(r'polls', views.PollListCreate.as_view({'get': 'list'}), basename = BASE)
 # router.register(r'choices', views.ChoiceListCreate.as_view({'get': 'list'}), basename = BASE)
 router.register(r'polls', views.PollListCreate, basename = BASE)
-router.register(r'choices', views.ChoiceListCreate, basename = BASE)
+router.register(r'choices', views.ChoiceListCreate, basename=BASE)
+# router.register(r'jsonfiles/(?P<filename>[^/]+)/$', views.JSONFileView, basename = BASE)
+
 # router.register(r'rest-auth',)
 
 
@@ -18,15 +20,22 @@ urlpatterns = [
     #path is the url creation function
     
     #don't need .as_view() if using functional views
+    url('api/jsonfiles/<filename>/', views.JSONFileView.as_view(), name='file_retrieve'),
+
     path('api/member/', views.MemberListCreate.as_view()),
     path('docket/api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
     path('api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
     path('news/api/headline/', views.HeadlineListCreate.as_view()),
     path('api/headline/', views.HeadlineListCreate.as_view()),
+    path('api/jsonfiles/<prefix>/<billNumber>/<congressNumber>/', views.JSONFileView.as_view()),
+    path('api/textfiles/<prefix>/<billNumber>/<congressNumber>/', views.TextFileView.as_view()),
+
+
     # path('api/polls/', views.PollListCreate.as_view({'get': 'list'})),
     # path('api/choices/', views.ChoiceListCreate.as_view({'get': 'list'})),
     url(r'^api/', include(router.urls)),
     url(r'^rest-auth/', include('rest_auth.urls')),
+    # url(r'^api/jsonfiles/(?P<filename>[^/]+)/$', views.JSONFileView.as_view()),
     # url(r'^$', TemplateView.as_view(template_name="home.html"), name='home'),
     # url(r'^signup/$', TemplateView.as_view(template_name="signup.html"),
     #     name='signup'),

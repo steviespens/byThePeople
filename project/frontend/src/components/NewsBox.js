@@ -11,10 +11,10 @@ import PropTypes from "prop-types";
 const NewsBox = (props) => {
     const fields = ['title'];
     return (
-        <div className="news-feed">
-            <h2>{props.title}</h2>
+        <div className="news-box">
+            <h5>{props.title}</h5>
             <DataProvider endpoint="api/headline/"
-                render={data => <TableAll data={data} fields={fields} />} />
+                render={data => <TableAll data={data.reverse()} fields={fields} />} />
         </div>
     )
 };

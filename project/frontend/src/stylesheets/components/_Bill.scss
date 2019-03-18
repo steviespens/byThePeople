@@ -1,0 +1,34 @@
+@import "../base/all";
+
+.bill {
+    // margin-left: $feed-width;
+    // margin-top: 0px;
+    float: right;
+    height: $feed-height;
+    width: $subfeed-width;
+    border: 2px solid $color-border;
+    margin-left: -2px;
+
+    // height: 100px;
+    // width: 200px;
+    // @extend %box-container;
+    // padding: 2%;
+    // width: 100%;
+    // width: `calc(100% - ${menuBarWidth}px)`;
+    
+    // marginLeft: menuBarWidth,
+    // margin-left: 800px;
+    // width: 100%;
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // margin: 0%;
+   p {
+       white-space: pre-line;
+   }
+}   
+#dialogue2 {
+    white-space: pre-wrap;
+
+}

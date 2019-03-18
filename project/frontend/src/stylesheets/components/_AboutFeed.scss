@@ -1,0 +1,13 @@
+@import "../base/all";
+
+.about-feed {
+    // max-height: 600px;
+    @extend %feed;
+    overflow: auto;
+    margin-top: 0%;
+    border: 2px solid $color-border;
+    border-collapse: collapse;
+    p {
+        padding: 4%;
+    }
+}

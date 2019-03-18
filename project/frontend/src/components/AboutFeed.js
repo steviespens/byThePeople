@@ -7,7 +7,7 @@ export default class AboutFeed extends Component {
     
     render() {
         return (
-            <div className="row main-feed">
+            <div className="about-feed">
                 <p>ByThePeople is a platform dedicated to bridging the gap between
                     constituents and representatives by enabling voters to express
                     opinions, socialize political views, and gather policy information

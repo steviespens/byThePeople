@@ -8,7 +8,7 @@ export default class PollsFeed extends Component {
     render() {
         const title = "Polls";
         return (
-            <div className="row main-feed">
+            <div className="polls-feed">
                 <PollsBox />
             </div>
         );

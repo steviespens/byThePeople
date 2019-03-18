@@ -15,4 +15,6 @@ def polls(request):
 def news(request):
     return render(request, 'frontend/news.html')
 
+def user(request):
+    return render(request, 'frontend/user.html')
 

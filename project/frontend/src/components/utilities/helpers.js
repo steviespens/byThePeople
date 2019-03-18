@@ -21,3 +21,28 @@ export function VoteChoice(choiceId) {
         }
     }).then((response) => response.json())
 }
+
+//format: hr525-116
+export function parseBillID(id) {
+    let prefix = ''
+        , billNumber = ''
+        , congressNumber = '';
+    let i = 0;
+    //get prefix (e.g. 'hr' or 'hres')
+    while (isNaN(id.charAt(i))) {
+        prefix += id.charAt(i);
+        i++;
+    }
+    //get number (e.g. '204' or '1191')
+    while (id.charAt(i) != '-') {
+        billNumber += id.charAt(i);
+        i++;
+    }
+    i++;
+    //get congress number (e.g. '115' or '116')
+    for (i; i < id.length; i++) {
+        congressNumber += id.charAt(i);
+    }
+    return {prefix: prefix, billNumber: billNumber, congressNumber: congressNumber};
+    
+}

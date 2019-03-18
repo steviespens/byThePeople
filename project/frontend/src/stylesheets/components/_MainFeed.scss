@@ -25,4 +25,23 @@
     }
 
 }
+#docket-box {
+    background-color: aqua;
+    h5 {
+        font-size: 3px;
+    }
+}
+.row .main-feed {
+    color: aliceblue;
+}
+.row .main-feed .eight .columns .row .eight .columns .docket-box {
+        h2 {
+            font-size: 20px;
+            border: 2px solid $color-border;
+
+
+        }
+
+    }
+
 

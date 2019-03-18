@@ -7,6 +7,11 @@
   margin: 0%;
 }
 
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
+}
+
 .root {
   display: flex;
 }
@@ -18,6 +23,11 @@
   align-items: center;
   list-style: none;
   margin: 0%;
+}
+
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
 }
 
 .main-feed {
@@ -36,6 +46,22 @@
   width: 100%;
 }
 
+#docket-box {
+  background-color: aqua;
+}
+#docket-box h5 {
+  font-size: 3px;
+}
+
+.row .main-feed {
+  color: aliceblue;
+}
+
+.row .main-feed .eight .columns .row .eight .columns .docket-box h2 {
+  font-size: 20px;
+  border: 2px solid #e27d60;
+}
+
 .menu-bar, .main-feed {
   border: 2px solid #e27d60;
   border-collapse: collapse;
@@ -43,6 +69,11 @@
   align-items: center;
   list-style: none;
   margin: 0%;
+}
+
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
 }
 
 .main-feed-item {
@@ -56,6 +87,11 @@
   align-items: center;
   list-style: none;
   margin: 0%;
+}
+
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
 }
 
 .menu-bar {
@@ -99,6 +135,11 @@
   margin: 0%;
 }
 
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
+}
+
 .main-feed, .menu-bar {
   border: 2px solid #e27d60;
   border-collapse: collapse;
@@ -106,6 +147,11 @@
   align-items: center;
   list-style: none;
   margin: 0%;
+}
+
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
 }
 
 .header-bar {
@@ -135,8 +181,12 @@
   margin: 0%;
 }
 
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
+}
+
 .news-feed {
-  max-height: 600px;
   overflow: auto;
   margin-top: 0%;
   border: 2px solid #e27d60;
@@ -162,10 +212,17 @@
   margin: 0%;
 }
 
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
+}
+
 .docket-feed {
-  max-height: 300px;
+  height: 400px;
+  width: 550px;
   overflow: auto;
   margin-top: 0%;
+  float: left;
   border: 2px solid #e27d60;
   border-collapse: collapse;
 }
@@ -174,10 +231,21 @@
   margin-top: -2%;
   visibility: hidden;
   border-collapse: collapse;
+  z-index: 200;
+  height: 3px;
 }
 .docket-feed h2 {
   font-size: 20px;
   border: 2px solid #e27d60;
+}
+
+.big-docket-feed {
+  width: calc($feed-width + $subfeed-width);
+  width: 906px;
+  height: 400px;
+  padding: 0%;
+  margin: 0%;
+  border: 0px;
 }
 
 .main-feed, .menu-bar {
@@ -189,8 +257,12 @@
   margin: 0%;
 }
 
+.about-feed, .polls-feed, .news-feed {
+  width: 550px;
+  height: 400px;
+}
+
 .polls-feed {
-  max-height: 300px;
   overflow: auto;
   margin-top: 0%;
   border: 2px solid #e27d60;
@@ -212,6 +284,109 @@
 .polls-feed .a-poll h6 {
   font-size: 10px;
   margin: 0%;
+}
+
+.main-feed, .menu-bar {
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+  background-color: #41b3a3;
+  align-items: center;
+  list-style: none;
+  margin: 0%;
+}
+
+.about-feed, .news-feed, .polls-feed {
+  width: 550px;
+  height: 400px;
+}
+
+.about-feed {
+  overflow: auto;
+  margin-top: 0%;
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+}
+.about-feed p {
+  padding: 4%;
+}
+
+.main-feed, .menu-bar {
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+  background-color: #41b3a3;
+  align-items: center;
+  list-style: none;
+  margin: 0%;
+}
+
+.news-feed, .polls-feed, .about-feed {
+  width: 550px;
+  height: 400px;
+}
+
+.news-box {
+  overflow: auto;
+  margin-top: 0%;
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+}
+
+.main-feed, .menu-bar {
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+  background-color: #41b3a3;
+  align-items: center;
+  list-style: none;
+  margin: 0%;
+}
+
+.news-feed, .polls-feed, .about-feed {
+  width: 550px;
+  height: 400px;
+}
+
+.docket-box {
+  overflow: auto;
+  margin-top: 0%;
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+}
+.docket-box th {
+  position: absolute;
+  margin-top: -2%;
+  visibility: hidden;
+  border-collapse: collapse;
+  z-index: 200;
+  height: 3px;
+}
+.docket-box h2 {
+  font-size: 20px;
+  border: 2px solid #e27d60;
+}
+
+.main-feed, .menu-bar {
+  border: 2px solid #e27d60;
+  border-collapse: collapse;
+  background-color: #41b3a3;
+  align-items: center;
+  list-style: none;
+  margin: 0%;
+}
+
+.news-feed, .polls-feed, .about-feed {
+  width: 550px;
+  height: 400px;
+}
+
+.bill {
+  float: right;
+  height: 400px;
+  width: 350px;
+  border: 2px solid #e27d60;
+  margin-left: -2px;
+}
+.bill p {
+  white-space: pre-line;
 }
 
 /*# sourceMappingURL=main.css.map */

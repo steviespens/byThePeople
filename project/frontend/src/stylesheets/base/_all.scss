@@ -2,7 +2,9 @@
 
 $menu-bar-width: 241px;
 $font-menu-bar-item: 'Times New Roman', Times, serif;
-
+$feed-height: 400px;
+$feed-width: 550px;
+$subfeed-width: 350px;
 %box-container {
     border: 2px solid $color-border;
     border-collapse: collapse;
@@ -10,6 +12,13 @@ $font-menu-bar-item: 'Times New Roman', Times, serif;
     align-items: center;
     list-style: none;
     margin: 0%;
+    // width: $feed-width;
+    // height: $feed-height;
 
 
+};
+
+%feed {
+    width: $feed-width;
+    height: $feed-height;
 }

@@ -3,6 +3,11 @@ from byThePeople.serializers import (MemberSerializer, UpcomingBillSerializer, H
 )
 from rest_framework import generics
 import requests
+import json
+import os
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.utils.decorators import method_decorator
@@ -12,6 +17,11 @@ from django.views.decorators.debug import sensitive_post_parameters
 from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 from django.db.models import F
+from io import open
+
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 
 
@@ -25,8 +35,29 @@ sensitive_post_parameters_m = method_decorator(
         'password', 'old_password', 'new_password1', 'new_password2'
     )
 )
+class JSONFileView(APIView):
+    def get(self, request, prefix, billNumber, congressNumber):
+        # root_path2 = "/Users/stevie/Desktop/congressAPI/congress/data/116/bills/hr/hr1063"
+        root_path = "/Users/stevie/Desktop/congressAPI/congress/data"
+        folder_name = 'bills'
+        file_name = "data.json"
+        file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, file_name)
+        with open(file_path, 'r') as jsonfile:
+            json_data = json.load(jsonfile)
+        return Response(json_data)
+class TextFileView(APIView):
+    # authentication_classes = (SessionAuthentication, BasicAuthentication)
+    # permission_classes = (IsAuthenticated,)
 
-
+    def get(self, request, prefix, billNumber, congressNumber):
+        root_path = "/Users/stevie/Desktop/congress2/congress/data"
+        folder_name = 'bills'
+        suffix = "text-versions/ih/document.txt"
+        file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, suffix)
+        with open(file_path, 'r') as f:
+            t = f.read()
+        
+        return Response(t)
 class MemberListCreate(generics.ListCreateAPIView):
     #asView() is called, and returns the data by returning queryset. queryset is serialized using the provided serializer class
     def get_queryset(self):
@@ -56,7 +87,7 @@ class PollListCreate(viewsets.ModelViewSet):
     #         i['choices'] = get_choices()
     #     return x
     def get_queryset(self):
-        # insert_poll()
+        insert_poll()
         return Poll.objects.all()
     serializer_class = PollSerializer
 
@@ -85,7 +116,7 @@ def insert_poll():
     data = [
         {'topic': 'Data Privacy', 'question': 'Should Big Tech be regulated more?'},
         {'topic': 'Taxes', 'question': 'Should taxes on the rich be higher?'},
-        # {'topic': 'Gun Control', 'question': 'Should bump stocks be illegal?'}
+        {'topic': 'Gun Control', 'question': 'Should bump stocks be illegal?'}
 
     ]
     choices = ['Yes', 'No', 'Unsure']

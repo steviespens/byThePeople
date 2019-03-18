@@ -26,9 +26,9 @@ const PollsBox = (props) => {
     );
 };
 
-PollsBox.propTypes = {
-    title: PropTypes.string.isRequired,
-};
+// PollsBox.propTypes = {
+//     title: PropTypes.string.isRequired,
+// };
 
 export default PollsBox;
 

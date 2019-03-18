@@ -27,7 +27,6 @@ export default function PollResult(props) {
         
     }
     var totalVotes = sum;
-    console.log(sum);
     // const choices = c.map((choice) => (<FormControlLabel key={choice.id} value={choice.choice} label={choice.choice}
     //     control={<Radio value={choice.id} />} style={{ marginBottom: 16, maxWidth: 600, wordWrap: "break-word" }} />));
     const choices = c.map((choice) => {

@@ -1,0 +1,26 @@
+@import "../base/all";
+
+.docket-box {
+    // max-height: 600px;
+    // height: $feed-height;
+    // width: $feed-width;
+    overflow: auto;
+    margin-top: 0%;
+    border: 2px solid $color-border;
+    border-collapse: collapse;
+    th {
+        position: absolute;
+        margin-top: -2%;
+        visibility: hidden;
+        border-collapse: collapse;
+        z-index: 200;
+        height: 3px;
+
+    }
+    h2 {
+        font-size: 20px;
+        border: 2px solid $color-border;
+
+
+    }
+}
