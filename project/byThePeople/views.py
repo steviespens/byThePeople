@@ -73,11 +73,16 @@ class UpcomingBillListCreate(generics.ListCreateAPIView):
     serializer_class = UpcomingBillSerializer
 
 class HeadlineListCreate(generics.ListCreateAPIView):
+
+    # authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+
     def get_queryset(self):
         # get_headlines()
         return Headline.objects.all()
     queryset = Headline.objects.all()
     serializer_class = HeadlineSerializer
+
 
 class PollListCreate(viewsets.ModelViewSet):
     # def get_queryset(self):

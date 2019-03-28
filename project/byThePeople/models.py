@@ -5,7 +5,9 @@ from django.conf import settings
 
 from .utils import import_callable
 
-
+# from django.contrib.auth.models import AbstractUser
+# class CustomUser(AbstractUser):
+#     pass
 
 class Member(models.Model):
     first_name = models.CharField(max_length=20)

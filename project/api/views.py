@@ -1,4 +1,6 @@
 from django.shortcuts import render
+# from django.utils.decorators import method_decorator
+from rest_framework.decorators import detail_route
 
 # Create your views here.
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -6,24 +8,76 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
-
 from . import models
+
 from . import serializers
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+# from django import forms
 
-class CustomUserView(APIView):
-    # authentication_classes = (SessionAuthentication, BasicAuthentication)
-    # permission_classes = (IsAuthenticated,)
+from api.models import User
+from api.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
-    def get(self, request, format=None):
-        content = {
-            'user': str(request.user),  # `django.contrib.auth.User` instance.
-            'auth': str(request.auth),  # None
-        }
-        return Response(content)
+@csrf_exempt
+@api_view(['GET', 'POST', ])
+def signup(request):
+    
+    if request.method == 'POST':
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            # username = form.cleaned_data.get('username')
+            # raw_password = form.cleaned_data.get('password1')
+            # user = authenticate(username=username, password=raw_password)
+            # login(request, user)
+            return Response('created new user')
+        else:
+            print(request.POST)
+            print(form.errors)
+            print(form.non_field_errors)
+            return Response('did not')
+    # else:
+    #     form = UserCreationForm()
+    # return render(request, 'signup.html', {'form': form})
 
-    def post(self, request, format=None):
-        # serializer = PollSerializer(obj.poll)
-        return Response('posted')
+# class CustomUserView(APIView):
+#     # authentication_classes = (SessionAuthentication, BasicAuthentication)
+#     # permission_classes = (IsAuthenticated,)
+
+#     def get(self, request, username, password, format=None):
+#         # content = {
+#         #     'user': str(request.user),  # `django.contrib.auth.User` instance.
+#         #     'auth': str(request.auth),  # None
+#         # }
+#         return Response(username)
+
+#     def post(self, request, format=None):
+#         # serializer = PollSerializer(obj.poll)
+#         return Response('posted')
+
+# class RegisterCustomUserView(APIView):
+#     @detail_route(methods=["post"])
+#     def register_user(self, request, username, password):
+#         # create_user(identifier = username, email=None, password=password)
+#         # MyUser.objects.get_or_create(identifier = username, password = password)
+#         # serializer = PollSerializer(obj.poll)
+#         return Response('created new user')
+
+# class ChoiceListCreate(viewsets.ModelViewSet):
+#     queryset = Choice.objects.all()
+#     serializer_class = ChoiceSerializer
+
+#     @detail_route(methods=["post"])
+#     def vote(self, request, pk=None):
+#         obj = self.get_object()
+#         obj.votes = F('votes') + 1
+#         obj.save()
+#         serializer = PollSerializer(obj.poll)
+#         return Response(serializer.data)
+
 
 
 
