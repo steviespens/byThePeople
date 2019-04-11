@@ -46,3 +46,5 @@ export function parseBillID(id) {
     return {prefix: prefix, billNumber: billNumber, congressNumber: congressNumber};
     
 }
+
+

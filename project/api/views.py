@@ -21,12 +21,29 @@ from api.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
+
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+# @ensure_csrf_cookie
+@api_view(['GET', 'POST', ])
+def login_user(request):
+    print('loginuser called')
+    return Response({'token':'jsjs'})
+
+    username = form.cleaned_data.get('username')
+    raw_password = form.cleaned_data.get('password')
+    user = authenticate(username=username, password=raw_password)
+    x = login(request, user)
+    
+    return Response({'logged in':'here'})
+
+
 @csrf_exempt
 @api_view(['GET', 'POST', ])
 def signup(request):
     
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = UserCreationForm(request.data)
         if form.is_valid():
             form.save()
             # username = form.cleaned_data.get('username')

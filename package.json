@@ -25,6 +25,8 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
-    "react-pdf": "^4.0.5"
+    "jwt-decode": "^2.2.0",
+    "react-pdf": "^4.0.5",
+    "react-router-dom": "^5.0.0"
   }
 }

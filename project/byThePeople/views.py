@@ -23,7 +23,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 API_HEADERS = {'X-API-KEY': '6vuSMgGaUFGdMVpgYFfptgttAtlCeOwuYcRCU9h7'}
 API_HEADERS_HEADLINE = {'X-API-KEY': '33bb2b0ce3714fcd91e8ba124e2486d4'}
@@ -46,8 +46,8 @@ class JSONFileView(APIView):
             json_data = json.load(jsonfile)
         return Response(json_data)
 class TextFileView(APIView):
-    # authentication_classes = (SessionAuthentication, BasicAuthentication)
-    # permission_classes = (IsAuthenticated,)
+    authentication_classes = (JWTAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, prefix, billNumber, congressNumber):
         root_path = "/Users/stevie/Desktop/congress2/congress/data"
@@ -75,7 +75,7 @@ class UpcomingBillListCreate(generics.ListCreateAPIView):
 class HeadlineListCreate(generics.ListCreateAPIView):
 
     # authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         # get_headlines()

@@ -1,5 +1,5 @@
 //import React from 'react'; //this line I think could be here and not in each component
-import App from "./components/App";
+import Home from "./components/Home";
 import MenuBar from "./components/MenuBar";
 import MainFeed from "./components/MainFeed";
 import HeaderBar from "./components/HeaderBar";
@@ -11,9 +11,17 @@ import UserBox from "./components/UserBox";
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './components/Login';
+import App from './components/App';
 
 
-ReactDOM.render(<App />, document.querySelector('#view'));
-
-
-
+// ReactDOM.render(<Home />, document.querySelector('#view'));
+ReactDOM.render(
+    <Router>
+        <div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+        </div>
+    </Router>,
+    document.getElementById('view'));
