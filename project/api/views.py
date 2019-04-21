@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
 from . import models
-
+import json
 from . import serializers
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
@@ -20,9 +20,22 @@ from api.forms import UserCreationForm
 # from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from django.views.decorators.csrf import ensure_csrf_cookie
+
+
+@api_view(['GET', 'POST', ])
+def get_user_metadata(request):
+    authentication_classes = (JWTAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    return Response(json.dumps(request.user.get_all()))
+
+
+
 
 # @ensure_csrf_cookie
 @api_view(['GET', 'POST', ])
@@ -45,7 +58,7 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.data)
         if form.is_valid():
-            form.save()
+            user = form.save()
             # username = form.cleaned_data.get('username')
             # raw_password = form.cleaned_data.get('password1')
             # user = authenticate(username=username, password=raw_password)

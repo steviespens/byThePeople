@@ -1,6 +1,6 @@
-from byThePeople.models import Member, UpcomingBill, Headline, Poll, Choice
+from byThePeople.models import Member, UpcomingBill, Headline, Poll, Choice, PollUserVotes
 from byThePeople.serializers import (MemberSerializer, UpcomingBillSerializer, HeadlineSerializer, PollSerializer, ChoiceSerializer,
-)
+    PollUserVotesSerializer)
 from rest_framework import generics
 import requests
 import json
@@ -56,7 +56,6 @@ class TextFileView(APIView):
         file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, suffix)
         with open(file_path, 'r') as f:
             t = f.read()
-        
         return Response(t)
 class MemberListCreate(generics.ListCreateAPIView):
     #asView() is called, and returns the data by returning queryset. queryset is serialized using the provided serializer class
@@ -96,20 +95,43 @@ class PollListCreate(viewsets.ModelViewSet):
         return Poll.objects.all()
     serializer_class = PollSerializer
 
-    
+class PollUserVotesCreate(viewsets.ModelViewSet):
+    authentication_classes = (JWTAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
-def get_choices():
-    return 'hey'
+    serializer_class = PollUserVotesSerializer
+
+    def user_has_voted_poll(self, request, poll_id):
+        user_id = request.user.id
+        print(user_id)
+        print(poll_id)
+        print(PollUserVotes.objects.filter(user_id=user_id, poll_id=poll_id))
+        return Response(json.dumps(PollUserVotes.objects.filter(user_id=user_id, poll_id=poll_id).exists()))
+       
+# entry = Entry.objects.get(pk=123)
+# if some_queryset.filter(pk=entry.pk).exists():
+#     print("Entry contained in queryset")
+
+# def get_choices():
+#     return 'hey'
 
 class ChoiceListCreate(viewsets.ModelViewSet):
+    authentication_classes = (JWTAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
     queryset = Choice.objects.all()
     serializer_class = ChoiceSerializer
 
-    @detail_route(methods=["post"])
+    # @detail_route(methods=["post"])
+    # def vote(self, request, pk=None):
     def vote(self, request, pk=None):
+
+        
         obj = self.get_object()
         obj.votes = F('votes') + 1
         obj.save()
+        poll_id = obj.poll.id
+        PollUserVotes.objects.get_or_create(user_id = request.user.id, poll_id = obj.poll.id, choice_id = obj.id)
         serializer = PollSerializer(obj.poll)
         return Response(serializer.data)
         # serializer = ChoiceSerializer(obj)

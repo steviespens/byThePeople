@@ -14,7 +14,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { VoteChoice } from './utilities/helpers';
 import PollNoResult from "./PollNoResult";
 import PollResult from "./PollResult";
-
+import AuthService from "./AuthService";
 
 
 
@@ -23,6 +23,7 @@ export default class Poll extends React.Component {
     constructor(props) {
         super(props);
         this.handleChoice = this.handleChoice.bind(this);
+        this.Auth = new AuthService();
         this.state = {
             poll: props.poll,
             selected: false
@@ -38,11 +39,24 @@ export default class Poll extends React.Component {
     //     // loaded: false,
     //     // placeholder: "Loading..."
     // };
+    componentDidMount() {
+        this.Auth.fetch('polls/user_has_voted_poll/' + this.props.poll.id + '/').then((data) => {
+            const previouslyVoted = data == 'true';
+            this.setState({
+                selected: previouslyVoted
+            })
+        })
+    }
 
+    // fetch(API_BASE + CHOICES + choiceId + VOTE, {
+    // const API_BASE = "/api/";
+    // const CHOICES = "choices/";
+    // const QUESTIONS = "questions/";
+    // const VOTE = "/vote/";
 
     handleChoice(e) {
         e.preventDefault();
-        return VoteChoice(e.target.value)
+        return this.Auth.fetch('api/choices/' + e.target.value + '/', { method: 'POST' })
             .then((response) => {
                 // console.log(response);
                 // const c = response.choices[0].choice;

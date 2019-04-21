@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from byThePeople.models import Member, UpcomingBill, Headline, Poll, Choice
+from byThePeople.models import Member, UpcomingBill, Headline, Poll, Choice, PollUserVotes
 
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -25,6 +25,10 @@ class ChoiceSerializer(serializers.ModelSerializer):
         fields = '__all__'
         # fields = ["id", "choice", "votes", "question_id"]
 
+class PollUserVotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PollUserVotes
+        fields = '__all__'
 
 class PollSerializer(serializers.ModelSerializer):
     #many = True serializes querysets instead of objects

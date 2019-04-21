@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ChoiceList from "./ChoiceList";
-import PropTypes from "prop-types";
 import { useState } from 'react';
 import { Radio, RadioGroup } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
@@ -16,13 +15,29 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Document } from 'react-pdf'
+import CommentBox from "./CommentBox";
+import PropTypes from "prop-types";
+import { withStyles } from '@material-ui/styles';
 
 
+const styles = {
+    root: {
+
+    },
+    commentBox: {
+        border: '1px solid black',
+        borderRadius: 3,
+        // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        // color: 'white',
+        // height: 48,
+        // padding: '0 30px',
+    },
+};
 
 {/* <Button onClick={this.handleClickOpen('paper')}>scroll=paper</Button> */}
 
 
-export default class Bill extends Component {
+class Bill extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,6 +59,7 @@ export default class Bill extends Component {
         }
         const title = makeTitle(this.props.bill);
         const billInformation = makeBillInformation(this.props.bill);
+        const { classes } = this.props;
         return (
             <div>
                 <Card className="bill">
@@ -60,7 +76,7 @@ export default class Bill extends Component {
                     <CardActions>
                         <Button variant="outlined" onClick={this.handleClickOpen}>Full Text</Button>
                     </CardActions>
-
+                    <CommentBox className={classes.root}/>
                 </Card>
                 <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose}/>
             </div>
@@ -102,5 +118,12 @@ function makeIntroduced(d) {
     introduced[2] = tmp;
     return introduced.reverse().join('-');
 }
+
+Bill.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Bill);
+
 
 

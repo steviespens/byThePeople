@@ -8,6 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { parseBillID } from './utilities/helpers';
 
 import AuthService from './AuthService';
+import { reduce } from "bluebird";
 const Auth = new AuthService();
 
 export default class BillDialogue extends Component {
@@ -42,6 +43,11 @@ export default class BillDialogue extends Component {
     render() {
         const open = this.props.open;
         const onClose = this.props.onClose;
+        const title = makeTitle(this.props.bill);
+        
+        const style = {
+            whiteSpace: 'pre-wrap'
+        };
     
         return (
             <Dialog
@@ -50,8 +56,8 @@ export default class BillDialogue extends Component {
                 scroll='paper'
             // aria-labelledby="scroll-dialog-title"
             >
-                <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
-                <DialogContent >
+                <DialogTitle id="scroll-dialog-title">{title}</DialogTitle>
+                <DialogContent style={style}>
                     {/* <DialogContentText>
                         {this.state.loaded}
                     </DialogContentText> */}
@@ -102,3 +108,13 @@ export default class BillDialogue extends Component {
 
 
 }
+
+function makeTitle(bill) {
+    const id = bill.bill_id;
+    const shortTitle = bill.short_title;
+    const officialTitle = bill.official_title;
+    var title = id.toUpperCase().split('-')[0] + ' - ';
+    title += shortTitle != null ? shortTitle : officialTitle;
+    return title;
+}
+

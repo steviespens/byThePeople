@@ -8,22 +8,21 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
-
 // import AuthService from './AuthService';
 
 export default class AdditionalInfoForm extends Component {
     constructor() {
         super();
         this.state = {
-            gender: '',
-            politicalParty: '',
-            ethnicity: '',
-            education: '',
-            salary: '',
-            age: ''
+            // gender: '',
+            // politicalParty: '',
+            // ethnicity: '',
+            // education: '',
+            // salary: '',
+            // age: ''
 
         };
-        this.handleChange = this.handleChange.bind(this)
+        // this.handleChange = this.handleChange.bind(this)
 
     }
 
@@ -34,9 +33,9 @@ export default class AdditionalInfoForm extends Component {
     //         }
     //     )
     // }
-    handleChange = prop => event => {
-        this.setState({ [prop]: event.target.value });
-    };
+    // handleChange = prop => event => {
+    //     this.setState({ [prop]: event.target.value });
+    // };
 
 
    
@@ -230,8 +229,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Gender"
                                 className="gender-selector"
-                                value={this.state.gender}
-                                onChange={this.handleChange('gender')}
+                                value={this.props.gender}
+                                onChange={handleChange('gender')}
                             >
                                 {genders.map(option => 
                                     <MenuItem key={option.value} value={option.value}>
@@ -243,8 +242,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Political Party"
                                 className="political-selector"
-                                value={this.state.politicalParty}
-                                onChange={this.handleChange('politicalParty')}
+                                value={this.props.politicalParty}
+                                onChange={handleChange('politicalParty')}
                             >
                                 {politicalParties.map(option =>
                                     <MenuItem key={option.value} value={option.value}>
@@ -257,8 +256,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Ethnicity"
                                 className="ethnicity-selector"
-                                value={this.state.ethnicity}
-                                onChange={this.handleChange('ethnicity')}
+                                value={this.props.ethnicity}
+                                onChange={handleChange('ethnicity')}
                             >
                                 {ethnicities.map(option =>
                                     <MenuItem key={option.value} value={option.value}>
@@ -270,8 +269,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Ethnicity"
                                 className="ethnicity-selector"
-                                value={this.state.ethnicity}
-                                onChange={this.handleChange('ethnicity')}
+                                value={this.props.ethnicity}
+                                onChange={handleChange('ethnicity')}
                             >
                                 {ethnicities.map(option =>
                                     <MenuItem key={option.value} value={option.value}>
@@ -283,8 +282,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Education"
                                 className="education-selector"
-                                value={this.state.education}
-                                onChange={this.handleChange('education')}
+                                value={this.props.education}
+                                onChange={handleChange('education')}
                             >
                                 {educations.map(option =>
                                     <MenuItem key={option.value} value={option.value}>
@@ -296,8 +295,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Salary"
                                 className="salary-selector"
-                                value={this.state.salary}
-                                onChange={this.handleChange('salary')}
+                                value={this.props.salary}
+                                onChange={handleChange('salary')}
                             >
                                 {salaries.map(option =>
                                     <MenuItem key={option.value} value={option.value}>
@@ -309,8 +308,8 @@ export default class AdditionalInfoForm extends Component {
                                 select
                                 label="Age"
                                 className="age-selector"
-                                value={this.state.age}
-                                onChange={this.handleChange('age')}
+                                value={this.props.age}
+                                onChange={handleChange('age')}
                             >
                                 {ages.map(option =>
                                     <MenuItem key={option.value} value={option.value}>
@@ -319,12 +318,6 @@ export default class AdditionalInfoForm extends Component {
                                 )}
                             </TextField>
 
-
-
-                            
-                            
-
-                      
                             <input
                                 className="form-submit"
                                 value="SUBMIT"

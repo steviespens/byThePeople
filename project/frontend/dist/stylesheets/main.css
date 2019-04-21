@@ -193,16 +193,6 @@
   border: 2px solid #e27d60;
   border-collapse: collapse;
 }
-.news-feed th {
-  position: absolute;
-  margin-top: -2%;
-  visibility: hidden;
-  border-collapse: collapse;
-}
-.news-feed h2 {
-  font-size: 20px;
-  border: 2px solid #e27d60;
-}
 
 .main-feed, .menu-bar {
   border: 2px solid #e27d60;
@@ -388,6 +378,10 @@
 }
 .bill p {
   white-space: pre-line;
+}
+
+#dialogue2 {
+  white-space: pre-wrap;
 }
 
 .center {

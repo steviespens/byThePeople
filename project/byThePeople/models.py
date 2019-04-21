@@ -4,10 +4,13 @@ from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 
 from .utils import import_callable
-
+from api.models import User
 # from django.contrib.auth.models import AbstractUser
 # class CustomUser(AbstractUser):
 #     pass
+
+
+
 
 class Member(models.Model):
     first_name = models.CharField(max_length=20)
@@ -46,6 +49,7 @@ class Poll(models.Model):
         ordering = ["-pk"]
 
 
+
 # def get_choices_for_poll(poll_id):
 #     poll = get_object_or_404(Poll, pk=poll_id)
 #     return Choice.objects.filter()
@@ -61,6 +65,15 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
     class Meta:
         ordering = ["-pk"]
+class PollUserVotes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_id", blank=True)
+    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name="poll_id", blank=True)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, related_name="choice_id", blank=True)
+
+    class Meta:
+        unique_together = ('user', 'poll')
+
+
 
     # def __str__(self):
         # return self.choice

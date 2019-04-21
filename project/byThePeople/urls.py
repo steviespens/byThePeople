@@ -9,7 +9,7 @@ router = DefaultRouter()
 # router.register(r'polls', views.PollListCreate.as_view({'get': 'list'}), basename = BASE)
 # router.register(r'choices', views.ChoiceListCreate.as_view({'get': 'list'}), basename = BASE)
 router.register(r'polls', views.PollListCreate, basename = BASE)
-router.register(r'choices', views.ChoiceListCreate, basename=BASE)
+# router.register(r'choices', views.ChoiceListCreate, basename=BASE)
 # router.register(r'jsonfiles/(?P<filename>[^/]+)/$', views.JSONFileView, basename = BASE)
 
 # router.register(r'rest-auth',)
@@ -29,7 +29,8 @@ urlpatterns = [
     path('api/headline/', views.HeadlineListCreate.as_view()),
     path('api/jsonfiles/<prefix>/<billNumber>/<congressNumber>/', views.JSONFileView.as_view()),
     path('api/textfiles/<prefix>/<billNumber>/<congressNumber>/', views.TextFileView.as_view()),
-
+    path('polls/user_has_voted_poll/<poll_id>/', views.PollUserVotesCreate.as_view({'get': 'user_has_voted_poll'})),
+    path('api/choices/<pk>/', views.ChoiceListCreate.as_view({'post': 'vote'})),
 
     # path('api/polls/', views.PollListCreate.as_view({'get': 'list'})),
     # path('api/choices/', views.ChoiceListCreate.as_view({'get': 'list'})),

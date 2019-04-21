@@ -7,6 +7,7 @@ import NewsBox from "./NewsBox";
 import DocketBox from "./DocketBox";
 import PollsBox from "./PollsBox";
 import SinglePollFeed from "./SinglePollFeed";
+import ProfileBox from "./ProfileBox";
 
 
 
@@ -20,7 +21,7 @@ export default class MainFeed extends Component {
                 <div className="eight columns">
                     <div className="row">
                         <div className="four columns">
-                            <MainFeedItem title="Profile" />
+                            <ProfileBox title="Profile" />
                         </div>
                         <div className="eight columns">
                             <DocketBox title="Docket" />

@@ -12,6 +12,10 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { VoteChoice } from './utilities/helpers';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
+
 
 export default function PollNoResult(props) {
 
@@ -20,7 +24,14 @@ export default function PollNoResult(props) {
     const c = poll.choices.reverse();
     const choices = c.map((choice) => (<FormControlLabel key={choice.id} value={choice.choice} label={choice.choice}
         control={<Radio onChange={props.handleChoice} value={choice.id} />} style={{ marginBottom: 16, maxWidth: 600, wordWrap: "break-word" }} />));
-
+    // const choices = c.map((choice) => (<ListItemText key={choice.id} primary={choice.choice}
+    //     control={<Radio onChange={props.handleChoice} value={choice.id} />} style={{ marginBottom: 16, maxWidth: 600, wordWrap: "break-word" }} />));
+    // <ListItem button>
+    //     <ListItemIcon>
+    //         <SendIcon />
+    //     </ListItemIcon>
+    //     <ListItemText inset primary="Sent mail" />
+    // </ListItem>
     return (
         <FormControl>
             <FormLabel>{poll.question}</FormLabel>

@@ -7,32 +7,33 @@ export default class AuthService {
         this.getProfile = this.getProfile.bind(this)
     }
 
-    login(username, password) {
+    login(email, password) {
         return this.fetch('api/token/', {
             method: 'POST',
             body: JSON.stringify({
-                username,
+                email,
                 password
             })
 
         }).then(res => {
-            console.log(res.access)
             this.setToken(res.access)
             return Promise.resolve(res);
         })
     }
 
-    register(username, password1, password2) {
+    register(email, gender, politicalParty, password1, password2) {
         return this.fetch('api/register/', {
             method: 'POST',
             body: JSON.stringify({
-                username,
+                email,
+                gender,
+                politicalParty,
                 password1,
                 password2
             })
         }).then((a) => {
             // this.setToken(res.access)
-            return this.login(username, password1);
+            return this.login(email, password1);
         })
 
     }
@@ -81,8 +82,7 @@ export default class AuthService {
 
     fetch(url, options) {
         // performs api calls sending the required authentication headers
-        const csrftoken = 'mchgeVYDi2ZDbIuPcABORE9EuClmvIk8lUNQbUeCDNtowZaQYNNSMkvLA3pF1XuQ';
-        
+        const csrftoken = this.getCookie('csrftoken');
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -116,5 +116,13 @@ export default class AuthService {
             throw error
         }
     }
+
+    getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+    
+
 }
 
