@@ -15,6 +15,9 @@ import { VoteChoice } from './utilities/helpers';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import PollListItem from './UIElements/PollListItem';
+import PollList from './UIElements/PollList';
+
 
 
 export default function PollResult(props) {
@@ -32,15 +35,19 @@ export default function PollResult(props) {
     const choices = c.map((choice) => {
         var n = choice.votes / totalVotes;
         return (
-            <ListItemText key={choice.id} primary={choice.choice} secondary={n.toFixed(2)} />
+            // <ListItem key={choice.id} dense={true}>
+            //     <ListItemText primary={choice.choice} secondary={(n * 100).toFixed().toString() + '%'} />
+            // </ListItem>
+            <PollListItem key={choice.id} text={choice.choice} percentage={(n * 100).toFixed().toString() + '%'}/>
         );
     });
     return (
-        <List>
-            <ListItem>
-                {choices}
-            </ListItem>
-        </List>
+        // <List> 
+        //     {choices} 
+        // </List>
+        <PollList question={poll.question} numVotes={"Votes: " + sum}>
+            {choices}
+        </PollList>
     );
 
 }

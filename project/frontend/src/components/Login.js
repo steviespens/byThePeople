@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import RegisterForm from './RegisterForm'
 import AuthService from './AuthService';
 
+
 class Login extends Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
-        this.Auth = new AuthService();
+        this.Auth = new AuthService()
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 

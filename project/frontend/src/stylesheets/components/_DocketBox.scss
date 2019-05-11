@@ -1,8 +1,9 @@
 @import "../base/all";
 
 .docket-box {
+    @extend %main-feed-first-row-box;
+
     // max-height: 600px;
-    // height: $feed-height;
     // width: $feed-width;
     overflow: auto;
     margin-top: 0%;
@@ -23,4 +24,6 @@
 
 
     }
+
+    
 }

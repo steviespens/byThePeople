@@ -10,9 +10,24 @@ export default function withAuth(AuthComponent) {
                 user: null
             }
         }
+        
         componentWillMount() {
             if (!Auth.loggedIn()) {
-                this.props.history.replace('/login')
+                try {
+                    // console.log('tried Auth.refresh')
+                    Auth.refresh();
+                    const profile = Auth.getProfile()
+                    
+                    this.setState({
+                        user: profile
+                    })   
+                }
+                catch (err) {
+                    console.log('caught err in Auth.refresh')
+                    console.log(err)
+                    Auth.logout()
+                    this.props.history.replace('/login')
+                }
             }
             else {
                 try {
@@ -30,8 +45,10 @@ export default function withAuth(AuthComponent) {
 
         render() {
             if (this.state.user) {
+
                 return (
                     <AuthComponent history={this.props.history} user={this.state.user} />
+
                 )
             }
             else {
@@ -40,3 +57,4 @@ export default function withAuth(AuthComponent) {
         }
     };
 }
+

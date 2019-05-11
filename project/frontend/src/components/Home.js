@@ -29,7 +29,8 @@ import color from "@material-ui/core/colors/teal";
 
 import AuthService from './AuthService';
 import withAuth from './withAuth';
-const Auth = new AuthService();
+
+// const Auth = Auth;
 
 const menuBarWidth = 150;
 
@@ -62,6 +63,7 @@ class Home extends Component {
     // const { classes } = props;
     constructor(props) {
         super(props);
+        this.Auth = new AuthService();
         this.onClick = this.onClick.bind(this);
         this.state = {
             // poll: props.poll,
@@ -74,11 +76,9 @@ class Home extends Component {
         });
     }
     handleLogout() {
-        Auth.logout()
+        this.Auth.logout()
         this.props.history.replace('/login');
     }
-
-  
 
 
     render() {
@@ -108,18 +108,17 @@ class Home extends Component {
         };
         const Com = FEEDS[title]['com'];
         const className = FEEDS[title]['className'];
-        // console.log(FEEDS[title.com]);
         return (
             <div className='root'>
-                <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
-                <br></br>
-                <MenuBar className='menu-bar' onClick={this.onClick} />
+               
+                <MenuBar className='menu-bar' id='menu-bar' onClick={this.onClick} handleLogout={this.handleLogout.bind(this)} />
                 < Com className={className}/>
                 {/* <MainFeed className='main-feed' /> */}
             </div>
         );
     }
 };
+
 export default withAuth(Home);
 // App.propTypes = {
 //     classes: PropTypes.object.isRequired,

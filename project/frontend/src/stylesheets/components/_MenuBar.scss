@@ -9,6 +9,16 @@
     // flex-direction: column;
     // justify-content: space-around;
     width: $menu-bar-width;
-    flex-shrink: 0;
+    // flex-shrink: 0;
+    // height: calc(#{$main-feed-first-row-box-height} + #{$main-feed-second-row-box-height});
+    height: 80%;
+    padding: 0%;
+    margin: 0%;
+    // min-height: 100%;
 
+    display: flex;
+    flex-direction: column;  
+    align-items: flex-start;
+
+    
 }

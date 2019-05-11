@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Docket from './Docket';
-import List from '@material-ui/core/List';
+// import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -10,6 +10,10 @@ import DataProvider from './DataProvider';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Bill from './Bill';
 import { parseBillID } from './utilities/helpers';
+import AuthService from './AuthService';
+import List from './UIElements/List';
+import Poll from './Poll';
+
 
 
 
@@ -18,33 +22,53 @@ export default class DocketFeed extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bill: null
+            bill: null,
+            id: null,
+            list: []
         };
+        this.Auth = new AuthService();
         this.getBills = this.getBills.bind(this);
         this.onClick = this.onClick.bind(this);
-
+        // this.getRelatedPolls = this.getRelatedPolls.bind(this);
     }
     componentDidMount() {
-        // console.log('mounted');
+        this.Auth.fetch('api/upcomingbill/').then((data) => {
+            const x = data.map((el) => {
+                return (
+                    <ListItem button key={el.id} onClick={() => this.onClick(el.id, el.bill_id)}>
+                        <ListItemText primary={el.description} secondary={el.bill_id} />
+                    </ListItem>
+                );
+            });
+            this.setState({ list: x });
+        });
+        // getRelatedPolls();
     }
     componentWillUnmount() {
         // console.log('unmounting');
     }
 
-    //format: hr525-116
-    onClick = (bill_id) => {
+    // getRelatedPolls = () => {
+    //     this.Auth('api/upcomingbill/get_related_polls').then((data) => {
+            
+    //     })
+    // }
+    onClick = (id, bill_id) => {
         const bill = parseBillID(bill_id);
-        fetch('api/jsonfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
-            return response.json();
-        }).then((bill) => {
-            this.setState({ bill: bill});
+        this.Auth.fetch('api/jsonfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((bill) => {
+           
+            this.setState({
+                bill: bill,
+                id: id
+            });
         });
     }
+
 
     getBills = (data) => {
         return data.map((el) => {
             return (
-                <ListItem button key={el.bill_id} onClick={() => this.onClick(el.bill_id)}>
+                <ListItem button key={el.id} onClick={() => this.onClick(el.id, el.bill_id)}>
                     <ListItemText primary={el.description} secondary={el.bill_id}/>
                 </ListItem>
             );
@@ -56,37 +80,22 @@ export default class DocketFeed extends Component {
     //will be in 
     render() {
         const subheader = "Policy Docket";
-        const getBills = this.getBills;
+        // const getBills = this.getBills;
         return (
-            <div className='big-docket-feed'>
-                <div className="docket-feed">
-                    <Paper>
-                        <List>
-                            <ListSubheader>{subheader}</ListSubheader>
-                            <Divider />
-                            <DataProvider endpoint="api/upcomingbill" render={getBills} />
-                        </List>
-                    </Paper>
-                </div>
-                <Bill className='bill' bill={this.state.bill} />
+            <div className='docket-feed'>
+                {/* <h6>{subheader}</h6> */}
+                <List className='docket-feed-list'>
+                    {this.state.list}
+                </List>
+                <Bill className='bill' bill={this.state.bill} id={this.state.id} />
+
+                
             </div>
+
         );
     }
 
 
     
 
-
-    // render() {
-     
-    //     const Com = FEEDS[title]['com'];
-    //     const className = FEEDS[title]['className'];
-    //     return (
-    //         <div className='root'>
-
-    //             <MenuBar className='menu-bar' onClick={this.onClick} />
-    //             < Com className={className} />
-    //         </div>
-    //     );
-    // }
 };

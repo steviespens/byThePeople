@@ -3,12 +3,24 @@
 .bill {
     // margin-left: $feed-width;
     // margin-top: 0px;
-    float: right;
-    height: $feed-height;
-    width: $subfeed-width;
+    // float: right;
+    // height: $feed-height;
+    // width: $subfeed-width;
+    display: flex;
+    flex-direction: column;
     border: 2px solid $color-border;
     margin-left: -2px;
-
+    width: 50%;
+    h3 {
+        font-size: 16px;
+        margin: 1%;
+    }
+    h6 {
+        font-size: 10px;
+        margin: 1%;
+    }
+    // height: $feed-height;
+    // overflow: auto;
     // height: 100px;
     // width: 200px;
     // @extend %box-container;

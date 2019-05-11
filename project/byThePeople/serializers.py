@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from byThePeople.models import Member, UpcomingBill, Headline, Poll, Choice, PollUserVotes
+from byThePeople.models import Member, UpcomingBill, Headline, Poll, Choice, PollUserVotes, Comment, CommentUserLikes
 
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -47,6 +47,15 @@ class PollSerializer(serializers.ModelSerializer):
         fields = ["id", "topic", "question", "choices"]
         # fields = ["id", "choices"]
         # fields = '__all__'
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+class CommentUserLikesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommentUserLikes
+        fields = '__all__'
 
 
 

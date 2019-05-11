@@ -12,12 +12,20 @@ from api.models import User
 
 
 
+
 class Member(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+class Poll(models.Model):
+    question = models.CharField(max_length=200)
+    topic = models.CharField(max_length=20)
+    # def __str__(self):
+    #     return self.question
+    class Meta:
+        ordering = ["-pk"]
 
 class UpcomingBill(models.Model):
     chamber = models.CharField(max_length=10)  #make enum
@@ -28,6 +36,7 @@ class UpcomingBill(models.Model):
     description = models.CharField(max_length=400)
     bill_url = models.CharField(max_length=100)
     url = models.CharField(max_length=100)
+    polls = models.ManyToManyField(Poll)
     def __str__(self):
         return self.description
 
@@ -40,13 +49,6 @@ class Headline(models.Model):
     def __str__(self):
         return self.title
 
-class Poll(models.Model):
-    question = models.CharField(max_length=200)
-    topic = models.CharField(max_length=20)
-    # def __str__(self):
-    #     return self.question
-    class Meta:
-        ordering = ["-pk"]
 
 
 
@@ -77,4 +79,22 @@ class PollUserVotes(models.Model):
 
     # def __str__(self):
         # return self.choice
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", blank=True)
+    bill = models.ForeignKey(UpcomingBill, on_delete=models.CASCADE, related_name="bill", blank=True)
+    text = models.CharField(max_length=1500)
+    created = models.DateTimeField(auto_now_add=True)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
+
+
+class CommentUserLikes(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="comment", blank=True)
+    comment_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comment_user", blank=True)
+    action = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = ('comment_user', 'comment')
+
 

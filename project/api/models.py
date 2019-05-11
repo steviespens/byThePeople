@@ -115,6 +115,9 @@ class User(AbstractBaseUser):
     def get_gender(self):
         return self.gender
 
+    def get_email(self):
+        return self.email
+
     def get_all(self):
         return {'email': self.email, 'gender': self.gender, 'political_party': self.political_party}
 

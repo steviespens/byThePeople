@@ -23,16 +23,17 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
 
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 @api_view(['GET', 'POST', ])
 def get_user_metadata(request):
-    authentication_classes = (JWTAuthentication,)
+    authentication_classes = (JWTTokenUserAuthentication,)
     permission_classes = (IsAuthenticated,)
-    return Response(json.dumps(request.user.get_all()))
+    user = User.objects.get(id=request.user.id)
+    return Response(json.dumps(user.get_all()))
 
 
 

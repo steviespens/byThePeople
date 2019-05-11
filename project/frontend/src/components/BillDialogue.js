@@ -9,12 +9,13 @@ import { parseBillID } from './utilities/helpers';
 
 import AuthService from './AuthService';
 import { reduce } from "bluebird";
-const Auth = new AuthService();
+
+// const Auth = new AuthService();
 
 export default class BillDialogue extends Component {
     constructor(props) {
         super(props);
-
+        this.Auth = new AuthService();
         this.state = {
             loaded: 'Loading...'
         };
@@ -22,25 +23,27 @@ export default class BillDialogue extends Component {
 
     componentDidMount() {
         const bill = parseBillID(this.props.bill.bill_id);
-        Auth.fetch('api/textfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
-            return response;
-        }).then((data) => {
-            this.setState({ loaded: data });
+        this.Auth.fetch('api/textfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
+            // const x = response;
+            const data = JSON.parse(response);
+            this.setState({ loaded: data['full_text'] });
         });
     }
 
+    //should add .catch loops to this and componentDidMount
     componentDidUpdate(prevProps) {
         if (this.props.bill !== prevProps.bill) {
+
             const bill = parseBillID(this.props.bill.bill_id);
-            Auth.fetch('api/textfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
-                return response;
-            }).then((data) => {
-                this.setState({ loaded: data });
+            this.Auth.fetch('api/textfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
+                const data = JSON.parse(response);
+                this.setState({ loaded: data['full_text'] });
             });
         }
     }
  
     render() {
+        
         const open = this.props.open;
         const onClose = this.props.onClose;
         const title = makeTitle(this.props.bill);
@@ -50,6 +53,20 @@ export default class BillDialogue extends Component {
         };
     
         return (
+            // <Dialog
+            //     open={open}
+            //     onClose={onClose}
+            //     scroll='paper'
+            // // aria-labelledby="scroll-dialog-title"
+            // >
+            //     <DialogTitle id="scroll-dialog-title">{title}</DialogTitle>
+            //     <DialogContent style={style}>
+            //         {/* <DialogContentText>
+            //             {this.state.loaded}
+            //         </DialogContentText> */}
+            //         <p>{this.state.loaded}</p>
+            //     </DialogContent>
+            // </Dialog>
             <Dialog
                 open={open}
                 onClose={onClose}
@@ -64,6 +81,7 @@ export default class BillDialogue extends Component {
                     <p>{this.state.loaded}</p>
                 </DialogContent>
             </Dialog>
+
         );
     }
 

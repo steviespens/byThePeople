@@ -28,7 +28,7 @@ const styles = {
         border: '1px solid black',
         borderRadius: 3,
         // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        // color: 'white',
+        color: 'red',
         // height: 48,
         // padding: '0 30px',
     },
@@ -61,25 +61,35 @@ class Bill extends Component {
         const billInformation = makeBillInformation(this.props.bill);
         const { classes } = this.props;
         return (
-            <div>
-                <Card className="bill">
-                    <CardHeader title={title} />
-                    <CardContent>
-                        <Typography component="p">
-                            {billInformation[0]}
-                            <br />
-                            {billInformation[1]}
-                            <br />
-                            {billInformation[2]}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button variant="outlined" onClick={this.handleClickOpen}>Full Text</Button>
-                    </CardActions>
-                    <CommentBox className={classes.root}/>
-                </Card>
-                <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose}/>
+            // <div>
+            //     <Card className="bill">
+            //         <CardHeader title={title} />
+            //         <CardContent>
+            //             <Typography component="p">
+            //                 {billInformation[0]}
+            //                 <br />
+            //                 {billInformation[1]}
+            //                 <br />
+            //                 {billInformation[2]}
+            //             </Typography>
+            //         </CardContent>
+            //         <CardActions>
+            //             <Button variant="outlined" onClick={this.handleClickOpen}>Full Text</Button>
+            //         </CardActions>
+            //         <CommentBox className={classes.commentBox} id={this.props.id}/>
+            //     </Card>
+            //     <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose}/>
+            // </div>
+            <div className="bill">
+                <h3>{title}</h3>
+                <h6>{billInformation[0]}</h6>
+                <h6>{billInformation[1]}</h6>
+                <h6>{billInformation[2]}</h6>
+                <button onClick={this.handleClickOpen}>Full Text</button>
+                <CommentBox className={classes.commentBox} id={this.props.id} />
+                <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose} />
             </div>
+
 
         );
     }

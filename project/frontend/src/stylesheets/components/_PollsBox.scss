@@ -1,0 +1,30 @@
+@import "../base/all";
+
+.polls-box {
+    // overflow: scroll;
+    margin-top: 0%;
+    border: 2px solid $color-border;
+    border-collapse: collapse;
+    @extend %main-feed-second-row-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    max-width: 1015px;
+    // height: 200px;
+
+    h5 {
+        margin: 0%;
+        padding: 0%;
+    }
+
+    #poll-individual {
+        display: inline-block;
+        width: 350px;
+        border: 2px solid $color-border;
+        border-radius: 4px;
+        margin: 1%;
+       
+    }
+
+
+}

@@ -8,16 +8,9 @@ export default function ProfileBox(props) {
 
     const Auth = new AuthService();
     const [email, setEmail] = useState('');
-    const [gender, setGender] = useState('male')
-    const [politicalParty, setPoliticalParty] = useState('independent')
-    // constructor(props) {
-    //     super(props);
-    //     this.Auth = new AuthService();
-
-    //     this.state = {
-
-    //     };
-    // }
+    const [gender, setGender] = useState('')
+    const [politicalParty, setPoliticalParty] = useState('')
+   
     useEffect(() => {
         Auth.fetch('api/get_user_metadata/').then((data) => {
             data = JSON.parse(data);
@@ -27,22 +20,8 @@ export default function ProfileBox(props) {
         });
     }, [email, gender]);
 
-    
-
-    // componentDidMount() {
-        
-    //     this.Auth.fetch('api/get_user_metadata/').then((data) => {
-    //         data = JSON.parse(data);
-    //         this.setState({
-    //             email: data.email,
-    //             gender: data.gender
-    //         })
-            
-    //     });
-    // }
-
     return (
-        <div className="news-box">
+        <div className="profile-box">
             <h5>{props.title}</h5>
             {email}
             <br></br>

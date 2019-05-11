@@ -23,7 +23,7 @@ export default class RegisterForm extends Component {
 
         };
         this.handleChange = this.handleChange.bind(this);
-        this.Auth = new AuthService();
+        this.Auth = new AuthService()
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClickClose = this.handleClickClose.bind(this);

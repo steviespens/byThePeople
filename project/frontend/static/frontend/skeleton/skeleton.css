@@ -63,7 +63,8 @@
   .columns:first-child {
     margin-left: 0; }
 
-  .one.column,
+  /* changed all these values below*/
+  /* .one.column,
   .one.columns                    { width: 4.66666666667%; }
   .two.columns                    { width: 13.3333333333%; }
   .three.columns                  { width: 22%;            }
@@ -80,7 +81,27 @@
   .one-third.column               { width: 30.6666666667%; }
   .two-thirds.column              { width: 65.3333333333%; }
 
-  .one-half.column                { width: 48%; }
+  .one-half.column                { width: 48%; } */
+
+    .one.column,
+  .one.columns                    { width: calc(100%/12); }
+  .two.columns                    { width: calc(100%/12*2); }
+  .three.columns                  { width: calc(100%/12*3);            }
+  .four.columns                   { width: calc(100%/12*4); }
+  .five.columns                   { width: calc(100%/12*5); }
+  .six.columns                    { width: calc(100%/12*6);            }
+  .seven.columns                  { width: calc(100%/12*7); }
+  .eight.columns                  { width: calc(100%/12)*8; }
+  .nine.columns                   { width: calc(100%/12*9);        }
+  .ten.columns                    { width: calc(100%/12*10); }
+  .eleven.columns                 { width: calc(100%/12*11); }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: calc(100%/3); }
+  .two-thirds.column              { width: calc(100%/3*2); }
+
+  .one-half.column                { width: 50%; }
+
 
   /* Offsets */
   /* commented this all out below */

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 const DocketBox = (props) => {
     const fields = ['description'];
     return (
-        <div id="docket-box">
+        <div className="docket-box">
             <h5>{props.title}</h5>
             <DataProvider endpoint="api/upcomingbill/"
                 render={data => <TableAll data={data.reverse()} fields={fields} />} />

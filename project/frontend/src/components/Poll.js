@@ -23,7 +23,7 @@ export default class Poll extends React.Component {
     constructor(props) {
         super(props);
         this.handleChoice = this.handleChoice.bind(this);
-        this.Auth = new AuthService();
+        this.Auth = new AuthService()
         this.state = {
             poll: props.poll,
             selected: false

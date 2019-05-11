@@ -1,31 +1,29 @@
 @import "../base/all";
 
 .docket-feed {
-    // @extend %feed;
-    height: 400px;
-    width: 550px;
-    overflow: auto;
+    height: $feed-height;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    // overflow: auto;
     margin-top: 0%;
-    float: left;
+    // float: left;
     border: 2px solid $color-border;
     border-collapse: collapse;
-    th {
-        position: absolute;
-        margin-top: -2%;
-        visibility: hidden;
-        border-collapse: collapse;
-        z-index: 200;
-        height: 3px;
-
-    }
-    h2 {
-        font-size: 20px;
-        border: 2px solid $color-border;
-
-
-    }
+   
 }
-//this div is like 4px too small height
+
+.docket-feed-list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    overflow: auto;
+    border: 1px solid black;
+
+}
+
+
+
 .big-docket-feed {
     width: calc($feed-width + $subfeed-width);
     width: 906px;

@@ -18,31 +18,32 @@ export default class MainFeed extends Component {
         return (
             // <div>hey</div>
             <div className="row main-feed">
-                <div className="eight columns">
-                    <div className="row">
-                        <div className="four columns">
+                <div className="twelve columns">
+                    <div className="row" id="main-feed-first-row">
+                        <div className="two columns" id="main-feed-first-row-box">
                             <ProfileBox title="Profile" />
                         </div>
-                        <div className="eight columns">
+                        <div className="six columns" id="main-feed-first-row-box">
                             <DocketBox title="Docket" />
                         </div>
+                        <div className="four columns" id="main-feed-first-row-box">
+                            <NewsBox title="Top News" />
+                        </div>
+
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="twelve columns">
                             <SinglePollFeed title="Poll of the Day" />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="row">
-                        <div className="seven columns">
+                        {/* <div className="seven columns">
                             <MainFeedItem title="Trending Discussion" />
-                        </div>
-                        <div className="five columns">
+                        </div> */}
+                        <div className="twelve columns">
                             <PollsBox title="Recent Polls" />
                         </div>
                     </div>
-                </div>
-                <div className="four columns">
-                    <NewsBox title="Top News" />
                 </div>
 
             </div>

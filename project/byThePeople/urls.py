@@ -8,7 +8,8 @@ BASE = 'api/'
 router = DefaultRouter()
 # router.register(r'polls', views.PollListCreate.as_view({'get': 'list'}), basename = BASE)
 # router.register(r'choices', views.ChoiceListCreate.as_view({'get': 'list'}), basename = BASE)
-router.register(r'polls', views.PollListCreate, basename = BASE)
+router.register(r'polls', views.PollListCreate, basename=BASE)
+
 # router.register(r'choices', views.ChoiceListCreate, basename=BASE)
 # router.register(r'jsonfiles/(?P<filename>[^/]+)/$', views.JSONFileView, basename = BASE)
 
@@ -27,10 +28,21 @@ urlpatterns = [
     path('api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
     path('news/api/headline/', views.HeadlineListCreate.as_view()),
     path('api/headline/', views.HeadlineListCreate.as_view()),
+    path('comments/get_user_email_for_comment/<comment_id>/', views.CommentListCreate.as_view({'get': 'get_user_email_for_comment'})),
     path('api/jsonfiles/<prefix>/<billNumber>/<congressNumber>/', views.JSONFileView.as_view()),
     path('api/textfiles/<prefix>/<billNumber>/<congressNumber>/', views.TextFileView.as_view()),
     path('polls/user_has_voted_poll/<poll_id>/', views.PollUserVotesCreate.as_view({'get': 'user_has_voted_poll'})),
+    # path('comments/user_has_liked_comment/<comment_id>/<action>/', views.CommentUserLikesCreate.as_view({'get': 'user_has_liked_comment'})),
+    path('comments/like_comment/<comment_id>/<action>/', views.CommentListCreate.as_view({'get': 'like'})),
+    path('comments/user_has_liked_comment/<comment_id>/', views.CommentUserLikesCreate.as_view({'get': 'user_has_liked_comment'})),
+    # path('api/upcomingbill/get_related_polls/', views.CommentUserLikesCreate.as_view({'get': 'user_has_liked_comment'})),
+
     path('api/choices/<pk>/', views.ChoiceListCreate.as_view({'post': 'vote'})),
+    path('comments/get_comment_for_bill/<bill_id>/', views.CommentListCreate.as_view({'get': 'get_comment_for_bill'})),
+    # path('comments/add_comment/<comment>/', views.CommentListCreate.as_view({'post': 'add_comment'})),
+    path('comments/add_comment/<comment>/', views.CommentListCreate.as_view({'post': 'add_comment'})),
+
+
 
     # path('api/polls/', views.PollListCreate.as_view({'get': 'list'})),
     # path('api/choices/', views.ChoiceListCreate.as_view({'get': 'list'})),

@@ -9,10 +9,10 @@
     width: calc(100% - #{$menu-bar-width});
     margin-left: $menu-bar-width;
     width: 100%;
-    height: 100%;
-    // display: flex;
+    // height: calc(#{$main-feed-first-row-box-height} + #{$main-feed-second-row-box-height});
+    height: 670px;
+    display: flex;
     // flex-direction: column;
-    // justify-content: space-between;
     // margin: 0%;
     &table {
         margin: 0%;
@@ -25,14 +25,26 @@
     }
 
 }
-#docket-box {
-    background-color: aqua;
-    h5 {
-        font-size: 3px;
-    }
+// #docket-box {
+//     height: 400px;
+//     overflow: scroll;
+//     // background-color: red;
+//     h5 {
+//         font-size: 5px;
+//     }
+// }
+
+            // <div className="row main-feed">
+            //     <div className="twelve columns">
+            //         <div className="row">
+
+#main-feed-first-row {
+    display: flex;
+    // justify-content: space-around;
+
 }
-.row .main-feed {
-    color: aliceblue;
+#main-feed-first-row-box {
+    padding: 0%;
 }
 .row .main-feed .eight .columns .row .eight .columns .docket-box {
         h2 {
