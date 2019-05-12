@@ -20,8 +20,8 @@ class Member(models.Model):
         return self.first_name + " " + self.last_name
 
 class Poll(models.Model):
-    question = models.CharField(max_length=200)
-    topic = models.CharField(max_length=20)
+    question = models.CharField(max_length=1000)
+    topic = models.CharField(max_length=200)
     # def __str__(self):
     #     return self.question
     class Meta:
@@ -29,22 +29,22 @@ class Poll(models.Model):
 
 class UpcomingBill(models.Model):
     chamber = models.CharField(max_length=10)  #make enum
-    bill_id = models.CharField(max_length=20)
-    api_uri = models.CharField(max_length=50)
-    legislative_day = models.CharField(max_length=10)  #make date
-    scheduled_at = models.CharField(max_length=30)  #make date and time
-    description = models.CharField(max_length=400)
-    bill_url = models.CharField(max_length=100)
-    url = models.CharField(max_length=100)
-    polls = models.ManyToManyField(Poll)
+    bill_id = models.CharField(max_length=100)
+    api_uri = models.CharField(max_length=500)
+    legislative_day = models.CharField(max_length=100)  #make date
+    scheduled_at = models.CharField(max_length=100)  #make date and time
+    description = models.CharField(max_length=5000)
+    bill_url = models.CharField(max_length=500)
+    url = models.CharField(max_length=500)
+    # polls = models.ManyToManyField(Poll)
     def __str__(self):
         return self.description
 
 
 class Headline(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=10000) 
-    url = models.CharField(max_length=100) 
+    title = models.CharField(max_length=1000)
+    description = models.CharField(max_length=20000) 
+    url = models.CharField(max_length=500) 
     # urlToImage = models.CharField(max_length=100)
     def __str__(self):
         return self.title
@@ -62,7 +62,7 @@ class Choice(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name="choices", blank=True)
 
 
-    choice = models.CharField(max_length=3)
+    choice = models.CharField(max_length=500)
     
     votes = models.IntegerField(default=0)
     class Meta:
@@ -96,5 +96,6 @@ class CommentUserLikes(models.Model):
 
     class Meta:
         unique_together = ('comment_user', 'comment')
+
 
 
