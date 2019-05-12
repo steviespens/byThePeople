@@ -14,7 +14,7 @@ export default function withAuth(AuthComponent) {
         componentWillMount() {
             if (!Auth.loggedIn()) {
                 try {
-                    // console.log('tried Auth.refresh')
+                    console.log('tried Auth.refresh')
                     Auth.refresh();
                     const profile = Auth.getProfile()
                     

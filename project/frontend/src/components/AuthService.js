@@ -34,17 +34,13 @@ export default class AuthService {
 
 
     register(email, gender, politicalParty, password1, password2) {
-        // const csrftoken = this.getCookie('csrftoken');
-        // const headers = {
-        //     'Accept': 'application/json',
-        //     'Content-Type': 'application/json',
-        //     'X-CSRFToken': csrftoken
-        // }
+        const csrftoken = this.getCookie('csrftoken');
         const headers = {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
         }
-
+       
 
         return fetch('api/register/', {
             headers,
