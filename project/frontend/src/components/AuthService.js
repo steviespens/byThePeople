@@ -41,7 +41,7 @@ export default class AuthService {
             'X-CSRFToken': csrftoken
         }
        
-
+        console.log('register called');
         return fetch('api/register/', {
             headers,
             method: 'POST',
