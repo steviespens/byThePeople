@@ -86,7 +86,7 @@ class User(AbstractBaseUser):
     )
 
     political_party = models.CharField(
-        max_length=10,
+        max_length=20,
         choices=POLITICAL_PARTY_CHOICES,
         default=INDEPENDENT,
     )

@@ -88,7 +88,7 @@ class HeadlineListCreate(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        # get_headlines()
+        get_headlines()
         return Headline.objects.all()
     queryset = Headline.objects.all()
     serializer_class = HeadlineSerializer
@@ -262,8 +262,8 @@ def get_members():
         j,k = Member.objects.get_or_create(first_name = first_name, last_name = last_name)
 
 def get_upcoming_bills():
-    # get_upcoming_house_bills()
-    return
+    get_upcoming_house_bills()
+    # return
     # get_upcoming_senate_bills()
 
 def get_upcoming_house_bills():

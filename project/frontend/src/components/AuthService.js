@@ -34,7 +34,15 @@ export default class AuthService {
 
 
     register(email, gender, politicalParty, password1, password2) {
-        return this.fetch('api/register/', {
+        const csrftoken = this.getCookie('csrftoken');
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        }
+
+        return fetch('api/register/', {
+            headers,
             method: 'POST',
             body: JSON.stringify({
                 email,
@@ -43,7 +51,7 @@ export default class AuthService {
                 password1,
                 password2
             })
-        }).then((a) => {
+        }).then(() => {
             // this.setToken(res.access)
             return this.login(email, password1);
         })

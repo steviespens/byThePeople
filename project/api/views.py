@@ -66,6 +66,7 @@ def signup(request):
             # login(request, user)
             return Response('created new user')
         else:
+            print('form NOT VALID')
             print(request.POST)
             print(form.errors)
             print(form.non_field_errors)
