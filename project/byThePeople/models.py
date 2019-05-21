@@ -19,6 +19,7 @@ class Member(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+
 class Poll(models.Model):
     question = models.CharField(max_length=1000)
     topic = models.CharField(max_length=200)
@@ -26,6 +27,9 @@ class Poll(models.Model):
     #     return self.question
     class Meta:
         ordering = ["-pk"]
+        # permissions = [
+        #     ("modify_poll", "Can modify polls")
+        # ]
 
 class UpcomingBill(models.Model):
     chamber = models.CharField(max_length=10)  #make enum
@@ -36,7 +40,7 @@ class UpcomingBill(models.Model):
     description = models.CharField(max_length=5000)
     bill_url = models.CharField(max_length=500)
     url = models.CharField(max_length=500)
-    # polls = models.ManyToManyField(Poll)
+    related_polls = models.ManyToManyField(Poll)
     def __str__(self):
         return self.description
 

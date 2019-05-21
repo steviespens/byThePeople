@@ -42,7 +42,6 @@ export default class DocketFeed extends Component {
             });
             this.setState({ list: x });
         });
-        // getRelatedPolls();
     }
     componentWillUnmount() {
         // console.log('unmounting');
@@ -79,6 +78,7 @@ export default class DocketFeed extends Component {
     //then I know what to do, so I all I need is what should url be
     //will be in 
     render() {
+        
         const subheader = "Policy Docket";
         // const getBills = this.getBills;
         return (

@@ -110,6 +110,7 @@ export default class RegisterForm extends Component {
                     gender={this.state.gender}
                     politicalParty={this.state.politicalParty}
                     ethnicity={this.state.ethnicity}
+                    education={this.state.education}
                     salary={this.state.salary}
                     age={this.state.age}
 

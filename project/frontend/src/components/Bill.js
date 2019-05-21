@@ -18,6 +18,9 @@ import { Document } from 'react-pdf'
 import CommentBox from "./CommentBox";
 import PropTypes from "prop-types";
 import { withStyles } from '@material-ui/styles';
+import Poll from "./Poll";
+import AuthService from './AuthService';
+
 
 
 const styles = {
@@ -40,8 +43,10 @@ const styles = {
 class Bill extends Component {
     constructor(props) {
         super(props);
+        this.Auth = new AuthService();
         this.state = {
-            open: false
+            open: false,
+            poll: null
         };
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -52,6 +57,20 @@ class Bill extends Component {
     handleClose = () => {
         this.setState({ open: false });
     }
+    componentDidUpdate() {
+        if (this.props.bill != null) {
+            this.Auth.fetch('api/upcomingbill/get_related_polls/' + this.props.id + '/').then(data => JSON.parse(data))
+                .then((data) => {
+                    if (!data.exists && this.state.poll != null) {
+                        this.setState({ poll: null });
+                    }
+                    //dont need this second data.exists check but want to keep it here for now
+                    else if (data.exists && (this.state.poll == null || this.state.poll.id != data.polls['id'])) {
+                        this.setState({ poll: data.polls });
+                    }
+            });
+        }
+    }
 
     render() {
         if (this.props.bill == null) {
@@ -61,33 +80,24 @@ class Bill extends Component {
         const billInformation = makeBillInformation(this.props.bill);
         const { classes } = this.props;
         return (
-            // <div>
-            //     <Card className="bill">
-            //         <CardHeader title={title} />
-            //         <CardContent>
-            //             <Typography component="p">
-            //                 {billInformation[0]}
-            //                 <br />
-            //                 {billInformation[1]}
-            //                 <br />
-            //                 {billInformation[2]}
-            //             </Typography>
-            //         </CardContent>
-            //         <CardActions>
-            //             <Button variant="outlined" onClick={this.handleClickOpen}>Full Text</Button>
-            //         </CardActions>
-            //         <CommentBox className={classes.commentBox} id={this.props.id}/>
-            //     </Card>
-            //     <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose}/>
-            // </div>
             <div className="bill">
-                <h3>{title}</h3>
-                <h6>{billInformation[0]}</h6>
-                <h6>{billInformation[1]}</h6>
-                <h6>{billInformation[2]}</h6>
-                <button onClick={this.handleClickOpen}>Full Text</button>
-                <CommentBox className={classes.commentBox} id={this.props.id} />
-                <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose} />
+                <div className = "top">
+                    <h3>{title}</h3>
+                    <h6>{billInformation[0]}</h6>
+                    <h6>{billInformation[1]}</h6>
+                    <h6>{billInformation[2]}</h6>
+                    <button onClick={this.handleClickOpen}>Full Text</button>
+                    <CommentBox className={classes.commentBox} id={this.props.id} />
+                    <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose} />
+                </div>
+                <div className="bottom">
+                    {this.state.poll == null ? 
+                        <div></div> :
+                        <div id='poll-individual'>
+                            <Poll poll={this.state.poll}></Poll>
+                        </div>
+                    }
+                </div>
             </div>
 
 

@@ -39,6 +39,20 @@
    p {
        white-space: pre-line;
    }
+   .top {
+        height: 50%;
+   }
+   .bottom {
+       height: 50%;
+        #poll-individual {
+            display: inline-block;
+            width: 350px;
+            border: 2px solid $color-border;
+            border-radius: 4px;
+            margin: 1%; 
+        }
+
+    }
 }   
 #dialogue2 {
     white-space: pre-wrap;

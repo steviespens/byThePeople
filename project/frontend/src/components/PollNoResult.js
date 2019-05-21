@@ -30,7 +30,7 @@ export default function PollNoResult(props) {
     const choices = c.map((choice) => {
         return (
            
-            <PollListItemNoVote text={choice.choice} onSelect={props.handleChoice} value={choice.id}/>
+            <PollListItemNoVote key={choice.id} text={choice.choice} onSelect={props.handleChoice} value={choice.id}/>
         );
     });
 

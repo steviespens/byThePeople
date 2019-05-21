@@ -63,10 +63,8 @@ function Comment(props) {
     const [likeStatus, setLikeStatus] = useState(0);
 
     useEffect(() => {
-        console.log('called usefeff')
         Auth.fetch('/comments/get_user_email_for_comment/' + id + '/').then((data) => {
             setEmail(data);
-
         });
         checkUserLikedComment();
 

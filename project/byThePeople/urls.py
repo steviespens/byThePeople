@@ -9,10 +9,9 @@ router = DefaultRouter()
 # router.register(r'polls', views.PollListCreate.as_view({'get': 'list'}), basename = BASE)
 # router.register(r'choices', views.ChoiceListCreate.as_view({'get': 'list'}), basename = BASE)
 router.register(r'polls', views.PollListCreate, basename=BASE)
-
+router.register(r'upcomingbill', views.UpcomingBillListCreate, basename=BASE)
 # router.register(r'choices', views.ChoiceListCreate, basename=BASE)
 # router.register(r'jsonfiles/(?P<filename>[^/]+)/$', views.JSONFileView, basename = BASE)
-
 # router.register(r'rest-auth',)
 
 
@@ -24,8 +23,8 @@ urlpatterns = [
     url('api/jsonfiles/<filename>/', views.JSONFileView.as_view(), name='file_retrieve'),
 
     path('api/member/', views.MemberListCreate.as_view()),
-    path('docket/api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
-    path('api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
+    # path('docket/api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
+    # path('api/upcomingbill/', views.UpcomingBillListCreate.as_view()),
     path('news/api/headline/', views.HeadlineListCreate.as_view()),
     path('api/headline/', views.HeadlineListCreate.as_view()),
     path('comments/get_user_email_for_comment/<comment_id>/', views.CommentListCreate.as_view({'get': 'get_user_email_for_comment'})),

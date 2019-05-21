@@ -621,6 +621,19 @@ html {
 .bill p {
   white-space: pre-line;
 }
+.bill .top {
+  height: 50%;
+}
+.bill .bottom {
+  height: 50%;
+}
+.bill .bottom #poll-individual {
+  display: inline-block;
+  width: 350px;
+  border: 2px solid #e27d60;
+  border-radius: 4px;
+  margin: 1%;
+}
 
 #dialogue2 {
   white-space: pre-wrap;

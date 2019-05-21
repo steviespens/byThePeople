@@ -8,14 +8,14 @@ import json
 import os
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from collections import OrderedDict
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.utils.decorators import method_decorator
 
 from django.views.decorators.debug import sensitive_post_parameters
 
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import detail_route, list_route, action
 from rest_framework.response import Response
 from django.db.models import F
 from io import open
@@ -40,29 +40,34 @@ class JSONFileView(APIView):
     authentication_classes = (JWTTokenUserAuthentication,)
     permission_classes = (IsAuthenticated,)
 
+    # def get(self, request, prefix, billNumber, congressNumber):
+        # root_path = "/Users/stevie/Desktop/congressAPI/congress/data"
+        # folder_name = 'bills'
+        # file_name = "data.json"
+        # file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, file_name)
+        # with open(file_path, 'r') as jsonfile:
+        #     json_data = json.load(jsonfile)
+        # return Response(json_data)
     def get(self, request, prefix, billNumber, congressNumber):
-        # root_path2 = "/Users/stevie/Desktop/congressAPI/congress/data/116/bills/hr/hr1063"
-        print('get json file view ' + str(request.user.is_authenticated))
-
-        root_path = "/Users/stevie/Desktop/congressAPI/congress/data"
-        folder_name = 'bills'
-        file_name = "data.json"
-        file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, file_name)
-        with open(file_path, 'r') as jsonfile:
-            json_data = json.load(jsonfile)
-        return Response(json_data)
+        root_path = 'https://s3.amazonaws.com/bythepeople/hr1/data.json'
+        f = requests.get(root_path)
+        a = f.json()
+        return Response(a)
 class TextFileView(APIView):
     authentication_classes = (JWTTokenUserAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, prefix, billNumber, congressNumber):
-        root_path = "/Users/stevie/Desktop/congress2/congress/data"
-        folder_name = 'bills'
-        suffix = "text-versions/ih/document.txt"
-        file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, suffix)
-        with open(file_path, 'r') as f:
-            t = f.read()
-        return Response(json.dumps({'full_text': t}))
+    #     root_path = "/Users/stevie/Desktop/congress2/congress/data"
+    #     folder_name = 'bills'
+    #     suffix = "text-versions/ih/document.txt"
+    #     file_path = os.path.join(root_path, congressNumber, folder_name, prefix, prefix + billNumber, suffix)
+    #     with open(file_path, 'r') as f:
+    #         t = f.read()
+    #     return Response(json.dumps({'full_text': t}))
+        root_path = 'https://s3.amazonaws.com/bythepeople/' + prefix + billNumber + '/text-versions/ih/document.txt'
+        f = requests.get(root_path)
+        return Response(json.dumps({'full_text': f.decode()}))
 
 class MemberListCreate(generics.ListCreateAPIView):
     #asView() is called, and returns the data by returning queryset. queryset is serialized using the provided serializer class
@@ -72,15 +77,24 @@ class MemberListCreate(generics.ListCreateAPIView):
     # queryset = Member.objects.all()
     serializer_class = MemberSerializer
 
-class UpcomingBillListCreate(generics.ListCreateAPIView):
+class UpcomingBillListCreate(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
     permission_classes = (IsAuthenticated,)
     serializer_class = UpcomingBillSerializer
 
     def get_queryset(self):
-        get_upcoming_bills()
+        # get_upcoming_bills()
         return UpcomingBill.objects.all()
-    # def get_related_polls(self, request):
+
+    @action(detail=False, methods=['get'], permission_classes=(IsAuthenticated,), url_path='get_related_polls/(?P<bill_id>[^/.]+)')
+    def get_related_polls(self, request, bill_id):
+        bill = UpcomingBill.objects.get(id=bill_id)
+        polls = bill.related_polls.all()
+        if polls.exists():
+            serializer = PollSerializer(polls.first())
+            return Response(json.dumps({'exists': True, 'polls': serializer.data}))
+        return Response(json.dumps({'exists': False}))
+
 
 
 class HeadlineListCreate(generics.ListCreateAPIView):
@@ -88,7 +102,7 @@ class HeadlineListCreate(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        get_headlines()
+        # get_headlines()
         return Headline.objects.all()
     queryset = Headline.objects.all()
     serializer_class = HeadlineSerializer
@@ -98,16 +112,28 @@ class PollListCreate(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-    # def get_queryset(self):
-    #     insert_poll()
-    #     x = Poll.objects.all()
-    #     for i in x:
-    #         i['choices'] = get_choices()
-    #     return x
     def get_queryset(self):
-        insert_poll()
+        # insert_poll()
         return Poll.objects.all()
     serializer_class = PollSerializer
+
+    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    def add_poll(self, request):
+        data = json.loads(request.body.decode(), object_pairs_hook=OrderedDict)
+        topic = data['topic']
+        question = data['question']
+        choices = data['choices']
+        related_bill = data['related_bill']
+        poll, created = Poll.objects.get_or_create(topic=topic, question=question)
+        for k, v in choices.items():
+            Choice.objects.get_or_create(poll=poll, choice=v)
+        if UpcomingBill.objects.filter(bill_id=related_bill).exists():
+            bill = UpcomingBill.objects.get(bill_id=related_bill)
+            bill.related_polls.add(poll)
+            bill.save()
+        return Response(json.dumps(created))
+
+
 
 class PollUserVotesCreate(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
@@ -129,8 +155,7 @@ class CommentUserLikesCreate(viewsets.ModelViewSet):
         obj = CommentUserLikes.objects.filter(comment_user=user_id, comment=comment_id)
         if obj.exists():
             obj = CommentUserLikes.objects.get(comment_user=user_id, comment=comment_id)
-            serializer = CommentUserLikesSerializer(obj)
-            print(json.dumps(obj.action))
+            # serializer = CommentUserLikesSerializer(obj)
             return Response(json.dumps(obj.action))
             
         return Response(json.dumps(0))

@@ -267,19 +267,6 @@ export default class AdditionalInfoForm extends Component {
                             </TextField>
                             <TextField
                                 select
-                                label="Ethnicity"
-                                className="ethnicity-selector"
-                                value={this.props.ethnicity}
-                                onChange={handleChange('ethnicity')}
-                            >
-                                {ethnicities.map(option =>
-                                    <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
-                                    </MenuItem>
-                                )}
-                            </TextField>
-                            <TextField
-                                select
                                 label="Education"
                                 className="education-selector"
                                 value={this.props.education}

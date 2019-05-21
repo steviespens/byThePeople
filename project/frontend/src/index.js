@@ -14,6 +14,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import App from './components/App';
+import Admin from './components/Admin';
+
 
 
 // ReactDOM.render(<Home />, document.querySelector('#view'));
@@ -22,6 +24,8 @@ ReactDOM.render(
         <div>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/admin" component={Admin} />
         </div>
     </Router>,
     document.getElementById('view'));
+
