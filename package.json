@@ -25,6 +25,7 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "@material-ui/icons": "^4.4.1",
     "@material-ui/styles": "^3.0.0-alpha.10",
     "jwt-decode": "^2.2.0",
     "react-pdf": "^4.0.5",
