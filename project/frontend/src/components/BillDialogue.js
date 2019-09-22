@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { parseBillID } from './utilities/helpers';
@@ -10,122 +10,92 @@ import { parseBillID } from './utilities/helpers';
 import AuthService from './AuthService';
 import { reduce } from "bluebird";
 
-// const Auth = new AuthService();
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
+import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@material-ui/styles';
 
-export default class BillDialogue extends Component {
-    constructor(props) {
-        super(props);
-        this.Auth = new AuthService();
-        this.state = {
-            loaded: 'Loading...'
-        };
-    }
 
-    componentDidMount() {
-        const bill = parseBillID(this.props.bill.bill_id);
-        this.Auth.fetch('api/textfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
-            // const x = response;
-            const data = JSON.parse(response);
-            this.setState({ loaded: data['full_text'] });
-        });
-    }
+const useStyles = makeStyles(theme => ({
+    appBar: {
+        position: 'relative',
+    },
+    title: {
+        // marginLeft: theme.spacing(2),
+        flex: 1,
+    },
+}));
 
-    //should add .catch loops to this and componentDidMount
-    componentDidUpdate(prevProps) {
-        if (this.props.bill !== prevProps.bill) {
+const BillDialogue = (props) => {
 
-            const bill = parseBillID(this.props.bill.bill_id);
-            this.Auth.fetch('api/textfiles/' + bill.prefix + '/' + bill.billNumber + '/' + bill.congressNumber + '/').then((response) => {
-                const data = JSON.parse(response);
-                this.setState({ loaded: data['full_text'] });
-            });
+    const Auth = new AuthService();
+    const [loaded, setLoaded] = useState('Loading...');
+    //you lifted the state of Open/closed for the dialog up because the open button is in a different component. but what's happening is every time Bill re-renders because open changed because of an event in this component, that rerenders BillDialogue because open is one of the props to BillDialogue. This causes useEffect to get called which undoes the reset of the Loaded variable, so now when you click a new bill that is large and takes a while to load, the old bill is still in loaded and, instead of showing a blank loading msg like you'd like, the old bill is displayed until the new bill loads and then the dialog re-renders in front of the user. it is a visible re-render
+    useEffect(() => {
+        console.log(props.bill.bill_id)
+        const bill = parseBillID(props.bill.bill_id);
+        const congress_num = bill.congressNumber;
+        const num_bill = bill.billNumber;
+        const prefix = makePrefix(bill.prefix)
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                congress_num,
+                prefix,
+                num_bill
+            })
         }
+        // console.log('called bill html')
+        Auth.fetch('api/textfiles/get_bill_html/', options).then((data) => {
+            const d = data.substring(1, data.length - 1)
+            const tmp = <div dangerouslySetInnerHTML={{ __html: d }} />
+            
+            setLoaded(tmp)
+            // console.log('set loading')
+        })
+
+    }, [props])    
+        
+    const open = props.open;
+    const onClose = () => {
+        props.onClose();
+        setLoaded('Loading...');
+        // console.log('reset loading')
+
     }
- 
-    render() {
-        
-        const open = this.props.open;
-        const onClose = this.props.onClose;
-        const title = makeTitle(this.props.bill);
-        
-        const style = {
-            whiteSpace: 'pre-wrap'
-        };
+    const title = makeTitle(props.bill);
     
-        return (
-            // <Dialog
-            //     open={open}
-            //     onClose={onClose}
-            //     scroll='paper'
-            // // aria-labelledby="scroll-dialog-title"
-            // >
-            //     <DialogTitle id="scroll-dialog-title">{title}</DialogTitle>
-            //     <DialogContent style={style}>
-            //         {/* <DialogContentText>
-            //             {this.state.loaded}
-            //         </DialogContentText> */}
-            //         <p>{this.state.loaded}</p>
-            //     </DialogContent>
-            // </Dialog>
-            <Dialog
-                open={open}
-                onClose={onClose}
-                scroll='paper'
-            // aria-labelledby="scroll-dialog-title"
-            >
-                <DialogTitle id="scroll-dialog-title">{title}</DialogTitle>
-                <DialogContent style={style}>
-                    {/* <DialogContentText>
-                        {this.state.loaded}
-                    </DialogContentText> */}
-                    <p>{this.state.loaded}</p>
-                </DialogContent>
-            </Dialog>
+    const style = {
+        whiteSpace: 'pre-wrap'
+    };
 
-        );
-    }
+    const classes = useStyles();
 
-    // fetch(url, options) {
-    //     // performs api calls sending the required authentication headers
-    //     const csrftoken = 'mchgeVYDi2ZDbIuPcABORE9EuClmvIk8lUNQbUeCDNtowZaQYNNSMkvLA3pF1XuQ';
-    //     console.log('cal')
+    return (
+        <Dialog fullScreen
+            open={open}
+            onClose={onClose}
+            scroll='paper'>
+            <AppBar className={classes.appBar}>
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
+                        <CloseIcon />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
+                    {title}
+                    </Typography>
+                </Toolbar>
+            </AppBar>
 
-    //     const headers = {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //         'X-CSRFToken': csrftoken
-    //     }
-
-    //     if (this.loggedIn()) {
-    //         headers['Authorization'] = 'Bearer ' + this.getToken()
-
-    //     }
-
-    //     return fetch(url, {
-    //         headers,
-    //         ...options
-    //     })
-    //         // .then(this._checkStatus)
-    //         .then(response => {
-    //             // console.log(response.json());
-    //             return response.json();
-    //         }
-    //         )
-    // }
-
-    // _checkStatus(response) {
-    //     // raises an error in case response status is not a success
-    //     if (response.status >= 200 && response.status < 300) {
-    //         return response
-    //     } else {
-    //         var error = new Error(response.statusText)
-    //         error.response = response
-    //         throw error
-    //     }
-    // }
-
-
+            <DialogContent style={style}>
+                {loaded}
+            </DialogContent>
+        </Dialog>
+    );
 }
+export default BillDialogue;
 
 function makeTitle(bill) {
     const id = bill.bill_id;
@@ -134,5 +104,12 @@ function makeTitle(bill) {
     var title = id.toUpperCase().split('-')[0] + ' - ';
     title += shortTitle != null ? shortTitle : officialTitle;
     return title;
+}
+
+function makePrefix(p) {
+    if (p == 'hr') return 'house-bill'
+    else if (p == 'hres') return 'house-resolution'
+    else if (p == 's') return 'senate-bill'
+    else return null
 }
 

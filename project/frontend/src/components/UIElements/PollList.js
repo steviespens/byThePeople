@@ -9,10 +9,23 @@ const styles = createStyles({
         margin: '0%',
         padding: '1%',
         alignItems: 'center',
+        height: '100%',
 
     },
     heading: {
         margin: '0%',
+        fontSize: '.85vw',
+        // wordBreak: 'normal',
+        // maxWidth: '100px',
+        whiteSpace: 'normal',
+        alignItems: 'center',
+        display: 'flex',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        textAlign: 'center',
+
+
+        
     },
    
 });
@@ -26,7 +39,10 @@ function PollList(props) {
         <div className={props.classes.root}>
             <h6 className={props.classes.heading}>{question}</h6>
             {props.children}
-            <h6>{props.numVotes}</h6>
+            {/* <div>
+                {props.children}
+            </div> */}
+            <h6 className={props.classes.heading}>{props.numVotes}</h6>
         </div>
     );
 

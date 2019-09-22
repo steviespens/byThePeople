@@ -13,6 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
+
 import App from './components/App';
 import Admin from './components/Admin';
 
@@ -23,6 +24,19 @@ ReactDOM.render(
     <Router>
         <div>
             <Route exact path="/" component={Home} />
+            <Route exact path="/about"
+                render={(props) => <Home {...props} refreshRoute={"/about"}/>}
+            />
+            <Route exact path="/docket"
+                render={(props) => <Home {...props} refreshRoute={"/docket"} />}
+            />
+            <Route exact path="/polls"
+                render={(props) => <Home {...props} refreshRoute={"/polls"} />}
+            />
+            <Route exact path="/representatives"
+                render={(props) => <Home {...props} refreshRoute={"/representatives"} />}
+            />
+
             <Route exact path="/login" component={Login} />
             <Route exact path="/admin" component={Admin} />
         </div>

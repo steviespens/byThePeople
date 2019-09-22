@@ -1,15 +1,14 @@
 @import "../base/all";
 
 .docket-feed {
-    height: $feed-height;
-    width: 1000px;
+    
+    // width: 1000px;
     display: flex;
     justify-content: space-between;
     // overflow: auto;
     margin-top: 0%;
     // float: left;
-    border: 2px solid $color-border;
-    border-collapse: collapse;
+    @extend %feed;
    
 }
 

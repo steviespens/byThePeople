@@ -180,7 +180,65 @@ export default class AuthService {
         }
        
     }
+    // Promise.all([
+    //     fetch('https://fcctop100.herokuapp.com/api/fccusers/top/recent'),
+    //         fetch('https://fcctop100.herokuapp.com/api/fccusers/top/alltime')
+    //     ])
+    //     .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+    // .then(([data1, data2]) => this.setState({
+    //     recentInfo: data1,
+    //     alltimeInfo: data2
+    //         }));
+    fetch_3(url, url2, url3, options) {
+        const csrftoken = this.getCookie('csrftoken');
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        }
+        if (!this.loggedIn()) {
+            return this.refresh().then((res) => {
+                headers['Authorization'] = 'Bearer ' + this.getToken()
+                const result = fetch(url, {
+                    headers,
+                    ...options
+                })
+                    .then(this._checkStatus)
+                    .then(response => {
+                        const x = response;
+                        return x.json();
+                    }
+                );
+                return result;
+            })
+        }
+        else {
+            headers['Authorization'] = 'Bearer ' + this.getToken()
+            return Promise.all([
+                fetch(url, { headers, ...options }),
+                fetch(url2, { headers, ...options }),
+                fetch(url3, { headers, ...options }),
 
+            ])
+                .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
+                .then(([data1, data2, data3]) => {
+                    return ([data1, data2, data3]);
+                }
+            );
+
+            // return Promise.all([
+            //     fetch(url, { headers, ...options }),
+            //     fetch(url2, { headers, ...options }),
+            // ])
+            //     // .then(this._checkStatus)
+            //     .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+            // .then()
+            //         return response.json();
+            //     })
+            // )
+        }
+    }
+    
     _checkStatus(response) {
         // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) {

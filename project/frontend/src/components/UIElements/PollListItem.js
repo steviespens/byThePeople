@@ -8,7 +8,7 @@ const styles = createStyles({
         display: 'flex',
         border: '1px solid black',
         borderRadius: '4px',
-        height: '30px',
+        height: '10%',
         width: '50%',
         margin: '1%',
         padding: '0%',

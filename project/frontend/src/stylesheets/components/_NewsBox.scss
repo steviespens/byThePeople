@@ -1,10 +1,7 @@
 @import "../base/all";
 
 .news-box {
-    overflow: scroll;
-    margin-top: 0%;
-    border: 2px solid $color-border;
-    border-collapse: collapse;
+    
     @extend %main-feed-first-row-box;
 
     // th {

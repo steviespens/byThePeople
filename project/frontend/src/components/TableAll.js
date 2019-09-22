@@ -31,10 +31,9 @@ const TableAll = ({ data, fields }) => {
         ));
 }
 
-TableAll.propTypes = {
-    data: PropTypes.array.isRequired,
-    fields: PropTypes.array.isRequired
-};
+// TableAll.propTypes = {
+//     data: PropTypes.array.isRequired,
+//     fields: PropTypes.array.isRequired
+// };
 export default TableAll;
 
-//data is an array of objects

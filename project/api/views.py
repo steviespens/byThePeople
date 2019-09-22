@@ -16,6 +16,7 @@ from django.shortcuts import render, redirect
 # from django import forms
 
 from api.models import User
+from api.serializers import UserSerializer
 from api.forms import UserCreationForm
 # from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
@@ -27,6 +28,28 @@ from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
 
 from django.views.decorators.csrf import ensure_csrf_cookie
 
+# class UserView(viewsets.ModelViewSet):
+#     authentication_classes = (JWTTokenUserAuthentication,)
+#     permission_classes = (IsAuthenticated,)
+
+#     def get_queryset(self):
+#         # get_headlines()
+#         return Headline.objects.all()
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
+
+@api_view(['POST', ])
+def save_voting_district(request):
+    authentication_classes = (JWTTokenUserAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    data = json.loads(request.body.decode())
+    user = User.objects.get(id=request.user.id)
+    user.state = data['state']
+    user.district = data['district']
+    user.save()
+
+    return Response(True)
 
 @api_view(['GET', 'POST', ])
 def get_user_metadata(request):
@@ -34,7 +57,6 @@ def get_user_metadata(request):
     permission_classes = (IsAuthenticated,)
     user = User.objects.get(id=request.user.id)
     return Response(json.dumps(user.get_all()))
-
 
 
 

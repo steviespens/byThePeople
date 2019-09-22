@@ -17,16 +17,16 @@ export default class MainFeed extends Component {
     render() {
         return (
             // <div>hey</div>
-            <div className="row main-feed">
+            <div className="main-feed">
                 <div className="twelve columns">
-                    <div className="row" id="main-feed-first-row">
-                        <div className="two columns" id="main-feed-first-row-box">
+                    <div className="row">
+                        <div className="four columns" id="main-feed-first-row">
                             <ProfileBox title="Profile" />
                         </div>
-                        <div className="six columns" id="main-feed-first-row-box">
+                        <div className="four columns" id="main-feed-first-row">
                             <DocketBox title="Docket" />
                         </div>
-                        <div className="four columns" id="main-feed-first-row-box">
+                        <div className="four columns" id="main-feed-first-row">
                             <NewsBox title="Top News" />
                         </div>
 

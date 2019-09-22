@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PollsBox from './PollsBox';
+import PollsRow from './PollsRow';
 
 
 
@@ -9,7 +9,12 @@ export default class PollsFeed extends Component {
         const title = "Polls";
         return (
             <div className="polls-feed">
-                <PollsBox />
+                <PollsRow title='Recommended For You'topic='get_recommended_polls'/>
+
+                <PollsRow title='Data Privacy'topic='Data Privacy'/>
+                <PollsRow title='Health Care'topic = 'Health Care'/>
+
+
             </div>
         );
     }

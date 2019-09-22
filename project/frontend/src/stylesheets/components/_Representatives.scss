@@ -1,0 +1,52 @@
+
+@import "../base/all";
+.representatives {
+    
+    display: flex;
+    // justify-content: space-between;
+    overflow: auto;
+    margin-top: 0%;
+    // float: left;
+    @extend %feed;
+
+    .left {
+        height: 100%;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        overflow: scroll;
+        margin-top: 0%;
+        // float: left;
+
+        .reps-list {
+            position: relative;
+            z-index: 1;
+        }
+
+    }
+    .middle {
+        height: 100%;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: auto;
+        margin-top: 0%;
+        overflow: scroll;
+
+        // float: left;
+    }
+    .right {
+        width: 35%;
+        overflow: scroll;
+
+
+    }
+
+
+}
+.autocomplete {
+    z-index: 1000;
+    height: 100%;
+}

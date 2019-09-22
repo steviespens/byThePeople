@@ -19,6 +19,10 @@ import CommentBox from "./CommentBox";
 import PropTypes from "prop-types";
 import { withStyles } from '@material-ui/styles';
 import Poll from "./Poll";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { withRouter } from 'react-router-dom';
+
 import AuthService from './AuthService';
 
 
@@ -50,6 +54,7 @@ class Bill extends Component {
         };
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.makeSponsorButton = this.makeSponsorButton.bind(this);
     }
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -59,7 +64,7 @@ class Bill extends Component {
     }
     componentDidUpdate() {
         if (this.props.bill != null) {
-            this.Auth.fetch('api/upcomingbill/get_related_polls/' + this.props.id + '/').then(data => JSON.parse(data))
+            this.Auth.fetch('api/upcomingbill/get_related_polls/' + this.props.bill.bill_id + '/').then(data => JSON.parse(data))
                 .then((data) => {
                     if (!data.exists && this.state.poll != null) {
                         this.setState({ poll: null });
@@ -71,6 +76,34 @@ class Bill extends Component {
             });
         }
     }
+    makeSponsorButton(bill) {
+        // const sponsorNameSplit = bill.sponsor.name.split(',');
+        // const sponsorName = sponsorNameSplit[1].substring(1) + " " + sponsorNameSplit[0];
+        // const sponsorState = bill.sponsor.state;
+        // const sponsorDistrict = bill.sponsor.district;
+        // const sponsorTitle = bill.sponsor.title;
+        // const sponsorNameSplit = bill.sponsor.split(',');
+        // const sponsorName = sponsorNameSplit[1].substring(1) + " " + sponsorNameSplit[0];
+        const sponsorName = bill.sponsor;
+        const sponsorState = bill.sponsor_state;
+        const sponsorDistrict = ''
+        const sponsorTitle = bill.sponsor_title;
+
+        const onClick = (name) => {
+            console.log(name)
+            this.props.history.push({
+                pathname: '/representatives',
+                state: { detail: name }
+            })
+        }
+        return (
+            <ListItem button onClick={() => onClick(sponsorName)}>
+                <ListItemText primary={sponsorName} secondary={sponsorState + " " + sponsorDistrict} />
+            </ListItem>
+        );
+
+    }
+
 
     render() {
         if (this.props.bill == null) {
@@ -83,11 +116,12 @@ class Bill extends Component {
             <div className="bill">
                 <div className = "top">
                     <h3>{title}</h3>
-                    <h6>{billInformation[0]}</h6>
+                    {/* <h6>{billInformation[0]}</h6> */}
+                    {this.makeSponsorButton(this.props.bill)}
                     <h6>{billInformation[1]}</h6>
                     <h6>{billInformation[2]}</h6>
                     <button onClick={this.handleClickOpen}>Full Text</button>
-                    <CommentBox className={classes.commentBox} id={this.props.id} />
+                    <CommentBox className={classes.commentBox} id={this.props.bill.bill_id} />
                     <BillDialogue bill={this.props.bill} open={this.state.open} onClose={this.handleClose} />
                 </div>
                 <div className="bottom">
@@ -109,22 +143,33 @@ class Bill extends Component {
 function makeTitle(bill) {
     const id = bill.bill_id;
     const shortTitle = bill.short_title;
-    const officialTitle = bill.official_title;
+    // const officialTitle = bill.official_title;
+    const officialTitle = bill.title;
+
     var title = id.toUpperCase().split('-')[0] + ' - ';
     title += shortTitle != null ? shortTitle : officialTitle;
     return title;
 }
 
 function makeBillInformation(bill) {
-    const sponsorName = bill.sponsor.name;
-    const sponsorState = bill.sponsor.state;
-    const sponsorDistrict = bill.sponsor.district;
-    const sponsorTitle = bill.sponsor.title;
-    const introduced = makeIntroduced(bill.introduced_at);
-    const committees = bill.committees.map((c) => (c.committee));
+    // const sponsorName = bill.sponsor.name;
+    // const sponsorState = bill.sponsor.state;
+    // const sponsorDistrict = bill.sponsor.district;
+    // const sponsorTitle = bill.sponsor.title;
+    const sponsorName = bill.sponsor;
+    const sponsorState = bill.sponsor_state;
+    const sponsorDistrict = '';
+    const sponsorTitle = bill.sponsor_title;
+
+    // const introduced = makeIntroduced(bill.introduced_at);
+    const introduced = makeIntroduced(bill.introduced_date);
+
+    const committees = bill.committees;
     var line1 = 'Sponsor: ' + sponsorTitle + '. ' + sponsorName + ' [' + sponsorState + '-' + sponsorDistrict + ']';
     var line2 = 'Introduced: ' + introduced;
-    var line3 = 'Committees: ' + committees.reverse().join(', ');
+    // var line3 = 'Committees: ' + committees.reverse().join(', ');
+    var line3 = 'Committees: ' + committees;
+
     return [line1, line2, line3];
 
 }
@@ -143,7 +188,7 @@ Bill.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Bill);
+export default withRouter(withStyles(styles)(Bill));
 
 
 

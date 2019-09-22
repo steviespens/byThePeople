@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/register/', views.signup),
     path('login/api/login_user/', views.login_user),
     path('api/get_user_metadata/', views.get_user_metadata),
+    path('api/save_voting_district/', views.save_voting_district),
 
     url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),

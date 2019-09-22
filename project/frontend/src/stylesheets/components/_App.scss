@@ -1,6 +1,13 @@
+@import "../base/all";
+
 .root {
     display: flex;
     // max-height: 1400px;
     // max-width: 90%;
-    height: 100vh;
+    // height: 100vh;
+    height: $root-height;
+    width: $root-width;
+    margin: 0%;
+    outline: 1px solid black;
+    
 }

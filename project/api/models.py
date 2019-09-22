@@ -93,6 +93,12 @@ class User(AbstractBaseUser):
 
     is_admin = models.BooleanField(default=False)
 
+    state = models.CharField(
+        max_length=2,
+        default='XX'
+    )
+    district = models.IntegerField(default=0)
+
  
     # date_of_birth = models.DateField()
     # is_active = models.BooleanField(default=True)
@@ -121,7 +127,8 @@ class User(AbstractBaseUser):
         return self.email
 
     def get_all(self):
-        return {'email': self.email, 'gender': self.gender, 'political_party': self.political_party}
+        return {'email': self.email, 'gender': self.gender, 'political_party': self.political_party,
+            'state': self.state, 'district': self.district}
 
             # politicalParty: '',
             # ethnicity: '',

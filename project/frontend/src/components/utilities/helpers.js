@@ -22,6 +22,9 @@ export function VoteChoice(choiceId) {
     }).then((response) => response.json())
 }
 
+
+
+
 //format: hr525-116
 export function parseBillID(id) {
     let prefix = ''
@@ -46,5 +49,42 @@ export function parseBillID(id) {
     return {prefix: prefix, billNumber: billNumber, congressNumber: congressNumber};
     
 }
+
+
+export function saveStateToLocalStorage() {
+    // for every item in React state
+    for (let key in this.state) {
+        // save to localStorage
+        sessionStorage.setItem(key, JSON.stringify(this.state[key]));
+    }
+}
+
+export function hydrateStateWithLocalStorage() {
+    // for all items in state
+    for (let key in this.state) {
+
+        // if the key exists in localStorage
+        if (sessionStorage.hasOwnProperty(key)) {
+            // get the key's value from localStorage
+            let value = sessionStorage.getItem(key);
+            // console.log(value)
+            // parse the localStorage string and setState
+            try {
+                value = JSON.parse(value);
+                this.setState({ [key]: value });
+                // console.log({[key]:value})
+            } catch (e) {
+                // handle empty string
+                this.setState({ [key]: value });
+            }
+        }
+    }
+}
+
+export function range(start, end, step = 1) {
+    const len = Math.floor((end - start) / step) + 1
+    return Array(len).fill().map((_, idx) => start + (idx * step))
+}
+
 
 

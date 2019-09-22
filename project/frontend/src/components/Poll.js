@@ -33,7 +33,6 @@ export default class Poll extends React.Component {
     componentDidUpdate() {
         this.Auth.fetch('polls/user_has_voted_poll/' + this.props.poll.id + '/').then((data) => {
             const previouslyVoted = data == 'true';
-            // console.log('called mount')
             this.setState({
                 poll: this.props.poll,
                 selected: previouslyVoted

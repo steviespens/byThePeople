@@ -2,15 +2,19 @@
 
 $menu-bar-width: 241px;
 $font-menu-bar-item: 'Times New Roman', Times, serif;
-$feed-height: 80%;
-$feed-width: 550px;
+$feed-height: 100%;
+// $feed-width: 550px; CHANGE
 // $feed-height: 27%;
-// $feed-width: 38%;
+$feed-width: 80%;
+$feed-border: 1px solid $color-border;
+$root-height: 600px;
+$root-width: 1200px;
+
 
 $subfeed-width: 350px;
 %box-container {
-    border: 2px solid $color-border;
-    border-collapse: collapse;
+    // border: $feed-border;
+    // border-collapse: collapse;
     background-color: $color-background;
     align-items: center;
     list-style: none;
@@ -24,27 +28,40 @@ $subfeed-width: 350px;
 %feed {
     width: $feed-width;
     height: $feed-height;
+    // border: $feed-border;
+    outline: 1px solid black;
+    outline-offset: -1px;
 }
 
 
 
-$main-feed-first-row-box-height: 400px;
+$main-feed-first-row-box-height: calc(#{$root-height} / 2);
 // $main-feed-first-row-box-height: 30%;
 // $main-feed-second-row-box-height: 30%;
 
-$main-feed-second-row-box-height: 250px;
-%main-feed-first-row-box{
-    // margin-top: 5%;
-    height: $main-feed-first-row-box-height;
+$main-feed-second-row-box-height: calc(#{$root-height} / 2);
+%main-feed-first-row-box {
+    overflow: scroll;
+    height: calc(#{$main-feed-first-row-box-height} - 2vh);
+    
+    outline: 1px solid black;
+    outline-offset: -1px;
+    margin: 1vh;
+    box-sizing: border-box;
     h5 {
-        // font-size: 4px;
-        // position: fixed;
-        // z-index: 2;
+      
         margin-top: 0%;
     }
 }
 %main-feed-second-row-box{
-    height: $main-feed-second-row-box-height;
+    overflow: scroll;
+
+    height: calc(#{$main-feed-second-row-box-height} - 2vh);
+    outline: 1px solid black;
+    outline-offset: -1px;
+    margin: 0%;
+    margin: 1vh;
+
     h5 {
         margin-top: 0%;
     }

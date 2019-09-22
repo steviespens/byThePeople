@@ -22,7 +22,8 @@ urlpatterns = [
 
     path('', include('byThePeople.urls')),
     path('', include('frontend.urls')),
-    path('api/', include('byThePeople.urls')),
+    path('', include('representatives.urls')),
+    # path('api/', include('byThePeople.urls')),
     #path('', include('leads.urls')),
 
 ]
