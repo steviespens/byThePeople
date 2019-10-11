@@ -13,6 +13,8 @@
     // height: 670px;
     @extend %feed;
     display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
     // flex-direction: column;
     // margin: 0%;
     &table {
@@ -24,7 +26,15 @@
     &section {
         width: 100%;
     }
-    
+    .main-feed-row-top {
+        display: flex;
+        justify-content: space-between;
+    }
+    // .main-feed-row-bottom {
+    //     display: flex;
+    //     justify-content: space-between;
+    // }
+
 
 }
 

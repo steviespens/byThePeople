@@ -1,13 +1,13 @@
 @import "../base/all";
 
 .polls-feed {
-    // @extend %feed;
+    @extend %feed;
     overflow: scroll;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: none;
     grid-auto-rows: minmax(40%, 1fr);
-
+    width: 80%;
 
 
 }

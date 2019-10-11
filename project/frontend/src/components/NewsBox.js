@@ -39,9 +39,15 @@ const NewsBox = (props) => {
 
     return (
         <div className="news-box">
+            
             <h5>{props.title}</h5>
+
+           
             {/* {headlines != null ? <TableAll data={headlines} fields={fields}/> : <div></div>} */}
-            {headlines != null ? headlineList() : <div></div>}
+            <List>
+                {headlines != null ? headlineList() : <div></div>}
+
+            </List>
         </div>
     )
 };

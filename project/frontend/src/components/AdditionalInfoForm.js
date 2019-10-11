@@ -26,36 +26,6 @@ export default class AdditionalInfoForm extends Component {
 
     }
 
-    // handleChange(e) {
-    //     this.setState(
-    //         {
-    //             [e.target.name]: e.target.value
-    //         }
-    //     )
-    // }
-    // handleChange = prop => event => {
-    //     this.setState({ [prop]: event.target.value });
-    // };
-
-
-   
-//         <TextField
-//     select
-//     label="With Select"
-//     className={classNames(classes.margin, classes.textField)}
-//     value={this.state.weightRange}
-//     onChange={this.handleChange('weightRange')}
-//     InputProps={{
-//         startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-//     }}
-// >
-//     {ranges.map(option => (
-//         <MenuItem key={option.value} value={option.value}>
-//             {option.label}
-//         </MenuItem>
-//     ))}
-// </TextField>
-
 
     render() {
         const open = this.props.open;
@@ -220,12 +190,14 @@ export default class AdditionalInfoForm extends Component {
             <Dialog
                 open={open}
                 onClose={onClose}
+                maxWidth='lg'
             >
                 <DialogContent >
-                    <div className="card">
+                    <div className="additional-info-card">
                         <h1>Additional Information</h1>
-                        <form onSubmit={handleFormSubmit}>
+                        <form id='additional-info-form'onSubmit={handleFormSubmit}>
                             <TextField
+                                id='additional-form-textfield'
                                 select
                                 label="Gender"
                                 className="gender-selector"

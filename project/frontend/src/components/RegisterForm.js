@@ -73,7 +73,7 @@ export default class RegisterForm extends Component {
 
                     <input
                         className="form-item"
-                        placeholder="Email goes here..."
+                        placeholder="Email"
                         name="email"
                         type="text"
                         value={this.state.email}
@@ -81,7 +81,7 @@ export default class RegisterForm extends Component {
                     />
                     <input
                         className="form-item"
-                        placeholder="Password goes here..."
+                        placeholder="Password"
                         name="password1"
                         type="password"
                         value={this.state.password1}

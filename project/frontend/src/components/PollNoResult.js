@@ -24,7 +24,9 @@ export default function PollNoResult(props) {
 
     const poll = props.poll;
     // console.log(poll);
-    const c = poll.choices.reverse();
+    const c = poll.choices;
+    // const c = poll.choices.reverse();
+
     // const choices = c.map((choice) => (<FormControlLabel key={choice.id} value={choice.choice} label={choice.choice}
     //     control={<Radio onChange={props.handleChoice} value={choice.id} />} style={{ marginBottom: 16, maxWidth: 600, wordWrap: "break-word" }} />));
     const choices = c.map((choice) => {
@@ -36,7 +38,7 @@ export default function PollNoResult(props) {
 
     return (
         <PollList question={poll.question}>
-            {choices}
+            {choices.reverse()}
         </PollList>
 
 

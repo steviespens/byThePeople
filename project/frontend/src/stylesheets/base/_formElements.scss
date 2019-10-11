@@ -1,0 +1,75 @@
+@import 'color';
+.card{
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40%;
+    justify-content: space-evenly;
+    
+}
+
+.card > form{
+    display: flex;
+    flex-direction: column;
+    height: 74%;;
+    justify-content: space-evenly;
+
+}
+
+.card h1{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1%;
+}
+
+.form-item{
+    font-family: 'Raleway', sans-serif;
+    padding: 1%;
+    margin-bottom: 2rem;
+    height: 10%;
+    width: 16rem;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.form-submit{
+    font-family: 'Raleway', sans-serif;
+    height: 20%;
+    color: #fff;
+    background-color: #1abc9c;
+    border: none;
+    letter-spacing: 0.2rem;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.form-submit:hover{
+   opacity: 0.6;
+}
+
+button:focus {
+    outline: none;
+}
+
+.logout-button {
+    background-color: inherit;
+    border: 1px solid black;
+    letter-spacing: 0.2rem;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+    height: 6%;
+    width: 30%;
+
+}
+
+// p, button, span, #text, h1, h4, h5, h6 {
+//     font-family: 'Times New Roman', Times, serif;
+//     color: #fff;
+// }

@@ -42,4 +42,3 @@ ReactDOM.render(
         </div>
     </Router>,
     document.getElementById('view'));
-

@@ -23,7 +23,9 @@ import PollList from './UIElements/PollList';
 export default function PollResult(props) {
 
     const poll = props.poll;
-    const c = poll.choices.reverse();
+    // const c = poll.choices.reverse();
+    const c = poll.choices;
+
     var sum = 0;
     for (var i = 0; i < c.length; i++) {
         sum += c[i].votes;
@@ -41,12 +43,13 @@ export default function PollResult(props) {
             <PollListItem key={choice.id} text={choice.choice} percentage={(n * 100).toFixed().toString() + '%'}/>
         );
     });
+    
     return (
         // <List> 
         //     {choices} 
         // </List>
         <PollList question={poll.question} numVotes={"Votes: " + sum}>
-            {choices}
+            {choices.reverse()}
         </PollList>
     );
 

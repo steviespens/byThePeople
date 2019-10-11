@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import TableAll from "./TableAll";
 
-
+//unused  component, can DELETE
 const PollsPage = () => {
     return (
         <DataProvider endpoint="api/login"

@@ -38,7 +38,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 #     queryset = User.objects.all()
 #     serializer_class = UserSerializer
 
-
+#not doing sqlinjection cleans in function below
 @api_view(['POST', ])
 def save_voting_district(request):
     authentication_classes = (JWTTokenUserAuthentication,)
@@ -78,6 +78,7 @@ def login_user(request):
 @api_view(['GET', 'POST', ])
 def signup(request):
     
+    #need to sqlinjection cleanse
     if request.method == 'POST':
         form = UserCreationForm(request.data)
         if form.is_valid():

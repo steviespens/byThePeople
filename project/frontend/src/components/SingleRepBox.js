@@ -12,10 +12,11 @@ const SingleRepBox = (props) => {
 
     const { rep } = props;
     const name = rep.member.short_title + " " + rep.member.first_name + " " + rep.member.last_name;
-    const photo = 'https://theunitedstates.io/images/congress/225x275/' + rep.member.identifier + '.jpg';
+    // const photo = 'https://theunitedstates.io/images/congress/225x275/' + rep.member.identifier + '.jpg';
+    const photo = rep.member.picture_uri;
     const photoErr = 'https://www.congress.gov/img/member/' + rep.member.identifier.toLowerCase() + '.jpg';
     const Auth = new AuthService();
-    const [repData, setRepData] = useState(null)
+    const [repData, setRepData] = useState(null);
     //DEPENDENCY in this component on how json for reps is structured. would like to update db to have district and make variable names compatible with how json will be received using external API calls
     const id = rep.member.identifier;
     const options = {
@@ -27,9 +28,8 @@ const SingleRepBox = (props) => {
 
     useEffect(() => {
         Auth.fetch('reps/member/get_member_by_id/', options).then((d) => {
+            
             const data = JSON.parse(d).results[0];
-            // console.log('looksksksk')
-            // console.log(data)
             setRepData(data);
         })
     }, [props])
@@ -37,9 +37,9 @@ const SingleRepBox = (props) => {
         // if (repData == null) return null;
         const rep = repData;
         const roles = rep.roles[0];
-        const name = roles.short_title + ' ' + rep.first_name + ' ' + rep.last_name;
-        const subheading = '[' + roles.party + ' - ' + roles.state.toUpperCase() + ' - ' + roles.district + ']';
-        return name + '   ' + subheading;
+        let heading = roles.short_title + ' ' + rep.first_name + ' ' + rep.last_name + '   [' + roles.party + ' - ' + roles.state.toUpperCase()
+        heading += (roles.chamber == 'Senate' ? ']' : ' - ' + roles.district + ']')
+        return heading;
     }
     const makeCommittees = () => {
         const committees = repData.roles[0].committees;
@@ -60,13 +60,16 @@ const SingleRepBox = (props) => {
             {repData == null ? <div></div> : (
                 <React.Fragment>
                     {makeRepName()}
-                    <img src={photo} onError={(e) => {
-                        e.target.src = photoErr;
-                    }} alt={name} width="175" ></img>
-                    <h6>Committees:</h6>
+                    <img src={photo}
+                        // onError={(e) => {
+                        // e.target.src = photoErr;
+                        // }}
+                        alt={name} width="175" ></img>
+                    <p>{repData.bio}</p>
+                    {/* <h6>Committees:</h6>
                     <List>
                         {makeCommittees()}
-                    </List>
+                    </List> */}
 
                 </React.Fragment>
             )}

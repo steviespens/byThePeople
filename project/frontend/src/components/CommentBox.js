@@ -25,8 +25,14 @@ function CommentBox(props) {
     const [update, setUpdate] = useState(false);
 
     useEffect(() => {
-        
-        Auth.fetch('/comments/get_comment_for_bill/' + props.id + '/').then((data) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "bill_id": props.id,
+            })
+        }
+
+        Auth.fetch('/api/comments/get_comment_for_bill/', options).then((data) => {
             if (typeof data[0] !== 'undefined') {
                 setComments(data);
             } else {
@@ -40,12 +46,13 @@ function CommentBox(props) {
     }, [props, update]);
  
     return (
-        <div className={props.classes.root}>         
-            <CommentList comments={comments}/>
-            <CommentForm id={props.id} formText={formText} setFormText={setFormText} setUpdate={setUpdate}
+        <div className='comment-box'>         
+            <CommentForm className='comment-form' id={props.id} formText={formText} setFormText={setFormText} setUpdate={setUpdate}
                 onChange={e => {
                     setFormText(e.target.value);                  
-                }} />           
+                }} />   
+            <CommentList comments={comments} />
+
         </div>
 
     );

@@ -1,17 +1,23 @@
 import React, { Component, useState, useEffect } from "react";
 import { withStyles, createStyles } from '@material-ui/styles';
 import AuthService from './AuthService';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import Button from '@material-ui/core/Button';
 
 const styles = createStyles({
     root: {
         backgroundColor: 'white',
         // justifyContent: 'center', //different
         display: 'flex',
-        justifyContent: 'space-between',
+        flexDirection: 'row',
+        // justifyContent: 'space-between',
+        alignItems: 'center',
         border: '1px solid gray',
         // height: '30px',
-        // width: '50%',
-        margin: '1%',
+        // width: '100%',
+        minHeight: '8vh',
+        margin: '0% 0% 1% 0%',
         padding: '0%',
         // alignItems: 'center',
 
@@ -19,18 +25,44 @@ const styles = createStyles({
     left: {
         display: 'flex',
         flexDirection: 'column',
+        // width: '20%',
+        alignItems: 'center',
     },
-    button: {
-        width: '5px',
-        height: '15px',
+    likeButton: {
+        // width: '5px',
+        // height: '15px',
+        // fontSize: '8px',
+        // textAlign: 'center',
+        width: '0%',
+        height: '0%',
+        display: 'flex',
+        justifyContent: 'center',
+        borderRadius: '10px',
+        
+    },
+    dislikeButton: {
+        // width: '5px',
+        // height: '15px',
+        // fontSize: '8px',
+        // textAlign: 'center',
+        width: '0',
+        height: '0',
+        display: 'flex',
+        justifyContent: 'center',
+        borderRadius: '10px',
+    },
+
+    h4: {
         fontSize: '8px',
-    },
-    h6: {
-        fontSize: '12px'
+        margin: '0%',
     },
     middle: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        justifyContent: 'center',
+        // width: '75%',
+        // overflow: 'scroll',
+
     },
     email: {
         margin: '0%',
@@ -41,7 +73,10 @@ const styles = createStyles({
         margin: '0%',
         padding: '0%',
         fontSize: '14px',
-    }
+    },
+    icon: {
+        height: '10px',
+    },
 
 
 });
@@ -63,7 +98,14 @@ function Comment(props) {
     const [likeStatus, setLikeStatus] = useState(0);
 
     useEffect(() => {
-        Auth.fetch('/comments/get_user_email_for_comment/' + id + '/').then((data) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "comment_id": id,
+            })
+        }
+
+        Auth.fetch('/api/comments/get_user_email_for_comment/', options).then((data) => {
             setEmail(data);
         });
         checkUserLikedComment();
@@ -71,14 +113,29 @@ function Comment(props) {
     }, [likeButtonStyle, dislikeButtonStyle])
 
     const likeComment = (e) => {
-        Auth.fetch('/comments/like_comment/' + id + '/' + e.target.value + '/').then((data) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "comment_id": id,
+                "action": e.currentTarget.value
+            })
+        }
+        Auth.fetch('/api/comments/like/', options).then((data) => {
             setComment(data[0]);
             checkUserLikedComment();
 
         });
     };
     function checkUserLikedComment() {
-        Auth.fetch('/comments/user_has_liked_comment/' + id + '/').then((data) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "comment_id": id,
+            })
+        }
+
+        Auth.fetch('/api/commentuserlikes/user_has_liked_comment/', options).then((data) => {
+            
             const likeInt = 1;
             const dislikeInt = 2;
             if (data == likeInt) {
@@ -88,14 +145,21 @@ function Comment(props) {
             }
         });
     }
-    const likeButtonStyle = likeStatus == 1 ? { backgroundColor: 'blue' } : {};
-    const dislikeButtonStyle = likeStatus == 2 ? { backgroundColor: 'blue' } : {};
+    const likeButtonStyle = likeStatus == 1 ? { backgroundColor: '#b3ccff' } : {};
+    const dislikeButtonStyle = likeStatus == 2 ? { backgroundColor: '#b3ccff' } : {};
     return (
+       
         <div className={props.classes.root}>
             <div className={props.classes.left}>
-                <button style = {likeButtonStyle} className={props.classes.button} value={1} onClick={likeComment}>Like</button>
-                <h6 className={props.classes.h6}>{numLikes}</h6>
-                <button style = {dislikeButtonStyle} className={props.classes.button} value={2} onClick={likeComment}>Dislike</button>
+                <button style={likeButtonStyle} className={props.classes.likeButton} value={1} onClick={likeComment}>
+                    <KeyboardArrowUpIcon value={1}style={{height: '8px'}}> </KeyboardArrowUpIcon>
+                </button>
+                {/* <button style = {likeButtonStyle} className={props.classes.likeButton} value={1} onClick={likeComment}></button> */}
+                <h4 className={props.classes.h4}>{numLikes}</h4>
+                <button style={dislikeButtonStyle} className={props.classes.likeButton} value={2} onClick={likeComment}>
+                    <KeyboardArrowDownIcon value={2}style={{ height: '8px' }}> </KeyboardArrowDownIcon>
+                </button>
+                {/* <button style = {dislikeButtonStyle} className={props.classes.dislikeButton} value={2} onClick={likeComment}></button> */}
             </div>
             <div className={props.classes.middle}>
                 <p className={props.classes.email}>{email}</p>
@@ -105,6 +169,7 @@ function Comment(props) {
 
             </div>
         </div>
+       
       
     );
     

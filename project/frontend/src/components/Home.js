@@ -22,7 +22,7 @@ const menuBarWidth = 150;
 
 export const RepsContext = React.createContext();
 export const BillsContext = React.createContext();
-
+export const HistoryContext = React.createContext();
 class Home extends Component {
     // const { classes } = props;
     constructor(props) {
@@ -49,7 +49,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-
         window.addEventListener('beforeunload', this.saveStateToLocalStorage);
         this.hydrateStateWithLocalStorage();
         // this.Auth.fetch('reps/house/').then((data) => {
@@ -75,12 +74,33 @@ class Home extends Component {
 
 
     }
+    // componentDidUpdate() {
+    //     if (this.state.reps == null) {
+    //         console.log('going to update')
+    //         this.Auth.fetch_3('reps/house/', 'reps/senate/', 'api/upcomingbill/get_recent_bills/').then(([data1, data2, data3]) => {
+    //             let combined = data1.concat(data2);
+    //             this.setState({
+    //                 ...this.state,
+    //                 reps: combined,
+    //                 bills: data3
+    //             })
+    //         })
+            
+    //     }
+    // }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if (nextProps != this.props || nextState != this.state || this.state.reps == null) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
     componentWillUnmount() {
         this.saveStateToLocalStorage();
         window.removeEventListener('beforeunload', this.saveStateToLocalStorage);
     }
     render() {
-
         const title = this.state.selected;
         const FEEDS = {
             "Home": {
@@ -99,7 +119,7 @@ class Home extends Component {
                 'com': PollsFeed,
                 'className': 'polls-feed'
             },
-            "Your Representatives": {
+            "Representatives": {
                 'com': RepresentativesFeed,
                 'className': 'representatives-feed'
             }
@@ -111,8 +131,8 @@ class Home extends Component {
             <div className='root'>
                 <Router>
                     <MenuBar className='menu-bar' id='menu-bar' onClick={this.onClick} handleLogout={this.handleLogout.bind(this)} />
-                    <RepsContext.Provider value={this.state.reps}>
-                        <BillsContext.Provider value={this.state.bills}>
+                    <BillsContext.Provider value={this.state.bills}>
+                        <RepsContext.Provider value={this.state.reps}>
 
                             {/* < Com className={className} /> */}
                             <Route exact path="/" component={MainFeed} />
@@ -121,8 +141,8 @@ class Home extends Component {
                             <Route path="/polls" component={PollsFeed} />
                             <Route path="/representatives" component={RepresentativesFeed} />
                             {/* <Route path="/docket/:id" component={DocketFeed} /> */}
-                        </BillsContext.Provider>
-                    </RepsContext.Provider>
+                        </RepsContext.Provider>
+                    </BillsContext.Provider>
 
 
                </Router>

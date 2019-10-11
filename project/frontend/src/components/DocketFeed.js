@@ -22,6 +22,7 @@ export default function DocketFeed(props) {
     const [id, setID] = useState(null);
     const [list, setList] = useState([]);
     const context = useContext(BillsContext);
+
     /*api_uri: "https://api.propublica.org/congress/v1/116/bills/hr1063.json"
     bill_id: "hr1063-116"
     bill_url: "http://docs.house.gov/billsthisweek/20190211/BILLS-116hr1063-SUS.pdf"
@@ -53,7 +54,7 @@ export default function DocketFeed(props) {
         return () => {
             // saveStateToLocalStorage();
         }
-    }, [])
+    }, )
     // componentDidMount() {
     //     this.hydrateStateWithLocalStorage();
     //     if (this.props.location.state) {
@@ -66,7 +67,7 @@ export default function DocketFeed(props) {
     //     });
     // }
     const createList = () => {
-        if (list === undefined || list.length == 0) {
+        if (list == undefined || list.length == 0) {
             return [];
         }
         const x = list.map((el) => {
@@ -148,7 +149,6 @@ export default function DocketFeed(props) {
     //     }
     // }
     const subheader = "Policy Docket";
-    
     return (
         <div className='docket-feed'>
             <List className='docket-feed-list'>

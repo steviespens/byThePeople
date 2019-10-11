@@ -8,9 +8,32 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Bill from './Bill';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import { withStyles, createStyles } from '@material-ui/styles';
 
 
 import { parseBillID } from './utilities/helpers';
+
+const styles = createStyles({
+    root: {
+     
+        minHeight: '80vh',
+        maxHeight: '80vh',
+        minWidth: '80vw',
+        maxWidth: '80vw',
+    },
+    dialog: {
+        // minHeight: '80vh',
+        maxHeight: '100vh',
+        // minWidth: '80vw',
+        maxWidth: '100vw',
+    },
+    dialogContent: {
+        maxHeight: '70vh',
+        width: '77vw',
+
+    }
+
+});
 
 const SingleRepBills = (props) => {
 
@@ -19,9 +42,10 @@ const SingleRepBills = (props) => {
     const Auth = new AuthService();
     const [bills, setBills] = useState(null)
     const [bill, setBill] = useState(null);
-    const [id, setID] = useState(rep.member.identifier);
     const [bill_id, setBillID] = useState(null);
     const [open, setOpen] = useState(false);
+    const id = rep.member.identifier;
+
     //DEPENDENCY in this component on how json for reps is structured. would like to update db to have district and make variable names compatible with how json will be received using external API calls
     const options = {
         method: 'POST',
@@ -71,20 +95,23 @@ const SingleRepBills = (props) => {
         
 
     }
-    
     return (
         <div className="single-rep-bils">
             {bills == null ? <div></div> : (
                 <React.Fragment>
+                    <h6>Recent Authored Bills</h6>
                     <List>
                         {makeBills()}
                     </List>
                     <Dialog 
+                        // className={props.classes.dialog}
+                        // paperWidthXl
                         open={open}
                         onClose={() => setOpen(false)}
-                        scroll='paper'>
+                    // scroll='paper'
+                    >
                         
-                        <DialogContent>
+                        <DialogContent className={props.classes.dialogContent}>
                             <Bill className='bill' bill={bill} />
                         </DialogContent>
 
@@ -93,12 +120,9 @@ const SingleRepBills = (props) => {
                 </React.Fragment>
             )}
         </div>
-
-
-
     );
 };
 
 
-export default SingleRepBills;
+export default withStyles(styles)(SingleRepBills);
 

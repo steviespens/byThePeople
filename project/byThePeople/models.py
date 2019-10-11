@@ -42,12 +42,12 @@ class UpcomingBill(models.Model):
     # url = models.CharField(max_length=500)
     # related_polls = models.ManyToManyField(Poll)
 
-    bill_id = models.CharField(max_length=100)
+    bill_id = models.CharField(max_length=100, unique=True)
     bill_slug = models.CharField(max_length=100) #can get from bill_id
     bill_type = models.CharField(max_length=100)  #can get from bill_id
     bill_uri = models.CharField(max_length=500)
     title = models.CharField(max_length=5000) #changed name from description
-    short_title = models.CharField(max_length=5000)
+    short_title = models.CharField(max_length=5000, null=True)
     sponsor_id = models.CharField(max_length=100)
     congressdotgov_url = models.CharField(max_length=500)
     introduced_date = models.CharField(max_length=100)  #make actual date

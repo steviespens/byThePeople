@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import AuthService from './AuthService';
 
 
+
 export default function CommentForm(props) {
 
     const [id, setId] = useState(props.id);
@@ -15,8 +16,17 @@ export default function CommentForm(props) {
     }, [props.id]);
 
     const submit = () => {
-        const obj = JSON.stringify({ "bill": props.id.toString(), "text": props.formText });
-        Auth.fetch('/comments/add_comment/' + obj + '/', { method: 'POST' }).then((data) => {
+        // const obj = JSON.stringify({ "bill": props.id.toString(), "text": props.formText });
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "bill": props.id.toString(),
+                "text": props.formText
+            })
+        }
+
+       
+        Auth.fetch('/api/comments/add_comment/', options).then((data) => {
             props.setFormText('');
             props.setUpdate(true);
         })
@@ -25,17 +35,17 @@ export default function CommentForm(props) {
     return (
         <form >
             <input
-                className="form-item"
-                placeholder="Write your comment here"
+                className="form-item-comment"
+                placeholder="Leave a comment here"
                 name="comment"
                 type="text"
                 value={props.formText}
                 onChange={(e) => props.onChange(e)}
                 required
             />
-            <br></br>
+          
             <input
-                className="form-submit"
+                className="form-submit-comment"
                 value="SUBMIT"
                 type="button"
                 onClick={submit}

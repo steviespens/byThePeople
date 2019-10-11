@@ -21,7 +21,13 @@ export default class Poll extends React.Component {
     }
 
     componentDidMount() {
-        this.Auth.fetch('polls/user_has_voted_poll/' + this.props.poll.id + '/').then((data) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "poll_id": this.props.poll.id,
+            })
+        }
+        this.Auth.fetch('api/polluservotes/user_has_voted_poll/', options).then((data) => {
             const previouslyVoted = data == 'true';
             // console.log('called mount')
             this.setState({
@@ -31,7 +37,14 @@ export default class Poll extends React.Component {
         })
     }
     componentDidUpdate() {
-        this.Auth.fetch('polls/user_has_voted_poll/' + this.props.poll.id + '/').then((data) => {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                "poll_id": this.props.poll.id,
+            })
+        }
+
+        this.Auth.fetch('api/polluservotes/user_has_voted_poll/', options).then((data) => {
             const previouslyVoted = data == 'true';
             this.setState({
                 poll: this.props.poll,
@@ -46,7 +59,13 @@ export default class Poll extends React.Component {
 
     handleChoice(e) {
         e.preventDefault();
-        return this.Auth.fetch('api/choices/' + e.target.value + '/', { method: 'POST' })
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                'choice_id': e.currentTarget.value
+            })
+        }
+        return this.Auth.fetch('api/choices/vote/', options)
             .then((response) => {
                 this.setState({
                     poll: response,

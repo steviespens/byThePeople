@@ -46,7 +46,9 @@ const DocketBox = (props) => {
     }
     return (
         <div className="docket-box">
+            
             <h5>{props.title}</h5>
+            
             <List>
                 {billList()}
             </List>

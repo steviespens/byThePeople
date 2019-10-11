@@ -9,7 +9,11 @@ import { map } from "bluebird";
 import { useState, useEffect, useRef } from 'react';
 import AuthService from './AuthService';
 
-
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import SimpleListMenu from './UIElements/SimpleListMenu';
 
 
 const PollsRow = (props) => {
@@ -18,10 +22,30 @@ const PollsRow = (props) => {
     const ref = useRef(null);
     const [topic, setTopic] = useState(props.topic);
     useEffect(() => {
+
         if (sessionStorage.scrollPosition) {
             ref.current.scrollLeft = sessionStorage.scrollPosition;
         }
-        Auth.fetch('api/polls/' + makeTopicParameter())
+        // if (topic == 'get_recommended_polls') {
+        //     const url = 'api/polls/get_recommended_polls/';
+        //     const options = { method: 'GET' };
+        // } else {
+        //     const url = 'api/polls/get_topic/';
+        //     const options = {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             'topic': makeTopicParameter()
+        //         })
+        //     };
+        // }
+        const u = topic == 'get_recommended_polls' ? 'api/polllist/get_recommended_polls/' : 'api/polllist/get_topic/';
+        const o = topic == 'get_recommended_polls' ? { method: 'GET' } : {
+            method: 'POST',
+            body: JSON.stringify({
+                'topic': makeTopicParameter()
+            })
+        };
+        Auth.fetch(u, o)
         .then((data) => {
             setPolls(data);
         });
@@ -42,11 +66,30 @@ const PollsRow = (props) => {
     }
     const makeTopicParameter = () => {
         if (!topic) return '';
-        else return topic + '/';
+        else return topic;
     }
     return (
         <div className="polls-row-box">
             <h5>{props.title}</h5>
+            {/* <button>{props.title}</button> */}
+            {/* {props.options != null ? 
+                <SimpleListMenu
+                    options={props.options}
+                    setSelectedTopic={(t) => {
+                        //seems like there could be a better way to do this
+                        props.setSelectedTopics(
+                            [t].concat(props.topics.filter((el) => {
+                                return props.options.includes(el);
+                            }))
+                        )
+
+                    }
+
+                        }
+                ></SimpleListMenu>
+                : <h5>{props.title}</h5>
+            } */}
+
 
             <div className="polls-row" ref={ref}>
                 {pollsList()}
@@ -59,9 +102,6 @@ const PollsRow = (props) => {
     
 };
 
-// PollsBox.propTypes = {
-//     title: PropTypes.string.isRequired,
-// };
 
 export default PollsRow;
 

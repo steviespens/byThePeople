@@ -16,37 +16,17 @@ export default class MainFeed extends Component {
 
     render() {
         return (
-            // <div>hey</div>
             <div className="main-feed">
-                <div className="twelve columns">
-                    <div className="row">
-                        <div className="four columns" id="main-feed-first-row">
-                            <ProfileBox title="Profile" />
-                        </div>
-                        <div className="four columns" id="main-feed-first-row">
-                            <DocketBox title="Docket" />
-                        </div>
-                        <div className="four columns" id="main-feed-first-row">
-                            <NewsBox title="Top News" />
-                        </div>
-
+                    <div className="main-feed-row-top">
+                        <ProfileBox title="Profile" />
+                        <DocketBox title="Docket" />
+                        <NewsBox title="Top News" />
                     </div>
-                    {/* <div className="row">
-                        <div className="twelve columns">
-                            <SinglePollFeed title="Poll of the Day" />
-                        </div>
-                    </div> */}
-                    <div className="row">
-                        {/* <div className="seven columns">
-                            <MainFeedItem title="Trending Discussion" />
-                        </div> */}
-                        <div className="twelve columns">
-                            <PollsBox title="Recent Polls" />
+                   
+                        <div className="main-feed-row-bottom">
+                            <PollsBox />
                         </div>
                     </div>
-                </div>
-
-            </div>
         );
     }
 };

@@ -10,24 +10,45 @@
     @extend %feed;
 
     .left {
-        height: 100%;
-        width: 25%;
+
+        // height: 100%;
+        width: 30%;
         display: flex;
         flex-direction: column;
-        // justify-content: space-between;
         overflow: scroll;
         margin-top: 0%;
-        // float: left;
+        margin: 1vh;
 
-        .reps-list {
-            position: relative;
-            z-index: 1;
+        // float: left;
+        // .top {
+        //     height: 100%;
+
+        //     display: flex;
+        //     flex-direction: column;
+        //     overflow: scroll;
+        //     margin: 1vh;
+        // }
+        .bottom {
+            height: 35%;
+            display: flex;
+            flex-direction: column;
+
         }
+        .autocomplete {
+            display: flex;
+            justify-self: flex-end;
+    
+        }
+
+        // .reps-list {
+        //     position: relative;
+        //     z-index: 1;
+        // }
 
     }
     .middle {
         height: 100%;
-        width: 30%;
+        width: 35%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -41,12 +62,12 @@
         width: 35%;
         overflow: scroll;
 
+        .single-rep-recent-votes {
+            width: 100%;
+        }
+
 
     }
 
 
-}
-.autocomplete {
-    z-index: 1000;
-    height: 100%;
 }

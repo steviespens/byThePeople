@@ -1,5 +1,7 @@
 import decode from 'jwt-decode';
-export default class AuthService {
+import { withRouter } from 'react-router-dom';
+
+class AuthService {
     constructor(domain) {
         this.domain = domain || 'http://localhost:8080'
         this.fetch = this.fetch.bind(this)
@@ -40,8 +42,6 @@ export default class AuthService {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken
         }
-       
-        console.log('register called');
         return fetch('api/register/', {
             headers,
             method: 'POST',
@@ -115,7 +115,7 @@ export default class AuthService {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-       
+        
         return fetch('api/token/refresh/', {
             headers,
             method: 'POST',
@@ -123,16 +123,20 @@ export default class AuthService {
                 refresh
             })
 
-        }).then(res => res.json(), res => {
-            console.log('error in refresh from fetch to api/token/refresh')
-            console.log(res)
         }).then(res => {
-            this.setToken(res.access)
-            return Promise.resolve(res);
-            }, (res) => {
-                console.log('error in refresh from fetch to api/token/refresh after .json() called')
-                console.log(res)
-        })
+            if (!response.ok) {
+                throw Error(res.statusText)
+            }
+            const token = res.json();
+            this.setToken(token.access)
+            return Promise.resolve(token);
+
+        }
+            , err => {
+                console.log(err)
+            }
+        )
+
     }
 
     fetch(url, options) {
@@ -144,12 +148,8 @@ export default class AuthService {
             'X-CSRFToken': csrftoken
         }
 
-        // if (this.loggedIn()) {
-        //     headers['Authorization'] = 'Bearer ' + this.getToken()            
-        // }
-
-        //fix so that if refresh token expires, it just logs you out
         if (!this.loggedIn()) {
+            
             return this.refresh().then((res) => {
                 headers['Authorization'] = 'Bearer ' + this.getToken()
 
@@ -162,9 +162,14 @@ export default class AuthService {
                         const x = response;
                         return x.json();
                     }
-                );
+                    );
                 return result;
+            }, err => {
+                    console.log(err)
+                    this.logout;
+                    window.location.replace("/");
             })
+            
         }
         else {
             headers['Authorization'] = 'Bearer ' + this.getToken()
@@ -210,6 +215,10 @@ export default class AuthService {
                     }
                 );
                 return result;
+            }, err => {
+                    console.log(err)
+                    this.logout();
+                    window.location.replace("/");
             })
         }
         else {
@@ -258,5 +267,6 @@ export default class AuthService {
     
 
 }
-
+export default AuthService;
+// export default withRouter(AuthService);
 

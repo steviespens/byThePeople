@@ -23,7 +23,7 @@ function CommentList(props) {
     });
     
     return (
-        <div className={props.classes.root}>
+        <div className='comment-list'>
             {list}
         </div>
     );

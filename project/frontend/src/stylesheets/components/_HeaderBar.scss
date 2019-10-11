@@ -2,11 +2,13 @@
 
 .header-bar {
     background-color: $color-horizontal-bar;
-    height: 10%;
+    height: 7vh;
     // align-content: flex-start;
     // vertical-align: middle;
     border-bottom: 2px solid $color-border;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     a {
         font-family: cursive;

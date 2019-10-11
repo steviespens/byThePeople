@@ -3,13 +3,16 @@ import { withStyles, createStyles } from '@material-ui/styles';
 
 const styles = createStyles({
     root: {
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         display: 'flex',
         flexDirection: 'column',
         margin: '0%',
-        padding: '1%',
+        padding: '3%',
         alignItems: 'center',
-        height: '100%',
+        height: '80%',
+        alignSelf: 'center',
+        width: '100%',
+
 
     },
     heading: {

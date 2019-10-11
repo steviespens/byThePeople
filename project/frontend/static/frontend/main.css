@@ -1,4 +1,70 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .menu-bar, .main-feed {
   background-color: #41b3a3;
   align-items: center;
@@ -6,7 +72,7 @@
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -16,13 +82,16 @@
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -30,8 +99,7 @@
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -39,6 +107,79 @@
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .menu-bar, .main-feed {
@@ -48,7 +189,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -58,13 +199,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -72,8 +216,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -81,14 +224,87 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .root {
   display: flex;
-  height: 600px;
-  width: 1200px;
-  margin: 0%;
+  height: 620px;
+  margin: 3%;
   outline: 1px solid black;
+  flex-grow: 1;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .menu-bar, .main-feed {
@@ -98,7 +314,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -108,13 +324,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -122,8 +341,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -133,8 +351,16 @@ html {
   height: 100%;
 }
 
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
 .main-feed {
   display: flex;
+  flex-direction: column;
 }
 .main-feedtable {
   margin: 0%;
@@ -144,6 +370,10 @@ html {
 }
 .main-feedsection {
   width: 100%;
+}
+.main-feed .main-feed-row-top {
+  display: flex;
+  justify-content: space-between;
 }
 
 #main-feed-first-row {
@@ -167,6 +397,72 @@ html {
   overflow: scroll;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .menu-bar, .main-feed {
   background-color: #41b3a3;
   align-items: center;
@@ -174,7 +470,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -184,13 +480,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -198,8 +497,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -207,12 +505,85 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .main-feed-item {
   border: 2px solid #e27d60;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .menu-bar, .main-feed {
   background-color: #41b3a3;
   align-items: center;
@@ -220,7 +591,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -230,13 +601,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -244,8 +618,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -253,6 +626,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .menu-bar {
@@ -271,6 +651,7 @@ html {
   width: 100%;
   padding: 0%;
   margin: 0%;
+  height: 6%;
 }
 
 .menu-bar-item {
@@ -300,6 +681,72 @@ html {
   text-decoration-color: black;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .main-feed, .menu-bar {
   background-color: #41b3a3;
   align-items: center;
@@ -307,7 +754,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -317,13 +764,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -331,8 +781,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -340,6 +789,79 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -349,7 +871,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -359,13 +881,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -373,8 +898,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -382,12 +906,22 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .header-bar {
   background-color: #41b3a3;
-  height: 10%;
+  height: 7vh;
   border-bottom: 2px solid #e27d60;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .header-bar a {
   font-family: cursive;
@@ -402,6 +936,72 @@ html {
   color: black;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .main-feed, .menu-bar {
   background-color: #41b3a3;
   align-items: center;
@@ -409,7 +1009,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .news-feed, .main-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -419,13 +1019,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -433,8 +1036,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -442,6 +1044,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .news-feed {
@@ -451,6 +1060,72 @@ html {
   border-collapse: collapse;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .main-feed, .menu-bar {
   background-color: #41b3a3;
   align-items: center;
@@ -458,7 +1133,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .docket-feed, .main-feed, .news-feed {
+.representatives, .about-feed, .polls-feed, .docket-feed, .main-feed, .news-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -468,13 +1143,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -482,8 +1160,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -491,6 +1168,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .docket-feed {
@@ -516,6 +1200,72 @@ html {
   border: 0px;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .main-feed, .menu-bar {
   background-color: #41b3a3;
   align-items: center;
@@ -523,7 +1273,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .main-feed, .news-feed, .docket-feed {
+.representatives, .about-feed, .polls-feed, .main-feed, .news-feed, .docket-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -533,13 +1283,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -547,8 +1300,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -556,6 +1308,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .polls-feed {
@@ -564,6 +1323,73 @@ html {
   grid-template-columns: auto;
   grid-template-rows: none;
   grid-auto-rows: minmax(40%, 1fr);
+  width: 80%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -573,7 +1399,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .about-feed, .main-feed, .news-feed, .docket-feed {
+.representatives, .about-feed, .main-feed, .news-feed, .docket-feed, .polls-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -583,13 +1409,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -597,8 +1426,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -606,14 +1434,101 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .about-feed {
   overflow: auto;
   margin-top: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .about-feed p {
-  padding: 4%;
+  text-align: center;
+  vertical-align: middle;
+}
+.about-feed div {
+  margin: 1vh;
+  padding: 1vh;
+  border: 1px solid black;
+}
+
+.about-our-data {
+  overflow: scroll;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -623,7 +1538,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .main-feed, .news-feed, .docket-feed, .about-feed {
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -633,13 +1548,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -647,8 +1565,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -656,6 +1573,79 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -665,7 +1655,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .main-feed, .news-feed, .docket-feed, .about-feed {
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -675,13 +1665,16 @@ html {
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -689,8 +1682,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -698,6 +1690,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .docket-box th {
@@ -713,6 +1712,72 @@ html {
   border: 2px solid #e27d60;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .main-feed, .menu-bar {
   background-color: #41b3a3;
   align-items: center;
@@ -720,7 +1785,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .main-feed, .news-feed, .docket-feed, .about-feed {
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -730,13 +1795,16 @@ html {
 .profile-box, .news-box, .docket-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .news-box h5, .docket-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -744,8 +1812,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -753,6 +1820,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .bill {
@@ -761,45 +1835,148 @@ html {
   border: 2px solid #e27d60;
   margin-left: -2px;
   width: 50%;
+  align-items: center;
+  flex-flow: column;
+  height: 100%;
 }
 .bill h3 {
-  font-size: 16px;
+  font-size: 14px;
   margin: 1%;
 }
 .bill h6 {
   font-size: 10px;
-  margin: 1%;
+  margin: 0% 1vw 0%;
 }
 .bill p {
   white-space: pre-line;
 }
 .bill .top {
-  height: 50%;
+  max-height: 40%;
+  min-height: 24%;
+  overflow: scroll;
 }
 .bill .bottom {
-  height: 50%;
+  min-height: 0%;
+  max-height: 30%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
 }
 .bill .bottom #poll-individual {
   display: inline-block;
-  width: 350px;
+  width: 65%;
   border: 2px solid #e27d60;
   border-radius: 4px;
   margin: 1%;
+}
+
+.bill-button-row {
+  display: flex;
+  flex-direction: row;
 }
 
 #dialogue2 {
   white-space: pre-wrap;
 }
 
-.center {
+.full-text-button {
+  width: 20%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 1%;
+}
+
+.login {
   font-family: "Raleway", sans-serif;
-  background-color: #1abc9c;
   position: absolute;
-  height: 100%;
+  height: 90vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+}
+.login .left {
+  padding: 2%;
+  width: 80%;
+  height: 80vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 60% 30%;
+  grid-gap: 3% 4%;
+  grid-template-areas: "top1 top2" "middle1 middle2" "bottom1 bottom2";
+}
+.login .left h5 {
+  margin: 0%;
+  font-size: 1.5vh;
+}
+.login .left .img1 {
+  grid-area: top1;
+  justify-self: center;
+}
+.login .left .img2 {
+  grid-area: middle1;
+  justify-self: center;
+}
+.login .left .img3 {
+  grid-area: bottom1;
+  justify-self: center;
+}
+.login .left img {
+  margin: 0%;
+  width: 100%;
+  height: auto;
+}
+.login .left p {
+  font-size: 3vh;
+  text-align: center;
+  align-self: center;
+  margin: 0%;
+}
+.login .left .p1 {
+  grid-area: top2;
+}
+.login .left .p2 {
+  grid-area: middle2;
+}
+.login .left .p3 {
+  grid-area: bottom2;
+}
+.login .right {
+  height: 100%;
+  width: 25%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.gender-selection {
+  width: 70%;
+}
+
+.additional-info-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
+}
+.additional-info-card h1 {
+  margin: 0%;
+}
+.additional-info-card #additional-info-form {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.additional-info-card #additional-info-form .form-submit {
   margin-top: 10%;
 }
 
@@ -807,41 +1984,66 @@ html {
   background-color: #fff;
   border-radius: 15px;
   padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
 }
 
 .card > form {
   display: flex;
   flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
 }
 
 .card h1 {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 1%;
 }
 
 .form-item {
   font-family: "Raleway", sans-serif;
-  padding: 5px;
+  padding: 1%;
   margin-bottom: 2rem;
-  height: 30px;
+  height: 10%;
   width: 16rem;
   border: 1px solid grey;
+  border-radius: 5px;
 }
 
 .form-submit {
   font-family: "Raleway", sans-serif;
-  height: 35px;
+  height: 20%;
   color: #fff;
   background-color: #1abc9c;
   border: none;
   letter-spacing: 0.2rem;
   transition: 0.3s opacity ease;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .form-submit:hover {
   opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -851,7 +2053,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .main-feed, .news-feed, .docket-feed, .about-feed {
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -861,13 +2063,16 @@ html {
 .profile-box, .news-box, .docket-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .profile-box h5, .news-box h5, .docket-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -875,8 +2080,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -886,12 +2090,85 @@ html {
   height: 100%;
 }
 
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
 .profile-box {
-  padding: 1%;
+  padding: 0%;
 }
 .profile-box h6 {
-  margin: 0%;
-  font-size: 2vh;
+  margin: 1%;
+  font-size: 1.5vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -901,7 +2178,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .main-feed, .news-feed, .docket-feed, .about-feed {
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -911,13 +2188,16 @@ html {
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -925,8 +2205,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -934,6 +2213,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .polls-box {
@@ -988,6 +2274,72 @@ html {
   border-bottom: 1px solid #41b3a3;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
+
 .main-feed, .menu-bar {
   background-color: #41b3a3;
   align-items: center;
@@ -995,7 +2347,7 @@ html {
   margin: 0%;
 }
 
-.representatives, .main-feed, .news-feed, .docket-feed, .about-feed {
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -1005,13 +2357,16 @@ html {
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -1019,8 +2374,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1030,26 +2384,38 @@ html {
   height: 100%;
 }
 
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
 .representatives {
   display: flex;
   overflow: auto;
   margin-top: 0%;
 }
 .representatives .left {
-  height: 100%;
-  width: 25%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   overflow: scroll;
   margin-top: 0%;
+  margin: 1vh;
 }
-.representatives .left .reps-list {
-  position: relative;
-  z-index: 1;
+.representatives .left .bottom {
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+}
+.representatives .left .autocomplete {
+  display: flex;
+  justify-self: flex-end;
 }
 .representatives .middle {
   height: 100%;
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1061,10 +2427,74 @@ html {
   width: 35%;
   overflow: scroll;
 }
+.representatives .right .single-rep-recent-votes {
+  width: 100%;
+}
 
-.autocomplete {
-  z-index: 1000;
-  height: 100%;
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -1074,7 +2504,7 @@ html {
   margin: 0%;
 }
 
-.main-feed, .news-feed, .docket-feed, .about-feed, .representatives {
+.main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -1084,13 +2514,16 @@ html {
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -1098,8 +2531,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1107,6 +2539,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .single-rep-box {
@@ -1117,6 +2556,76 @@ html {
   width: 100%;
   height: 100%;
 }
+.single-rep-box p {
+  font-size: 1.5vh;
+  margin: 0%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+}
 
 .main-feed, .menu-bar {
   background-color: #41b3a3;
@@ -1125,7 +2634,7 @@ html {
   margin: 0%;
 }
 
-.main-feed, .news-feed, .docket-feed, .about-feed, .representatives {
+.main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -1135,13 +2644,16 @@ html {
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -1149,8 +2661,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1158,6 +2669,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .polls-row {
@@ -1188,10 +2706,77 @@ html {
   outline-offset: -1vh;
   margin-left: 1%;
   flex-shrink: 0;
+  display: flex;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
 }
 
 .main-feed, .menu-bar {
@@ -1201,7 +2786,7 @@ html {
   margin: 0%;
 }
 
-.main-feed, .news-feed, .docket-feed, .about-feed, .representatives {
+.main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
   width: 80%;
   height: 100%;
   outline: 1px solid black;
@@ -1211,13 +2796,16 @@ html {
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 1vh;
+  margin: 1%;
   box-sizing: border-box;
+  flex-grow: 1;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
-  margin-top: 0%;
+  font-size: 3vh;
+  margin: 0% 1% 0%;
 }
 
 .polls-box {
@@ -1225,8 +2813,7 @@ html {
   height: calc(calc(600px / 2) - 2vh);
   outline: 1px solid black;
   outline-offset: -1px;
-  margin: 0%;
-  margin: 1vh;
+  margin: 1%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1234,6 +2821,13 @@ html {
 
 html {
   height: 100%;
+}
+
+.box-header {
+  position: absolute;
+  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .simple-menu-profile-box {
@@ -1247,11 +2841,65 @@ html {
   align-items: center;
 }
 #simple-menu-1 h6 {
-  font-size: 2vh;
+  font-size: 1.5vh;
 }
 
 .your-reps-box h6 {
-  font-size: 2vh;
+  font-size: 1.5vh;
+}
+
+.comment-box {
+  min-height: 0%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 100%;
+  overflow: scroll;
+}
+.comment-box form {
+  margin: 1%;
+  padding: 0%;
+  display: flex;
+  justify-content: space-between;
+}
+.comment-box form .form-item {
+  padding: 0%;
+  margin: 0%;
+  display: flex;
+  flex-grow: 1;
+}
+.comment-box form .form-submit {
+  align-self: flex-end;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.comment-list {
+  overflow: scroll;
+  margin: 1%;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+}
+
+.form-item-comment {
+  width: 100%;
+  padding: 1%;
+  border: 1px solid black;
+}
+
+.form-submit-comment {
+  width: 20%;
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  margin-left: 1%;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=main.css.map */

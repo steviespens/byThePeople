@@ -30,12 +30,16 @@ export default function ProfileBox(props) {
     }
     return (
         <div className="profile-box">
+           
             <h5>{props.title}</h5>
+           
+            
             <h6>{email}</h6>
             <h6>{gender + ' | ' + politicalParty}</h6>
             <SimpleMenu userMetadata={userMetadata}>
 
             </SimpleMenu>
+
 
         </div>
 

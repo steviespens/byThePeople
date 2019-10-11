@@ -23,6 +23,8 @@ class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
         fields = '__all__'
+        ordering = ["-pk"]
+
         # fields = ["id", "choice", "votes", "question_id"]
 
 class PollUserVotesSerializer(serializers.ModelSerializer):

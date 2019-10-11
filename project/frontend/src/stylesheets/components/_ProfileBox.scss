@@ -3,9 +3,10 @@
 .profile-box {
     
     @extend %main-feed-first-row-box;
-    padding: 1%;
+    padding: 0%;
     h6 {
-        margin: 0%;
-        font-size: 2vh;
+        margin: 1%;
+        font-size: 1.5vh;
+        
     }
 }

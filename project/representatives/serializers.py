@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from representatives.models import BaseMember, HouseRep, Senator
+from byThePeople.serializers import UpcomingBillSerializer
+from representatives.models import BaseMember, HouseRep, Senator, MemberBillVotes
 
 class BaseMemberSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,6 +24,23 @@ class HouseRepSerializer(serializers.ModelSerializer):
         model = HouseRep
         # fields = '__all__'
         fields = ['district', 'member']
+
+class MemberBillVotesSerializer(serializers.ModelSerializer):
+
+    member = BaseMemberSerializer(many=False, required=True)
+    bill = UpcomingBillSerializer(many=False, required=True)
+
+    class Meta:
+        model = MemberBillVotes
+        fields = ['id', 'bill', 'member', 'position' ]
+    # choices = ChoiceSerializer(many=True, required=False)
+   
+    # class Meta:
+    #     model = Poll
+    #     fields = ["id", "topic", "question", "choices"]
+    #     # fields = ["id", "choices"]
+    #     # fields = '__all__'
+
 
        
 

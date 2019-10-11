@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 
 export default function withAuth(AuthComponent) {
-    const Auth = new AuthService('http://localhost:8000'); //changed from 8080
+    const Auth = new AuthService(); //changed from 8080
     return class AuthWrapped extends Component {
         constructor() {
             super();
@@ -14,16 +14,17 @@ export default function withAuth(AuthComponent) {
         componentWillMount() {
             if (!Auth.loggedIn()) {
                 try {
-                    console.log('tried Auth.refresh')
+                    // console.log('tried Auth.refresh')
                     Auth.refresh();
                     const profile = Auth.getProfile()
                     
                     this.setState({
                         user: profile
-                    })   
+                    })
+                    // console.log('got profile')
                 }
                 catch (err) {
-                    console.log('caught err in Auth.refresh')
+                    // console.log('caught err in Auth.refresh')
                     console.log(err)
                     Auth.logout()
                     this.props.history.replace('/login')
@@ -41,6 +42,9 @@ export default function withAuth(AuthComponent) {
                     this.props.history.replace('/login')
                 }
             }
+        }
+        componentWillUpdate() {
+            console.log('component will update')
         }
 
         render() {
