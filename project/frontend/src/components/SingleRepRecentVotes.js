@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 //quoted import statements contain a string with the path to a file
 import AuthService from './AuthService';
 import List from './UIElements/List';
-import ListItem from '@material-ui/core/ListItem';
+// import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Bill from './Bill';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,6 +15,7 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import ListItem from './UIElements/ListItem';
 
 
 import { parseBillID } from './utilities/helpers';
@@ -98,11 +99,10 @@ const SingleRepRecentVotes = (props) => {
     const makeVotes = () => {
         return votes.map((el, index) => {
             return (
-                <ListItem button key={index} onClick={() => onClick(el.bill.bill_id)}>
+                <ListItem key={index} onClick={() => onClick(el.bill.bill_id)} primary={el.bill.short_title} secondary={el.bill.bill_id}>
                     <ListItemIcon>
                         {makeIcon(el.position)}
                     </ListItemIcon>
-                    <ListItemText primary={el.bill.short_title} secondary={el.bill.bill_id} />
                 </ListItem>
             );
         });

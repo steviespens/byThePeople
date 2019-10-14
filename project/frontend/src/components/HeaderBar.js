@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 
 const HeaderBar = () => {
     return (
-        <div className="header-bar">
+        // <div className="header-bar">
+            <React.Fragment>
             {/* <img src="https://news.harvard.edu/wp-content/uploads/2018/07/CONSTITUTION_iStock-923052552_2500.jpg?w=1600&h=900&crop=1">
             </img> */}
-            <a href="/">By The People</a>
-        </div>
+                <a href="/">By The People</a>
+            </React.Fragment>
+        // </div>
     );
 };
 const wrapper = document.getElementById("header-bar");

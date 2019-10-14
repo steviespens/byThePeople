@@ -22,7 +22,7 @@ import Admin from './components/Admin';
 // ReactDOM.render(<Home />, document.querySelector('#view'));
 ReactDOM.render(
     <Router>
-        <div>
+        <React.Fragment>
             <Route exact path="/" component={Home} />
             <Route exact path="/about"
                 render={(props) => <Home {...props} refreshRoute={"/about"}/>}
@@ -39,6 +39,6 @@ ReactDOM.render(
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/admin" component={Admin} />
-        </div>
+        </React.Fragment>
     </Router>,
     document.getElementById('view'));

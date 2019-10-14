@@ -6,7 +6,7 @@ const styles = createStyles({
         backgroundColor: 'white',
         justifyContent: 'space-between',
         display: 'flex',
-        border: '1px solid black',
+        border: '1px solid #333B8A',
         borderRadius: '4px',
         height: '10%',
         width: '50%',
@@ -17,7 +17,8 @@ const styles = createStyles({
     },
     middle: {
         margin: '0%',
-        fontSize: '14px',
+        // fontSize: '14px',
+        fontSize: '1rem',
         display: 'flex',
         alignItems: 'center',
         // alignSelf: 'center',
@@ -25,7 +26,9 @@ const styles = createStyles({
     },
     right: {
         margin: '0%',
-        fontSize: '14px',
+        // fontSize: '14px',
+        fontSize: '1rem',
+
         display: 'flex',
         alignItems: 'center',
         marginRight: '3%',
@@ -39,7 +42,7 @@ function PollListItem(props) {
     const text = props.text;
     const percentage = props.percentage;
     const s = {
-        backgroundImage: '-webkit-linear-gradient(left, #0099ff, #0099ff ' + percentage + ', transparent ' + percentage + ', transparent 100%) ',
+        backgroundImage: '-webkit-linear-gradient(left, #0618e0, #0618e0 ' + percentage + ', #121848 ' + percentage + ', #121848 100%) ',
     };
     return (
         <div className={props.classes.root} style={s}>

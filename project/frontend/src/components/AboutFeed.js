@@ -4,19 +4,20 @@ import React, { Component, useState, useEffect } from 'react';
 
 const AboutFeed = () =>  {
     
-    const picture = 'https://bythepeople.s3.amazonaws.com/byThePeoplePicture.jpg';
-    
+    const picture = 'https://bythepeople.s3.amazonaws.com/nycpicture.jpg';
     return (
         <div className="about-feed">
-            <div>
+            {/* <div> */}
                 <p> ByThePeople is a platform dedicated to bridging the gap between
-                    constituents and representatives by enabling voters to express
-                    opinions, socialize political views, and gather policy information
-                    in a simple, comprehensive manner, shifting the democratic process
-                back into the hands of those that matter most, The People.</p>
-            </div>
-            <div className='about-our-data'>
-                <p>We source most of our data, including recent bills, 
+                constituents and representatives by enabling voters to express
+                opinions, socialize political views, and gather policy information
+                in a simple, comprehensive manner, shifting the democratic process
+            back into the hands of those that matter most, The People.
+                {/* </p> */}
+            {/* </div> */}
+            {/* <div className='about-our-data'> */}
+                {/* <p> */}
+                    We source most of our data, including recent bills, 
                     Congressperson biographical information, and voting records 
                     from&nbsp;
                     <a href='https://www.propublica.org' target="_blank">ProPublica</a>
@@ -37,13 +38,13 @@ const AboutFeed = () =>  {
                
                 
 
-            </div>
-            <picture>
-                <img
+            {/* </div> */}
+            <div className='about-feed-img-container'>
+                <img className='about-feed-img'
                     src={picture}
                 >
                 </img>
-            </picture>
+            </div>
         </div>
     );
     

@@ -63,31 +63,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .menu-bar, .main-feed {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -96,10 +170,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -107,11 +181,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -180,31 +254,246 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .menu-bar, .main-feed {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -213,10 +502,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -224,21 +513,220 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
+  background: #41b3a3;
+  width: 25%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
+}
+
+.menu-bar, .main-feed {
+  background-color: #121848;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
+  width: 80%;
+  height: 100%;
+  margin-left: 1%;
+}
+
+.profile-box, .docket-box, .news-box {
+  overflow: scroll;
+  height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+}
+.profile-box h5, .docket-box h5, .news-box h5 {
+  font-size: 3vh;
+  margin: 0% 1% 0%;
+}
+
+.polls-box {
+  overflow: scroll;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
+}
+.polls-box h5 {
+  margin-top: 0%;
+}
+
+html {
+  height: 100%;
+  font-size: 0.69vw;
+}
+
+.box-header {
+  position: absolute;
   background: #41b3a3;
   width: 25%;
 }
 
 .root {
   display: flex;
-  height: 620px;
+  height: 75%;
+  min-height: 500px;
   margin: 3%;
-  outline: 1px solid black;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  background: #121848;
+  padding: 1%;
+}
+
+#view {
+  height: 100%;
 }
 
 .card {
@@ -305,31 +793,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .menu-bar, .main-feed {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -338,10 +900,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -349,11 +911,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -372,6 +934,12 @@ html {
   width: 100%;
 }
 .main-feed .main-feed-row-top {
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.main-feed .main-feed-row-bottom {
+  height: 60%;
   display: flex;
   justify-content: space-between;
 }
@@ -461,31 +1029,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .menu-bar, .main-feed {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -494,10 +1136,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -505,17 +1147,17 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
 
 .main-feed-item {
-  border: 2px solid #e27d60;
+  border: 2px solid #333B8A;
 }
 
 .card {
@@ -582,31 +1224,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .menu-bar, .main-feed {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -615,10 +1331,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -626,11 +1342,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -639,12 +1355,11 @@ html {
   width: 20%;
   height: 100%;
   padding: 0%;
-  margin: 0%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 
 .link {
@@ -654,13 +1369,212 @@ html {
   height: 6%;
 }
 
+.menu-list-item {
+  color: #cccccc;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: inherit;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
+}
+
+.main-feed, .menu-bar {
+  background-color: #121848;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
+  width: 80%;
+  height: 100%;
+  margin-left: 1%;
+}
+
+.profile-box, .docket-box, .news-box {
+  overflow: scroll;
+  height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+}
+.profile-box h5, .docket-box h5, .news-box h5 {
+  font-size: 3vh;
+  margin: 0% 1% 0%;
+}
+
+.polls-box {
+  overflow: scroll;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
+}
+.polls-box h5 {
+  margin-top: 0%;
+}
+
+html {
+  height: 100%;
+  font-size: 0.69vw;
+}
+
+.box-header {
+  position: absolute;
+  background: #41b3a3;
+  width: 25%;
+}
+
 .menu-bar-item {
-  border: 2px solid #e27d60;
+  border: 2px solid #333B8A;
   border-collapse: collapse;
   padding: 4%;
   text-align: center;
   height: 5%;
-  background-color: #85dcbb;
+  background-color: #121848;
   width: 80%;
 }
 .menu-bar-item:hover {
@@ -745,148 +1659,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
 }
 
-.main-feed, .menu-bar {
-  background-color: #41b3a3;
-  align-items: center;
-  list-style: none;
-  margin: 0%;
-}
-
-.representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
-  width: 80%;
+body {
+  background-color: #121848;
+  width: 100%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 0%;
 }
 
-.profile-box, .docket-box, .news-box {
-  overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
-  box-sizing: border-box;
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
   flex-grow: 1;
 }
-.profile-box h5, .docket-box h5, .news-box h5 {
-  font-size: 3vh;
-  margin: 0% 1% 0%;
-}
-
-.polls-box {
-  overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
-}
-.polls-box h5 {
-  margin-top: 0%;
-}
-
-html {
-  height: 100%;
-}
-
-.box-header {
-  position: absolute;
-  z-index: 2;
-  background: #41b3a3;
-  width: 25%;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 0.8rem;
+.list-item .list-item-inner-span {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 40%;
-  justify-content: space-evenly;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
 }
 
-.card > form {
-  display: flex;
-  flex-direction: column;
-  height: 74%;
-  justify-content: space-evenly;
-}
-
-.card h1 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 1%;
-}
-
-.form-item {
-  font-family: "Raleway", sans-serif;
-  padding: 1%;
-  margin-bottom: 2rem;
-  height: 10%;
-  width: 16rem;
-  border: 1px solid grey;
-  border-radius: 5px;
-}
-
-.form-submit {
-  font-family: "Raleway", sans-serif;
-  height: 20%;
-  color: #fff;
-  background-color: #1abc9c;
-  border: none;
-  letter-spacing: 0.2rem;
-  transition: 0.3s opacity ease;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.form-submit:hover {
-  opacity: 0.6;
-}
-
-button:focus {
-  outline: none;
-}
-
-.logout-button {
+.poll-list-item-no-vote {
   background-color: inherit;
-  border: 1px solid black;
-  letter-spacing: 0.2rem;
-  transition: 0.3s opacity ease;
-  cursor: pointer;
-  border-radius: 5px;
-  color: black;
-  height: 6%;
-  width: 30%;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -895,10 +1766,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -906,34 +1777,35 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
 
-.header-bar {
-  background-color: #41b3a3;
-  height: 7vh;
-  border-bottom: 2px solid #e27d60;
+.header-bar, #header-bar {
+  background-color: #121848;
+  height: 10%;
+  border-bottom: 1px solid #ff9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.header-bar a {
+.header-bar a, #header-bar a {
+  font-size: 2.3rem;
   font-family: cursive;
-  margin-left: 2%;
+  margin-left: 3%;
   text-align: left;
   text-align: justify;
-  color: black;
+  color: #ff9999;
   text-decoration: none;
   display: block;
 }
-.header-bar a:visited {
-  color: black;
+.header-bar a:visited, #header-bar a:visited {
+  color: #ff9999;
 }
 
 .card {
@@ -1000,31 +1872,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .news-feed, .main-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -1033,10 +1979,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1044,11 +1990,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -1056,7 +2002,7 @@ html {
 .news-feed {
   overflow: auto;
   margin-top: 0%;
-  border: 2px solid #e27d60;
+  border: 2px solid #333B8A;
   border-collapse: collapse;
 }
 
@@ -1124,31 +2070,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .docket-feed, .main-feed, .news-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -1157,10 +2177,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1168,11 +2188,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -1188,7 +2208,8 @@ html {
   flex-direction: column;
   width: 50%;
   overflow: auto;
-  border: 1px solid black;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 
 .big-docket-feed {
@@ -1264,31 +2285,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .polls-feed, .main-feed, .news-feed, .docket-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -1297,10 +2392,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1308,11 +2403,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -1324,6 +2419,8 @@ html {
   grid-template-rows: none;
   grid-auto-rows: minmax(40%, 1fr);
   width: 80%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 
 .card {
@@ -1390,31 +2487,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .about-feed, .main-feed, .news-feed, .docket-feed, .polls-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -1423,10 +2594,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1434,11 +2605,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -1450,15 +2621,25 @@ html {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .about-feed p {
-  text-align: center;
-  vertical-align: middle;
+  font-size: 1.4rem;
+  margin: 2%;
 }
-.about-feed div {
-  margin: 1vh;
-  padding: 1vh;
-  border: 1px solid black;
+
+.about-feed-img-container {
+  border: none;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0px;
+  border-top: 1px solid #333B8A;
+}
+
+.about-feed-img {
+  width: 100%;
+  margin-top: -16%;
 }
 
 .about-our-data {
@@ -1529,31 +2710,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -1562,10 +2817,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1573,11 +2828,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -1646,31 +2901,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .docket-box, .news-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .docket-box h5, .news-box h5 {
   font-size: 3vh;
@@ -1679,10 +3008,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1690,15 +3019,19 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
 
+.docket-box {
+  margin-left: 1.35%;
+  margin-right: 1.35%;
+}
 .docket-box th {
   position: absolute;
   margin-top: -2%;
@@ -1709,7 +3042,7 @@ html {
 }
 .docket-box h2 {
   font-size: 20px;
-  border: 2px solid #e27d60;
+  border: 2px solid #333B8A;
 }
 
 .card {
@@ -1776,31 +3109,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .news-box, .docket-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .news-box h5, .docket-box h5 {
   font-size: 3vh;
@@ -1809,10 +3216,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -1820,11 +3227,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -1832,9 +3239,10 @@ html {
 .bill {
   display: flex;
   flex-direction: column;
-  border: 2px solid #e27d60;
-  margin-left: -2px;
-  width: 50%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-left: 1%;
+  width: 48%;
   align-items: center;
   flex-flow: column;
   height: 100%;
@@ -1867,7 +3275,7 @@ html {
 .bill .bottom #poll-individual {
   display: inline-block;
   width: 65%;
-  border: 2px solid #e27d60;
+  border: 2px solid #333B8A;
   border-radius: 4px;
   margin: 1%;
 }
@@ -1886,6 +3294,199 @@ html {
   border: 1px solid black;
   border-radius: 5px;
   margin-right: 1%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
+}
+
+.main-feed, .menu-bar {
+  background-color: #121848;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
+  width: 80%;
+  height: 100%;
+  margin-left: 1%;
+}
+
+.profile-box, .news-box, .docket-box {
+  overflow: scroll;
+  height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+}
+.profile-box h5, .news-box h5, .docket-box h5 {
+  font-size: 3vh;
+  margin: 0% 1% 0%;
+}
+
+.polls-box {
+  overflow: scroll;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
+}
+.polls-box h5 {
+  margin-top: 0%;
+}
+
+html {
+  height: 100%;
+  font-size: 0.69vw;
+}
+
+.box-header {
+  position: absolute;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .login {
@@ -2044,31 +3645,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .profile-box, .news-box, .docket-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .profile-box h5, .news-box h5, .docket-box h5 {
   font-size: 3vh;
@@ -2077,10 +3752,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -2088,11 +3763,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -2169,31 +3844,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
   font-size: 3vh;
@@ -2202,10 +3951,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -2213,11 +3962,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -2233,9 +3982,200 @@ html {
 }
 .polls-box #poll-individual {
   width: 40%;
-  border: 2px solid #e27d60;
+  border: 2px solid #333B8A;
   border-radius: 4px;
   margin: 1%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
+}
+
+.main-feed, .menu-bar {
+  background-color: #121848;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
+  width: 80%;
+  height: 100%;
+  margin-left: 1%;
+}
+
+.news-box, .docket-box, .profile-box {
+  overflow: scroll;
+  height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+}
+.news-box h5, .docket-box h5, .profile-box h5 {
+  font-size: 3vh;
+  margin: 0% 1% 0%;
+}
+
+.polls-box {
+  overflow: scroll;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
+}
+.polls-box h5 {
+  margin-top: 0%;
+}
+
+html {
+  height: 100%;
+  font-size: 0.69vw;
+}
+
+.box-header {
+  position: absolute;
+  background: #41b3a3;
+  width: 25%;
 }
 
 .no-suggestions {
@@ -2255,7 +4195,7 @@ html {
   z-index: 2;
   margin-top: 2.8%;
   opacity: 100%;
-  background-color: aliceblue;
+  background-color: #030B6C;
 }
 
 .suggestions li {
@@ -2338,31 +4278,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .representatives, .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
   font-size: 3vh;
@@ -2371,10 +4385,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -2382,11 +4396,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -2395,14 +4409,16 @@ html {
   display: flex;
   overflow: auto;
   margin-top: 0%;
+  margin: 0%;
 }
 .representatives .left {
-  width: 30%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  margin-top: 0%;
-  margin: 1vh;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
 }
 .representatives .left .bottom {
   height: 35%;
@@ -2415,20 +4431,30 @@ html {
 }
 .representatives .middle {
   height: 100%;
-  width: 35%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: auto;
   margin-top: 0%;
   overflow: scroll;
+  box-sizing: border-box;
+}
+.representatives .middle .single-rep-bills {
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-left: 1%;
 }
 .representatives .right {
-  width: 35%;
+  width: 25%;
   overflow: scroll;
+  box-sizing: border-box;
 }
 .representatives .right .single-rep-recent-votes {
   width: 100%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-left: 1%;
 }
 
 .card {
@@ -2495,31 +4521,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
   font-size: 3vh;
@@ -2528,10 +4628,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -2539,11 +4639,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -2625,31 +4725,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
   font-size: 3vh;
@@ -2658,10 +4832,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -2669,11 +4843,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -2702,7 +4876,7 @@ html {
 .poll-individual {
   width: 28%;
   height: 94%;
-  outline: 1px solid #e27d60;
+  outline: 1px solid #333B8A;
   outline-offset: -1vh;
   margin-left: 1%;
   flex-shrink: 0;
@@ -2777,31 +4951,105 @@ button:focus {
   color: black;
   height: 6%;
   width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
 }
 
 .main-feed, .menu-bar {
-  background-color: #41b3a3;
+  background-color: #121848;
   align-items: center;
   list-style: none;
-  margin: 0%;
+  height: 100%;
 }
 
 .main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
   width: 80%;
   height: 100%;
-  outline: 1px solid black;
-  outline-offset: -1px;
+  margin-left: 1%;
 }
 
 .news-box, .docket-box, .profile-box {
   overflow: scroll;
   height: calc(calc(600px / 2) - 2vh);
   width: 30%;
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
 }
 .news-box h5, .docket-box h5, .profile-box h5 {
   font-size: 3vh;
@@ -2810,10 +5058,10 @@ button:focus {
 
 .polls-box {
   overflow: scroll;
-  height: calc(calc(600px / 2) - 2vh);
-  outline: 1px solid black;
-  outline-offset: -1px;
-  margin: 1%;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
 }
 .polls-box h5 {
   margin-top: 0%;
@@ -2821,11 +5069,11 @@ button:focus {
 
 html {
   height: 100%;
+  font-size: 0.69vw;
 }
 
 .box-header {
   position: absolute;
-  z-index: 2;
   background: #41b3a3;
   width: 25%;
 }
@@ -2848,12 +5096,203 @@ html {
   font-size: 1.5vh;
 }
 
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  justify-content: space-evenly;
+}
+
+.card > form {
+  display: flex;
+  flex-direction: column;
+  height: 74%;
+  justify-content: space-evenly;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+.form-item {
+  font-family: "Raleway", sans-serif;
+  padding: 1%;
+  margin-bottom: 2rem;
+  height: 10%;
+  width: 16rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-submit {
+  font-family: "Raleway", sans-serif;
+  height: 20%;
+  color: #fff;
+  background-color: #1abc9c;
+  border: none;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.form-submit:hover {
+  opacity: 0.6;
+}
+
+button:focus {
+  outline: none;
+}
+
+.logout-button {
+  background-color: inherit;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  transition: 0.3s opacity ease;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  height: 6%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #121848;
+  width: 100%;
+  height: 100%;
+  margin-left: 0%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc;
+}
+
+p {
+  color: #cccccc;
+}
+
+button {
+  color: #cccccc;
+}
+
+.list-item {
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #333B8A;
+  padding: 0%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.list-item :hover {
+  background-color: #030B6C;
+}
+.list-item .list-item-inner-div {
+  display: flex;
+  flex-grow: 1;
+}
+.list-item .list-item-inner-span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.list-item .p1 {
+  font-size: 1rem;
+  margin: 2% 2% 0%;
+}
+.list-item .p2 {
+  font-size: 0.8rem;
+  margin: 0% 2% 2%;
+}
+
+.poll-list-item-no-vote {
+  background-color: inherit;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  min-height: 30px;
+  width: 50%;
+  margin: 1%;
+  padding: 0%;
+  align-items: center;
+  max-height: 30px;
+}
+.poll-list-item-no-vote .poll-list-item-no-vote-middle {
+  margin: 0%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+}
+
+.poll-list-item-no-vote:hover {
+  background: #333B8A;
+}
+
+.main-feed, .menu-bar {
+  background-color: #121848;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.main-feed, .news-feed, .docket-feed, .polls-feed, .about-feed, .representatives {
+  width: 80%;
+  height: 100%;
+  margin-left: 1%;
+}
+
+.news-box, .docket-box, .profile-box {
+  overflow: scroll;
+  height: calc(calc(600px / 2) - 2vh);
+  width: 30%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+}
+.news-box h5, .docket-box h5, .profile-box h5 {
+  font-size: 3vh;
+  margin: 0% 1% 0%;
+}
+
+.polls-box {
+  overflow: scroll;
+  margin: 0%;
+  border: 2px solid #333B8A;
+  border-radius: 0.5rem;
+  margin-top: 2%;
+}
+.polls-box h5 {
+  margin-top: 0%;
+}
+
+html {
+  height: 100%;
+  font-size: 0.69vw;
+}
+
+.box-header {
+  position: absolute;
+  background: #41b3a3;
+  width: 25%;
+}
+
 .comment-box {
   min-height: 0%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border-top: 1px solid #333B8A;
   width: 100%;
   overflow: scroll;
 }
@@ -2889,7 +5328,10 @@ html {
 .form-item-comment {
   width: 100%;
   padding: 1%;
-  border: 1px solid black;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+  background: inherit;
+  color: #cccccc;
 }
 
 .form-submit-comment {
@@ -2900,6 +5342,14 @@ html {
   display: flex;
   margin-left: 1%;
   justify-content: center;
+  background: inherit;
+  color: #cccccc;
+  border: 1px solid #333B8A;
+  border-radius: 0.5rem;
+}
+.form-submit-comment :hover {
+  background: #333B8A;
+  color: red;
 }
 
 /*# sourceMappingURL=main.css.map */

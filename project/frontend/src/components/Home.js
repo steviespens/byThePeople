@@ -128,7 +128,7 @@ class Home extends Component {
         const Com = FEEDS[title]['com'];
         const className = FEEDS[title]['className'];
         return (
-            <div className='root'>
+            <div className='root' id='root-div'>
                 <Router>
                     <MenuBar className='menu-bar' id='menu-bar' onClick={this.onClick} handleLogout={this.handleLogout.bind(this)} />
                     <BillsContext.Provider value={this.state.bills}>
@@ -150,7 +150,7 @@ class Home extends Component {
                 <RepsContext.Provider value={this.state.reps}>
                     < Com className={className} />
                 </RepsContext.Provider> */}
-                {/* <MainFeed className='main-feed' /> */}
+                    {/* <MainFeed className='main-feed' /> */}
             </div>
         );
     }

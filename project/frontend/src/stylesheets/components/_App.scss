@@ -1,4 +1,4 @@
-@import "../base/all";
+@import "../base/base";
 
 .root {
     // // max-height: 1400px;
@@ -7,9 +7,30 @@
     // // height: 100%;
     
     display: flex;
-    height: 620px;
+    height: 75%;
+    min-height: 500px;
     // width: 1200px;
     margin: 3%;
-    outline: 1px solid black;
+    // outline: 1px solid black;
     flex-grow: 1;
+    border: 2px solid $color-border;
+    border-radius: .5rem;
+    background: $color-background;
+    padding: 1%;
+    
+
+}
+// #root-div {
+    
+//     :first-child {
+//             margin-right: .5%;
+//         }
+//     :last-child {
+//             margin-left: .5%;
+//         }
+// }
+
+
+#view {
+    height: 100%;
 }

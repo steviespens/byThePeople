@@ -6,11 +6,20 @@ $dark_green: #41b3a3;
 $light_green: #85dcbb;
 $pink: #c38d9e;
 
-$color-background: $dark_green;
-$color-border: $dark_orange;
+$dark-blue: #121848;
+$lighter-dark-blue: #030B6C;
+$light-border: #333B8A;
+// $white: #5376C6;
+$white: #cccccc;
+$black: #0D0E20;
+$red: #ff9999;
+
+$color-background: $dark-blue;
+$color-border: $light-border;
 $color-menu-bar-item-text: black;
 $color-menu-bar-item-hover: $light_orange;
-$color-menu-bar-item: $light_green;
-$color-horizontal-bar: $dark_green;
-$color-body: aliceblue;
-
+$color-menu-bar-item: $dark-blue;
+$color-horizontal-bar: $dark-blue;
+$color-body: $lighter-dark-blue;
+$color-hover: $light-border;
+$color-border-header: $red;

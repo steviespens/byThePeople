@@ -40,6 +40,7 @@ function YourRepsBox(props) {
         'WV': 3, 'WY': 1
     };
     const makeYourRepsList = () => {
+        
         return yourReps.map((el, index) => {
             let name = el.member.short_title + ' ' + el.member.first_name + " " + el.member.last_name;
             name += '   [' + el.member.party + ' - ' + el.member.state.toUpperCase();
@@ -60,7 +61,7 @@ function YourRepsBox(props) {
         <div className="your-reps-box">
             <h6>Your Reps</h6>
             <List>
-                {makeYourRepsList()}
+                {/* {makeYourRepsList()} */}
             </List>
         </div>
     );

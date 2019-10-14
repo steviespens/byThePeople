@@ -1,4 +1,4 @@
-@import "../base/all";
+@import "../base/base";
 
 .bill {
     // margin-left: $feed-width;
@@ -9,8 +9,9 @@
     display: flex;
     flex-direction: column;
     border: 2px solid $color-border;
-    margin-left: -2px;
-    width: 50%;
+    border-radius: $radius;
+    margin-left: 1%;
+    width: 48%;
     align-items: center;
     flex-flow: column;
     height: 100%;
@@ -65,5 +66,8 @@
     border: 1px solid black;
     border-radius: 5px;
     margin-right: 1%;
+    display: flex;
+    justify-content: center;
+    
 }
 

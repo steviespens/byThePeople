@@ -35,6 +35,7 @@ export default function RepresentativesFeed(props) {
         }
     }, [props])
     const selectRepFromName = (name) => {
+        
         //get the index in reps[] given a string of firstName + " " + lastName
         let index = reps.findIndex((el) => {
             const name_without_middle = el.member.first_name + " " + el.member.last_name;
@@ -49,6 +50,7 @@ export default function RepresentativesFeed(props) {
         setSelectedRep(rep);
     }
     const makeRepName = (rep) => {
+        
         const name = rep.member.short_title + ' ' + rep.member.first_name + ' ' + rep.member.last_name;
         const subheading = '[' + rep.member.party + ' - ' + rep.member.state.toUpperCase() + ']';
         return name + '   ' + subheading;

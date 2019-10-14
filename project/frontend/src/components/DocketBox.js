@@ -7,9 +7,10 @@ import TableAll from "./TableAll";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import AuthService from "./AuthService";
-import ListItem from '@material-ui/core/ListItem';
+// import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from './UIElements/List';
+import ListItem from './UIElements/ListItem';
 import {withRouter} from 'react-router-dom';
 import {BillsContext } from './Home';
 
@@ -36,8 +37,8 @@ const DocketBox = (props) => {
         if (!bills) return (<div></div>);
         return bills.map((bill, index) => {
             return (
-                <ListItem button id={index} value={bill.bill_id} onClick={() => onClick(bill.bill_id)} key={index}>
-                    <ListItemText primary={bill.title} />
+                <ListItem button id={index} value={bill.bill_id} onClick={() => onClick(bill.bill_id)} key={index} primary={bill.title}>
+                    {/* <ListItemText primary={bill.title} /> */}
                 </ListItem >
             );
         }

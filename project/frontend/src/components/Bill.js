@@ -19,10 +19,10 @@ import CommentBox from "./CommentBox";
 import PropTypes from "prop-types";
 import { withStyles } from '@material-ui/styles';
 import Poll from "./Poll";
-import ListItem from '@material-ui/core/ListItem';
+// import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withRouter } from 'react-router-dom';
-
+import ListItem from './UIElements/ListItem';
 import AuthService from './AuthService';
 
 
@@ -96,8 +96,7 @@ const Bill = (props) => {
             })
         }
         return (
-            <ListItem className="full-text-button" button onClick={() => onClick(sponsorName)}>
-                <ListItemText primary={heading} />
+            <ListItem className="full-text-button" primary={heading} button onClick={() => onClick(sponsorName)}>
             </ListItem>
         );
 

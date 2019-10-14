@@ -1,24 +1,25 @@
-@import "../base/all";
+@import "../base/base";
 
-.header-bar {
+.header-bar, #header-bar {
     background-color: $color-horizontal-bar;
-    height: 7vh;
+    height: 10%;
     // align-content: flex-start;
     // vertical-align: middle;
-    border-bottom: 2px solid $color-border;
+    border-bottom: 1px solid $color-border-header;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     a {
+        font-size: 2.3rem;
         font-family: cursive;
-        margin-left: 2%;
+        margin-left: 3%;
         text-align: left;
         text-align: justify;      
         &:visited {
-            color: black;
+            color: $red;
         }
-        color: black;
+        color: $red;
         text-decoration: none;
         display: block;
         

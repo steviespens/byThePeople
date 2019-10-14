@@ -3,10 +3,10 @@ import { withStyles, createStyles } from '@material-ui/styles';
 
 const styles = createStyles({
     root: {
-        backgroundColor: 'white',
+        backgroundColor: 'inherit',
         justifyContent: 'center', 
         display: 'flex',
-        border: '1px solid black',
+        border: '1px solid #333B8A',
         borderRadius: '4px',
         height: '30px',
         width: '50%',
@@ -37,8 +37,8 @@ function PollListItemNoVote(props) {
     const onSelect = props.onSelect;
     return (
         
-        <button className={props.classes.root} onClick={(e) => onSelect(e)} value={value}>
-            <h6 className={props.classes.middle}>
+        <button className='poll-list-item-no-vote' onClick={(e) => onSelect(e)} value={value}>
+            <h6 className='poll-list-item-no-vote-middle'>
                 {text}
             </h6>
         </button>
@@ -46,4 +46,6 @@ function PollListItemNoVote(props) {
     );
 
 }
-export default withStyles(styles)(PollListItemNoVote);
+export default PollListItemNoVote;
+
+// export default withStyles(styles)(PollListItemNoVote);

@@ -40,13 +40,14 @@ class BaseMemberView(viewsets.ModelViewSet):
 
 
     def get_queryset(self):
-        # get_congress_members('senate')
+        #get_congress_members('senate')
+        #get_congress_members('house')
         return BaseMember.objects.all()
     serializer_class = BaseMemberSerializer
 
 class SenatorView(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         # get_congress_members('senate')
@@ -55,7 +56,7 @@ class SenatorView(viewsets.ModelViewSet):
 
 class HouseRepView(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     def get_queryset(self):
         # get_congress_members('house')
         return HouseRep.objects.all()
@@ -272,10 +273,26 @@ def get_congress_members(chamber_name):
         state = i['state'].capitalize()
         votes_with_party_pct = i['votes_with_party_pct']/100 if 'votes_with_party_pct' in i else 0
         chamber = chamber_name[0].capitalize()
-        member, created = BaseMember.objects.get_or_create(first_name=first_name,
+        
+        u1 = 'https://theunitedstates.io/images/congress/225x275/' + identifier + '.jpg'
+        u2 = 'https://www.congress.gov/img/member/' + identifier.lower() + '.jpg'
+        r1 = requests.get(url=u1)
+        r2 = requests.get(url=u2)
+        if r1.status_code == 200:
+            picture = u1
+        elif r2.status_code == 200:
+            picture = u2
+        else:
+            picture = ''
+        # picture = ''
+        
+        member, created = BaseMember.objects.get_or_create(
+                                                    identifier=identifier,
+                                                   
+                                                    first_name=first_name,
                                                     middle_name=middle_name,
                                                     last_name=last_name,
-                                                    identifier=identifier,
+                                                    
                                                     short_title=short_title,
                                                     gender=gender,
                                                     party=party,
@@ -283,7 +300,8 @@ def get_congress_members(chamber_name):
                                                     seniority=seniority,
                                                     state=state,
                                                     votes_with_party_pct=votes_with_party_pct,
-                                                    chamber=chamber
+                                                    chamber=chamber,
+                                                    picture_uri=picture
                                                     )
         if True:
             if chamber_name == 'senate':

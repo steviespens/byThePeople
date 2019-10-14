@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect, useContext } from "react";
 import Docket from './Docket';
 // import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+// import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
@@ -13,7 +13,8 @@ import AuthService from './AuthService';
 import List from './UIElements/List';
 import Poll from './Poll';
 import { BillsContext } from './Home';
-
+import ListItem from './UIElements/ListItem';
+import { makeStyles } from '@material-ui/styles';
 
 
 
@@ -71,12 +72,16 @@ export default function DocketFeed(props) {
             return [];
         }
         const x = list.map((el) => {
-            
             return (
-                <ListItem button key={el.id} onClick={() => onClick(el.id, el.bill_id)}>
-                    <ListItemText primary={el.short_title} secondary={el.bill_id} />
+                <ListItem key={el.id} onClick={() => onClick(el.id, el.bill_id)} primary={el.short_title} secondary={el.bill_id}>
                 </ListItem>
             );
+
+            // return (
+            //     <ListItem button key={el.id} onClick={() => onClick(el.id, el.bill_id)}>
+            //         <ListItemText primary={el.short_title} secondary={el.bill_id} />
+            //     </ListItem>
+            // );
         });
         return x;
     }

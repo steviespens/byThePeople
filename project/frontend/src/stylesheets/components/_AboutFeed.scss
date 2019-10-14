@@ -1,4 +1,4 @@
-@import "../base/all";
+@import "../base/base";
 
 .about-feed {
     // max-height: 600px;
@@ -9,6 +9,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    border: 2px solid $color-border;
+    border-radius: $radius;
     // p {
     //     padding: 2vh;
     //     justify-content: space-between;
@@ -16,20 +18,36 @@
 
     // }
     p {
-        text-align: center;
-        vertical-align: middle;
+        font-size: 1.4rem;
+        // text-align: center;
+        // vertical-align: middle;
+        margin: 2%;
             
 
 
     }
-    div {
-        margin: 1vh;
-        padding: 1vh;
-        border: 1px solid black;
+    // div {
+    //     margin: 1vh;
+    //     padding: 1vh;
+    //     border: 1px solid black;
         
 
-    }
+    // }
     
+}
+.about-feed-img-container {
+    border: none;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0px;
+    border-top: 1px solid $color-border;
+
+}
+.about-feed-img {
+    width: 100%;
+    margin-top: -16%;
+
+
 }
 
 .about-our-data {

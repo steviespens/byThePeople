@@ -1,10 +1,12 @@
+@import "../base/color";
+@import "../base/formElements";
+@import "../base/base";
+
 @import "App";
-@import "DataProvider";
 @import "MainFeed";
 @import "MainFeedItem";
 @import "MenuBar";
 @import "MenuBarItem";
-@import "Table";
 @import "HeaderBar";
 @import "NewsFeed";
 @import "DocketFeed";

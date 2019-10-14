@@ -12,8 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import MainFeedList from './UIElements/MainFeedList';
-import ListItem from './UIElements/ListItem';
-
+import MenuListItem from './UIElements/MenuListItem';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -38,9 +37,9 @@ export default function MenuBar(props) {
     const linkList = titles.map((title, index) => {
       
         return (<Link className="link" to={links[index]}>
-            <ListItem id={title} value={title} onClick={() => onClick(title)} key={title}>
+            <MenuListItem id={title} value={title} onClick={() => onClick(title)} key={title}>
                 
-            </ListItem>
+            </MenuListItem>
 
 
         </Link>)

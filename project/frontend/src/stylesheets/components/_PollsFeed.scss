@@ -1,4 +1,4 @@
-@import "../base/all";
+@import "../base/base";
 
 .polls-feed {
     @extend %feed;
@@ -8,6 +8,7 @@
     grid-template-rows: none;
     grid-auto-rows: minmax(40%, 1fr);
     width: 80%;
-
+    border: 2px solid $color-border;
+    border-radius: $radius;
 
 }

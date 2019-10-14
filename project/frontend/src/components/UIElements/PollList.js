@@ -17,7 +17,7 @@ const styles = createStyles({
     },
     heading: {
         margin: '0%',
-        fontSize: '.85vw',
+        fontSize: '1.1rem',
         // wordBreak: 'normal',
         // maxWidth: '100px',
         whiteSpace: 'normal',

@@ -3,13 +3,14 @@ import ReactDOM from "react-dom";
 //quoted import statements contain a string with the path to a file
 import AuthService from './AuthService';
 import List from './UIElements/List';
-import ListItem from '@material-ui/core/ListItem';
+// import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Bill from './Bill';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import { withStyles, createStyles } from '@material-ui/styles';
 
+import ListItem from './UIElements/ListItem';
 
 import { parseBillID } from './utilities/helpers';
 
@@ -87,8 +88,7 @@ const SingleRepBills = (props) => {
     const makeBills = () => {
         return bills.map((el, index) => {
             return (
-                <ListItem button key={index} onClick={() => onClick(el.bill_id)}>
-                    <ListItemText primary={el.title} secondary={el.bill_id} />
+                <ListItem key={index} onClick={() => onClick(el.bill_id)} primary={el.title} secondary={el.bill_id}>
                 </ListItem>
             );
         });
@@ -96,7 +96,7 @@ const SingleRepBills = (props) => {
 
     }
     return (
-        <div className="single-rep-bils">
+        <div className="single-rep-bills">
             {bills == null ? <div></div> : (
                 <React.Fragment>
                     <h6>Recent Authored Bills</h6>

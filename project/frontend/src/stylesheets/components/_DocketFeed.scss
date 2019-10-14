@@ -1,4 +1,4 @@
-@import "../base/all";
+@import "../base/base";
 
 .docket-feed {
     
@@ -17,7 +17,9 @@
     flex-direction: column;
     width: 50%;
     overflow: auto;
-    border: 1px solid black;
+    border: 2px solid $color-border;
+    border-radius: $radius;
+    // padding: 1%;
 
 }
 
