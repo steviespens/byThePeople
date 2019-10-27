@@ -1,4 +1,0 @@
-/api/jsonfiles/get_bill_data/
-200
-b'"{\\"num\\": \\"hey\\"}"'
-
