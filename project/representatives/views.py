@@ -187,7 +187,11 @@ class MemberView(viewsets.ModelViewSet):
                 bill_id = i['bill']['bill_id']
                 if (bill_id not in l3 and bill_id not in already_checked_bills):
                     #INSERT BILL OBJECT
-                    bill_slug, congress = bill_id.split('-') #can get from bill_id
+                    if len(bill_id.split('-')) != 2:
+                        continue
+                    # print(bill_id.split('-'))
+                    bill_slug, congress = bill_id.split('-')  #can get from bill_id
+                
                     if bill_slug[:2] == 'pn':
                         continue
                     url2 = 'https://api.propublica.org/congress/v1/' + congress + '/bills/' + bill_slug + '.json'
