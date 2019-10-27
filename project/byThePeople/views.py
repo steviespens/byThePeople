@@ -111,12 +111,22 @@ class TextFileView(viewsets.ModelViewSet):
         html = r.content
         soup = BeautifulSoup(html, features="html.parser")
         cl = 'generated-html-container'
-        text = soup.find_all('div', class_=cl)
+        text = soup.find('div', class_=cl)  #used to be find_all
+        if text:
+            text = str(text)
+        else:
+            text = ''
+        cl2 = 'lbexHang'
+        text2 = soup.find('p', class_=cl2)
+        if text2:
+            text2 = ' '.join(text2.text.split())
+        else:
+            text2 = ''
         #returns empty list if nothing found (which is case for really new bills)
         #ADD SUPPORT
         s = str(text)
-        # j = json.dumps({'full_text': text})
-        return Response(s)
+        j = json.dumps({'full_text': text, 'summary': text2})
+        return Response(j)
 
 
 class MemberView(viewsets.ModelViewSet):
@@ -271,7 +281,7 @@ class PollListCreate(viewsets.ModelViewSet):
         topic = data['topic']
         NUM_TO_RETURN = 8
         if topic is not None:
-            polls = Poll.objects.filter(topic=topic)[:NUM_TO_RETURN]
+            polls = Poll.objects.filter(topic=topic).order_by('-created_at')[:NUM_TO_RETURN]
         else:
             polls = Poll.objects.all()[:NUM_TO_RETURN]
         ser = PollSerializer(polls, many=True)
@@ -292,12 +302,13 @@ class PollListCreate(viewsets.ModelViewSet):
             test = False
             j = 0
             #ordering by id gets most recently added
-            polls = Poll.objects.filter(topic=i).order_by('-id')
+            polls = Poll.objects.filter(topic=i).order_by('-created_at')
+            polls = sort_polls_by_voted_or_not(polls=polls, user=request.user.id, topic=i)
             #make sure there are enough polls, otherwise return
             while not test:
-                if j >= polls.count():
+                if j >= len(polls):
                     break
-                elif polls[j] not in rec_polls:
+                elif polls[j] not in rec_polls: #make sure not already added poll to list
                     rec_polls.append(polls[j])
                     test = True
                 else:
@@ -325,6 +336,13 @@ class PollListCreate(viewsets.ModelViewSet):
         return Response(json.dumps(created))
 
 
+def sort_polls_by_voted_or_not(polls, user, topic):
+    #gets list of this topic voted by user as list
+    votes = PollUserVotes.objects.filter(user=user, poll__topic=topic).values_list('poll', flat=True)
+    #create dict of polls with poll as key and whether user has voted as value
+    r = {p: p.id in votes for p in polls}
+    #return list of polls sorted by whether or not user voted
+    return sorted(r, key=r.get) 
     
 #returns an ordered list of length LEN_LIST of poll topics that should be selected
 def compute_recommended_polls_list(user_id):
@@ -613,3 +631,5 @@ def get_upcoming_senate_bills():
 def convert_bill_id_with_congress_num(s):
     c = '-'
     return s.split(c)[0]
+
+    
