@@ -1,0 +1,21 @@
+@import "../base/base";
+
+.news-box {
+    
+    @extend %main-feed-first-row-box;
+    display: flex;
+    flex-direction: column;
+    a {
+        // margin: 0%;
+        // padding: 0%;
+        text-decoration: none;
+
+    }
+    .headline-item {
+        color: $white;
+        font-size: 1rem;
+        margin: 2%;
+    }
+
+}
+

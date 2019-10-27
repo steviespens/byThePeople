@@ -1,0 +1,24 @@
+@import "../base/base";
+
+.simple-menu-profile-box {
+    width: 100%;
+    display: block;
+    // flex-direction: row;
+}
+
+#simple-menu-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h6 {
+        font-size: 1.5vh;
+    }
+}
+
+.your-reps-box {
+    h6 {
+        font-size: 1.5vh;
+    }
+
+
+}

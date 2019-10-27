@@ -1,0 +1,72 @@
+@import "../base/base";
+
+.polls-row {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    height: 86%;
+    
+    // flex-direction: row;
+    // overflow-x: scroll;
+    // overflow-y: scroll;
+    // white-space: nowrap;
+    // transform: rotate(-90deg);
+//     transform-origin: right top;    
+//      overflow-y: auto;
+//   overflow-x: hidden;
+//   transform:rotate(-90deg) translateY(-100%);
+}
+.polls-row-box {
+    display: block;
+    align-items: flex-start;
+    height: 100%;
+    // margin: 1%;
+    //couldn't do h6 below, it was affecting the style of PollList components
+    h1, h2, h3, h4, h5 {
+        font-size: 1vw;
+        margin-left: 1%;
+        margin-bottom: 0%;
+        margin-top: .5%;
+        padding: 0%;
+        height: 8%;
+    }
+}
+.poll-individual {
+        width: 28%;
+        height: 94%;
+        outline: 1px solid $color-border;
+        outline-offset: -1vh;
+        margin-left: 1%;
+        flex-shrink: 0;
+        display: flex;
+        // transform: rotate(90deg);
+        // transform-origin: right top;  
+
+}
+// .polls-row::-webkit-scrollbar {
+//         display: visible;
+//         width: 10px;
+//         // flex-direction: column;
+//         // color: inherit;
+//     }
+// ::-webkit-scrollbar-thumb {
+//     color: red;
+// }
+// ::-webkit-scrollbar-track {
+//     color: orange;
+// }
+.polls-row::-webkit-scrollbar {
+    height: 1rem;
+}
+ 
+.polls-row::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+.polls-row::-webkit-scrollbar-thumb {
+  background-color: $color-border;
+  border-radius: $radius;
+  outline: 1px solid slategrey;
+}

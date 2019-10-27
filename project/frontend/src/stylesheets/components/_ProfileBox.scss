@@ -1,0 +1,18 @@
+@import "../base/base";
+
+.profile-box {
+    
+    @extend %main-feed-first-row-box;
+    padding: 0%;
+   
+    h6 {
+        margin: 1%;
+        font-size: 3vh;
+        
+    }
+    p {
+        margin: 1% 1% 0%;
+        font-size: 1.1rem;
+        
+    }
+}

@@ -1,0 +1,101 @@
+@import "../base/base";
+
+.bill {
+    // margin-left: $feed-width;
+    // margin-top: 0px;
+    // float: right;
+    // height: $feed-height;
+    // width: $subfeed-width;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $color-border;
+    border-radius: $radius;
+    margin-left: 1%;
+    width: 48%;
+    // align-items: center;
+    flex-flow: column;
+    height: 100%;
+    
+    h3 {
+        font-size: 1.4rem;
+        margin: 1%;
+    }
+    p {
+        font-size: 1rem;
+        margin: 0%;
+    }
+    .bill-info {
+        margin: 1%;
+    }
+    
+   p {
+       white-space: pre-line;
+   }
+   .top {
+        max-height: 40%;
+        min-height: 24%;
+        overflow: scroll;
+        // align-items: flex-start;
+        margin: 1%;
+   }
+   .bottom {
+    //    height: 50%;
+        min-height: 0%;
+        max-height: 30%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        #poll-individual {
+            display: flex;
+            width: 65%;
+            border: 2px solid $color-border;
+            border-radius: 4px;
+            margin: 1%; 
+        }
+
+    }
+}   
+
+.bill-button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 18%;
+    // border: 1px solid $color-border;
+    // width: 50%;
+}
+#dialogue2 {
+    white-space: pre-wrap;
+
+}
+.full-text-button {
+    width: 20%;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: inherit;
+    margin-right: 1%;
+    display: flex;
+    justify-content: center;
+    padding-top: .8%;
+    
+}
+.full-text-button:hover {
+    background: $color-hover;
+}
+
+.sponsor-button {
+    background: inherit;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    text-align: center;
+    // margin-bottom: 1%;
+    font-size: 1.2rem;
+    
+
+    
+}
+.sponsor-button:hover {
+        background-color: $lighter-dark-blue;
+    }

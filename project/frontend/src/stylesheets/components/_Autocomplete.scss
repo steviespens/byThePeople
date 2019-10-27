@@ -1,0 +1,79 @@
+@import "../base/base";
+
+// body {
+//   font-family: sans-serif;
+// }
+
+// input {
+//   border: 1px solid #999;
+//   padding: 0.5rem;
+//   width: 50px;
+// }
+
+.no-suggestions {
+  color: #999;
+  padding: 0.5rem;
+}
+
+.suggestions {
+  border: 2px solid $color-border;
+  border-collapse: collapse;
+  border-radius: $radius;
+//   border-top-width: 0;
+  list-style: none;
+  margin-top: 1.8%;
+  max-height: 60vh;
+  overflow-y: scroll;
+  padding-left: 0;
+  width: calc(300px + 1rem);
+  position: absolute;
+  z-index: 2;
+  margin-top: 2.8%;
+  opacity: 100%;
+  background-color: $color-body;
+  :hover {
+    background: $color-hover;
+
+  }
+  li {
+    margin: 0%;
+    color: $white;
+  }
+}
+#suggestions {
+  margin-top: 1.8%;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: $color-hover;
+  // color: $pink;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid $color-border;
+}
+
+#autocomplete-input {
+    width: 90%;
+    align-self: center;
+    margin-top: 4%;
+    padding: 1%;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: inherit;
+    color: $white;
+
+    
+
+}
+
+#autocomplete-input::placeholder {
+        color: $gray;
+    }
