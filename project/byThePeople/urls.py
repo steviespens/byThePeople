@@ -63,7 +63,7 @@ urlpatterns = [
     # url(r'^logout/$', TemplateView.as_view(template_name="logout.html"),
     #     name='logout'),
         
-    url(r'^convert/', include('lazysignup.urls')),
+    # url(r'^convert/', include('lazysignup.urls')),
 
 
 
