@@ -36,7 +36,7 @@ const NewsBox = (props) => {
                 <ListItem key={index}>
                     {/* <span> */}
 
-                    <a button href={h.url} target="_blank" key={index}>
+                    <a href={h.url} target="_blank" key={index}>
                         <p className='headline-item'>
                         {h.title}
                         </p>

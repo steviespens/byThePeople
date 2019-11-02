@@ -108,17 +108,21 @@
 
 .login-form-submit{
     // font-family: 'Raleway', sans-serif;
-    height: 20%;
-    margin-top: 5%;
-    color: $white;
+    height: 3rem;
+    width: 35%;
+    margin-top: 7%;
+    color: #fff;
     background: $color-background;
     // background-color: inherit;
-    letter-spacing: 0.2rem;
+    // letter-spacing: 0.2rem;
     transition: 0.3s opacity ease;
     cursor: pointer;
     border: 1px solid $color-border;
     border-radius: $radius;
     text-align: center;
+}
+.login-form-submit:hover {
+    background: $color-hover;
 }
 
 
@@ -143,16 +147,17 @@
     height: 100%;
     justify-content: space-evenly;
     h1 {
-        margin: 0%;
+        margin: 0% 0% 3%;
         color: $color-background;
     }
     
     #additional-info-form {
         height: 100%;
-        width: 70%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         .form-submit {
             margin-top: 10%;
         }
@@ -190,11 +195,14 @@
     padding: 1%;
     margin-bottom: 2rem;
     height: 10%;
-    width: 16rem;
+    width: 90%;
     border: 1px solid $color-border;
     border-radius: $radius;
     background: inherit;
-    color: $white;
+    color: black;
+}
+#form-item-last {
+    margin-bottom: 2%;
 }
 
 .form-submit{
@@ -265,3 +273,13 @@ button:focus {
       transform: rotate(-70deg);
       content: '';
     }
+
+.registration-error-msg {
+    font-size: 1rem;
+    color: $red;
+    margin: 0%;
+    padding: 0%;
+}
+.registration-error-list {
+    margin-top: 3%;
+}

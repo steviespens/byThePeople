@@ -12,43 +12,43 @@ export default function withAuth(AuthComponent) {
         }
         
         componentWillMount() {
-            if (!Auth.loggedIn()) {
-                try {
-                    // console.log('tried Auth.refresh')
-                    Auth.refresh();
-                    const profile = Auth.getProfile()
+            // if (!Auth.loggedIn()) {
+            //     try {
+            //         // console.log('tried Auth.refresh')
+            //         Auth.refresh();
+            //         const profile = Auth.getProfile()
                     
-                    this.setState({
-                        user: profile
-                    })
-                    // console.log('got profile')
-                }
-                catch (err) {
-                    // console.log('caught err in Auth.refresh')
-                    console.log(err)
-                    Auth.logout()
-                    this.props.history.replace('/login')
-                }
-            }
-            else {
-                try {
-                    const profile = Auth.getProfile()
-                    this.setState({
-                        user: profile
-                    })
-                }
-                catch (err) {
-                    Auth.logout()
-                    this.props.history.replace('/login')
-                }
-            }
+            //         this.setState({
+            //             user: profile
+            //         })
+            //         // console.log('got profile')
+            //     }
+            //     catch (err) {
+            //         // console.log('caught err in Auth.refresh')
+            //         console.log(err)
+            //         Auth.logout()
+            //         this.props.history.replace('/register')
+            //     }
+            // }
+            // else {
+            //     try {
+            //         const profile = Auth.getProfile()
+            //         this.setState({
+            //             user: profile
+            //         })
+            //     }
+            //     catch (err) {
+            //         Auth.logout()
+            //         this.props.history.replace('/register')
+            //     }
+            // }
         }
         componentWillUpdate() {
             console.log('component will update')
         }
 
         render() {
-            if (this.state.user) {
+            if (true || this.state.user) {
 
                 return (
                     <AuthComponent history={this.props.history} user={this.state.user} />

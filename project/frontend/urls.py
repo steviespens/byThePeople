@@ -7,7 +7,7 @@ urlpatterns = [
     path('docket/', views.index),
     path('polls/', views.index),
     path('representatives/', views.index),
-    path('login/', views.index),
+    path('register/', views.index),
     path('admin/', views.index),
     
     # re_path(r'.*', views.index), #directly routing the path 'login/' to views.index would also work

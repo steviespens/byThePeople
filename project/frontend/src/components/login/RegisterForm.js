@@ -4,8 +4,9 @@ import AuthService from '../home/AuthService';
 import AdditionalInfoForm from './AdditionalInfoForm';
 import TextField from '@material-ui/core/TextField';
 
+import { withRouter } from 'react-router-dom';
 
-export default class RegisterForm extends Component {
+class RegisterForm extends Component {
     constructor() {
         super();
         //reqchange
@@ -19,7 +20,8 @@ export default class RegisterForm extends Component {
             ethnicity: '',
             education: '',
             salary: '',
-            age: ''
+            age: '',
+            errorMessage: null,
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -52,25 +54,51 @@ export default class RegisterForm extends Component {
     handleFormSubmit(e) {
         //make sure that all fields are
         e.preventDefault();
-        this.Auth.register(this.state.email, this.state.gender, this.state.politicalParty,
+        this.Auth.register(this.state.email, this.state.gender, this.state.politicalParty, this.state.ethnicity, this.state.education, this.state.salary, this.state.age,
             this.state.password1, this.state.password2)
             .then(res => {
-                this.props.history.replace('/');
+                // console.log(res)
+                location.reload()
+                // this.props.history.replace('/');
             })
             .catch(err => {
-                alert(err);
+                let m = JSON.parse(err.message);
+
+                const mm = Object.keys(m).map((k) => {
+                    return <p className='registration-error-msg' key={k}>{k + ': ' + m[k][0]['message']}</p>
+                })
+                this.setState({errorMessage:
+                    (
+                        <div className='registration-error-list'>
+                            <p className='registration-error-msg'>The following errors occured when processing your registration:</p>
+                            {mm}
+                        </div>
+                        // <p>The following errors occured when pr ocessing your registration:</p>
+                       
+                    )
+                })
+                // if ('email' in m) {
+                //     alert('A valid email address is required')
+                // }
+                // else if ('password2' in m) {
+                //     alert('Passwords must match')
+                // } else {
+                //     alert('All fields required')
+                // }                
             })
     }
 
 
     render() {
         return (
-            <div className="card">
-                <h1>Register</h1>
+        <React.Fragment>
+            {/* // <div className="card">
+            //     <h1>Register</h1>
                 {/* <form onSubmit={this.handleFormSubmit}> */}
-                <form>
-                 
+                {/* // <form> */}
+                <button className='header-register-button' onClick={this.handleClickOpen}>Register</button>
 
+{/* 
                     <input
                         className="form-item"
                         placeholder="Email"
@@ -101,24 +129,27 @@ export default class RegisterForm extends Component {
                         type="button"
                         onClick={this.handleClickOpen}
                     />
-                </form>
+                </form> */}
                 <AdditionalInfoForm
                     open={this.state.open}
                     onClose={this.handleClickClose}
                     handleFormSubmit={this.handleFormSubmit}
                     handleChange={this.handleChange}
+                    email={this.state.email}
+                    password1={this.state.password1}
+                    password2={this.state.password2}
                     gender={this.state.gender}
                     politicalParty={this.state.politicalParty}
                     ethnicity={this.state.ethnicity}
                     education={this.state.education}
                     salary={this.state.salary}
                     age={this.state.age}
-
-/>
-
-            </div>
+                    errorMessage={this.state.errorMessage}
+                    />
+        </React.Fragment>
+            // {/* // </div> */}
         );
     }
 
 }
-
+export default withRouter(RegisterForm);

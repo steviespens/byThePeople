@@ -77,7 +77,7 @@ class MemberView(viewsets.ModelViewSet):
     serializer_class = HouseRepSerializer
 
 
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
     def get_member_by_id(self, request, *args, **kwargs):
         def get_bio(id):
             url = 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + id
@@ -105,7 +105,7 @@ class MemberView(viewsets.ModelViewSet):
 
         return Response(data)
 
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
     def get_bills_by_member_by_id(self, request, *args, **kwargs):
         #get error with rep Miller
         def process_new_bills(bills):
@@ -174,7 +174,7 @@ class MemberView(viewsets.ModelViewSet):
         ser = UpcomingBillSerializer(qset, many=True)
         return Response(ser.data)
 
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
     def get_recent_votes_by_member_by_id(self, request, *args, **kwargs):
         
         def process_recent_votes(bills, identifier):

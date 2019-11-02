@@ -30,7 +30,7 @@ class Poll(models.Model):
         ordering = ["-pk"]
         # permissions = [
         #     ("modify_poll", "Can modify polls")
-        # ]
+        # 
 
 class UpcomingBill(models.Model):
     # chamber = models.CharField(max_length=10)  #make enum

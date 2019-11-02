@@ -87,4 +87,8 @@ export function range(start, end, step = 1) {
 }
 
 
+export const isLoggedIn = () => {
+    return localStorage.getItem("id_token") != null && localStorage.getItem("refresh_token") != null
+}
+
 

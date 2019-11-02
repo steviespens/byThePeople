@@ -7,6 +7,8 @@ import { VoteChoice } from '../utilities/helpers';
 import PollNoResult from "./PollNoResult";
 import PollResult from "./PollResult";
 import AuthService from "../home/AuthService";
+import { isLoggedIn } from '../utilities/helpers';
+
 
 export default class Poll extends React.Component {
     //checks that passed props conform
@@ -21,6 +23,7 @@ export default class Poll extends React.Component {
     }
 
     componentDidMount() {
+        if (!isLoggedIn()) return;
         const options = {
             method: 'POST',
             body: JSON.stringify({
@@ -37,6 +40,7 @@ export default class Poll extends React.Component {
         })
     }
     componentDidUpdate() {
+        if (!isLoggedIn()) return;
         const options = {
             method: 'POST',
             body: JSON.stringify({
@@ -56,28 +60,41 @@ export default class Poll extends React.Component {
         return prevProps.poll != this.props.poll || prevState.selected != this.state.selected;
     }
 
-
     handleChoice(e) {
+        // console.log('called')
+        // var a = fetch('https://google.com');
         e.preventDefault();
+        if (!isLoggedIn()) {
+            alert('Please create an account in order to vote')
+            return
+        };
         const options = {
             method: 'POST',
             body: JSON.stringify({
                 'choice_id': e.currentTarget.value
             })
         }
-        return this.Auth.fetch('api/choices/vote/', options)
+        // return this;
+        // return this.Auth.fetch();
+        this.Auth.fetch('api/choices/vote/', options)
             .then((response) => {
+                // console.log('hi')
                 this.setState({
                     poll: response,
                     selected: true
                 })
+                
             })
             .catch((error) => {
                 console.error(error);
             });
     }
 
+
+
     render() {
+        
+        // console.log(this.state.poll)
         const poll = this.state.poll;
         // console.log(poll)
         // console.log(this.props.poll)

@@ -22,7 +22,7 @@ const menuBarWidth = 150;
 
 export const RepsContext = React.createContext();
 export const BillsContext = React.createContext();
-export const HistoryContext = React.createContext();
+// export const HistoryContext = React.createContext();
 class Home extends Component {
     // const { classes } = props;
     constructor(props) {
@@ -45,7 +45,7 @@ class Home extends Component {
     }
     handleLogout() {
         this.Auth.logout()
-        this.props.history.replace('/login');
+        this.props.history.replace('/register');
     }
 
     componentDidMount() {
@@ -59,6 +59,8 @@ class Home extends Component {
         // });
 
         this.Auth.fetch_3('reps/house/', 'reps/senate/', 'api/upcomingbill/get_recent_bills/').then(([data1, data2, data3]) => {
+            // console.log(data2)
+
             let combined = data1.concat(data2);
             this.setState({
                 ...this.state,
@@ -184,7 +186,7 @@ class Home extends Component {
 
 
 };
-Home.contextType = { reps: RepsContext, bills: BillsContext }
+// Home.contextType = { reps: RepsContext, bills: BillsContext }
 
 export default withAuth(Home);
 // App.propTypes = {

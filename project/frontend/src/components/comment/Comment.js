@@ -4,7 +4,7 @@ import AuthService from '../home/AuthService';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Button from '@material-ui/core/Button';
-
+import { isLoggedIn } from '../utilities/helpers';
 const styles = createStyles({
     root: {
         backgroundColor: 'white',
@@ -113,6 +113,10 @@ function Comment(props) {
     }, [likeButtonStyle, dislikeButtonStyle])
 
     const likeComment = (e) => {
+        if (!isLoggedIn()) {
+            alert('Please create an account to like comments')
+            return
+        };
         const options = {
             method: 'POST',
             body: JSON.stringify({
@@ -120,6 +124,7 @@ function Comment(props) {
                 "action": e.currentTarget.value
             })
         }
+        
         Auth.fetch('/api/comments/like/', options).then((data) => {
             setComment(data[0]);
             checkUserLikedComment();
@@ -133,9 +138,7 @@ function Comment(props) {
                 "comment_id": id,
             })
         }
-
         Auth.fetch('/api/commentuserlikes/user_has_liked_comment/', options).then((data) => {
-            
             const likeInt = 1;
             const dislikeInt = 2;
             if (data == likeInt) {

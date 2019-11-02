@@ -1,5 +1,7 @@
 import decode from 'jwt-decode';
 import { withRouter } from 'react-router-dom';
+import { tsExpressionWithTypeArguments } from '@babel/types';
+// import { isLoggedin } from '../utilities/helpers';
 
 class AuthService {
     constructor(domain) {
@@ -7,9 +9,12 @@ class AuthService {
         this.fetch = this.fetch.bind(this)
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
-        this.use
+        this.hasTokenInLocalStorage = this.hasTokenInLocalStorage.bind(this)
+        // this.use
     }
-
+    hasTokenInLocalStorage() {
+        return localStorage.getItem("id_token") != null && localStorage.getItem("refresh_token") != null; 
+    }
     login(email, password) {
         const csrftoken = this.getCookie('csrftoken');
 
@@ -27,15 +32,39 @@ class AuthService {
                 password
             })
 
-        }).then(res => res.json()).then(res => {
-            this.setToken(res.access)
-            this.setRefreshToken(res.refresh)
-            return Promise.resolve(res);
-        })
+        
+        }).then((res) => {
+            //putting res.json() returns the json to this next function, but bc is in higher scope then, still have access to actual res object
+            return res.json()
+            .then((json) => {
+                if (res.ok) {
+                    return Promise.resolve(json)
+                }
+                //nothing handles these, percolates up to the caller which catches the err
+                else if (res.status === 400) {
+                    throw new Error('No account found with that username and password')
+                } else {
+                    throw new Error(json)
+                }
+            }).then((res) => {
+                this.setToken(res.access)
+                this.setRefreshToken(res.refresh)
+            }).catch((e) => {
+                //will only be called if there is error in setters
+                console.log(e)
+            })
+        }
+            
+            
+            // res => res.json()).then(res => {
+            // this.setToken(res.access)
+            // this.setRefreshToken(res.refresh)
+            // return Promise.resolve(res);
+        )
     }
 
 
-    register(email, gender, politicalParty, password1, password2) {
+    register(email, gender, politicalParty, ethnicity, education, salary, age, password1, password2) {
         const csrftoken = this.getCookie('csrftoken');
         const headers = {
             'Accept': 'application/json',
@@ -49,12 +78,46 @@ class AuthService {
                 email,
                 gender,
                 politicalParty,
+                ethnicity,
+                education,
+                salary,
+                age,
                 password1,
                 password2
             })
-        }).then(() => {
-            // this.setToken(res.access)
-            return this.login(email, password1);
+        }).then((res) => {
+            // console.log(res.json())
+            return res.json()
+                .then((json) => {
+                    if (res.ok) {
+                    return Promise.resolve(json)
+                } throw new Error(json)
+            })
+            // try {
+            //     if (res.ok) {
+            //         return this.login(email, password1);
+            //     } else {
+            //         throw new Error(res.body)
+            //     }
+            // }
+            // catch (err) {
+            //     console.log(err)
+            // }
+            // if (!res.ok) {
+            //     r = res.json()
+            //     console.log(r)
+            //     e = JSON.parse(res.json())
+            //     console.log(e)
+            //     if ('password2' in e) {
+            //         console.log('passwords dont match')
+            //     }
+            //     // console.log(data)
+            //     throw new Error()
+            // }
+            // // this.setToken(res.access)
+            // else {
+            //     return this.login(email, password1);
+            // }
         })
 
     }
@@ -131,8 +194,7 @@ class AuthService {
             this.setToken(token.access)
             return Promise.resolve(token);
 
-        }
-            , err => {
+        }, err => {
                 console.log(err)
             }
         )
@@ -147,9 +209,15 @@ class AuthService {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken
         }
-
-        if (!this.loggedIn()) {
-            
+        if (!this.hasTokenInLocalStorage()) {
+            return fetch(url, { headers, ...options }).then((res) => {
+                // if (response.status === 401) {
+                //     // do what you need to do here
+                // }
+                return res.json()
+            });
+        }
+        else if (!this.loggedIn()) {
             return this.refresh().then((res) => {
                 headers['Authorization'] = 'Bearer ' + this.getToken()
 
@@ -165,9 +233,13 @@ class AuthService {
                     );
                 return result;
             }, err => {
-                    console.log(err)
+                    // console.log(err)
                     this.logout;
-                    window.location.replace("/");
+                    location.reload();
+                    
+                    
+                    // window.location.replace("/");
+
             })
             
         }
@@ -201,7 +273,20 @@ class AuthService {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken
         }
-        if (!this.loggedIn()) {
+        if (!this.hasTokenInLocalStorage()) {
+            return Promise.all([
+                fetch(url, { headers, ...options }),
+                fetch(url2, { headers, ...options }),
+                fetch(url3, { headers, ...options }),
+
+            ])
+                .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
+                .then(([data1, data2, data3]) => {
+                    return ([data1, data2, data3]);
+                }
+                );
+        }
+        else if (!this.loggedIn()) {
             return this.refresh().then((res) => {
                 headers['Authorization'] = 'Bearer ' + this.getToken()
                 const result = fetch(url, {
@@ -216,9 +301,13 @@ class AuthService {
                 );
                 return result;
             }, err => {
-                    console.log(err)
+                    // console.log(err)
                     this.logout();
-                    window.location.replace("/");
+                    location.reload();
+                    // window.location.replace("/");
+                    // return fetch(url, { headers, ...options }).then((r) => r.json());
+       
+
             })
         }
         else {

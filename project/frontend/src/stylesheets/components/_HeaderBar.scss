@@ -1,15 +1,15 @@
 @import "../base/base";
 
-.header-bar, #header-bar {
+.header-bar {
     background-color: $color-horizontal-bar;
     height: 10%;
     // align-content: flex-start;
     // vertical-align: middle;
     border-bottom: 1px solid $color-border-header;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     a {
         font-size: 2.3rem;
         // font-family: inherit cursive;
@@ -40,3 +40,91 @@
     // }
 }
 
+.login-header {
+    margin-right: -41%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 35%;
+}
+
+.header-logout-button {
+    background-color: inherit;
+    border: 1px  solid $color-border;
+    // border-top: 0;
+    // border-left: 0;
+    // border-right: 0;
+    // border-top: none;
+    border-radius: $radius;
+    // letter-spacing: 0.2rem;
+    // transition: 0.3s opacity ease;
+    cursor: pointer;
+    // border-radius: 5px;
+    color: $white;
+    height: 60%;
+    width: 10%;
+    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    margin-right: 3%;
+
+}
+.header-logout-button:hover {
+    background: $color-hover;
+}
+
+.header-form-item{
+    // font-family: 'Raleway', sans-serif;
+    padding: 1%;
+    // margin-bottom: 2rem;
+    height: 30%;
+    width: 16rem;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: inherit;
+    color: $white;
+}
+
+.header-form-submit {
+    // font-family: 'Raleway', sans-serif;
+    width: 27%;
+    height: 60%;
+    color: #fff;
+    background-color: inherit;
+    // letter-spacing: 0.2rem;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    // text-align: center;
+}
+
+.header-form-submit:hover{
+   background: $color-hover;
+}
+
+.header-link {
+    font-size: 1rem;
+    color: $color-border;
+    
+}
+.header-register-button {
+    width: 9%;
+    height: 60%;
+    color: #fff;
+    background-color: inherit;
+    // letter-spacing: 0.2rem;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    margin-right: 3%;
+    // display: flex;
+    // justify-content: center;
+    // text-align: center;
+}
+.header-register-button:hover {
+    background: $red;
+   
+}

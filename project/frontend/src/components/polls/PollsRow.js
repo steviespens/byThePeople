@@ -22,7 +22,6 @@ const PollsRow = (props) => {
     const ref = useRef(null);
     const [topic, setTopic] = useState(props.topic);
     useEffect(() => {
-
         if (sessionStorage.scrollPosition) {
             ref.current.scrollLeft = sessionStorage.scrollPosition;
         }

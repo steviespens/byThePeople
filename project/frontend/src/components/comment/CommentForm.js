@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import AuthService from '../home/AuthService';
-
+import { isLoggedIn } from '../utilities/helpers';
 
 
 export default function CommentForm(props) {
@@ -16,6 +16,10 @@ export default function CommentForm(props) {
     }, [props.id]);
 
     const submit = () => {
+        if (!isLoggedIn()) {
+            alert('Please create an account to leave a commment')
+            return
+        };
         // const obj = JSON.stringify({ "bill": props.id.toString(), "text": props.formText });
         const options = {
             method: 'POST',

@@ -2,7 +2,7 @@
 import Home from "./components/home/Home";
 // import MenuBar from "./components/MenuBar";
 // import MainFeed from "./components/MainFeed";
-// import HeaderBar from "./components/HeaderBar";
+import HeaderBar from "./components/home/HeaderBar";
 // import News from "./components/News";
 // import Docket from "./components/Docket";
 // import UserPage from "./components/UserPage";
@@ -21,8 +21,10 @@ import Admin from './components/admin/Admin';
 
 // ReactDOM.render(<Home />, document.querySelector('#view'));
 ReactDOM.render(
+    <React.Fragment>
+    
     <Router>
-        <React.Fragment>
+            <HeaderBar></HeaderBar>
             <Route exact path="/" component={Home} />
             <Route exact path="/about"
                 render={(props) => <Home {...props} refreshRoute={"/about"}/>}
@@ -37,8 +39,9 @@ ReactDOM.render(
                 render={(props) => <Home {...props} refreshRoute={"/representatives"} />}
             />
 
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Login} />
             <Route exact path="/admin" component={Admin} />
-        </React.Fragment>
-    </Router>,
-    document.getElementById('view'));
+        
+        </Router>
+    </React.Fragment>,
+        document.getElementById('view'));

@@ -21,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-
+from rest_framework import status
 
 #not doing sqlinjection cleans in function below
 @api_view(['POST', ])
@@ -29,6 +29,8 @@ def save_voting_district(request):
     authentication_classes = (JWTTokenUserAuthentication,)
     permission_classes = (IsAuthenticated,)
     data = json.loads(request.body.decode())
+    if request.user.is_anonymous:
+        return Response(False)
     user = User.objects.get(id=request.user.id)
     user.state = data['state']
     user.district = data['district']
@@ -68,11 +70,11 @@ def signup(request):
             # login(request, user)
             return Response('created new user')
         else:
-            print('form NOT VALID')
-            print(request.POST)
-            print(form.errors)
-            print(form.non_field_errors)
-            return Response('did not')
+            # print('form NOT VALID')
+            # print(request.POST)
+            # print(form.errors.as_json())
+            # print(form.non_field_errors)
+            return Response(form.errors.as_json(), status=status.HTTP_400_BAD_REQUEST)
     # else:
     #     form = UserCreationForm()
     # return render(request, 'signup.html', {'form': form})

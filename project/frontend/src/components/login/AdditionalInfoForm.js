@@ -9,11 +9,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useState, useEffect } from 'react';
 
 import { withStyles, createStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 // import AuthService from './AuthService';
 
 const styles = createStyles({
     root: {
+        width: '90%',
 
         // minHeight: '80vh',
         // maxHeight: '80vh',
@@ -34,10 +36,21 @@ const styles = createStyles({
         background: '#121848',
 
 
-    }
-
+    },
+    paper: {
+        width: '40%',
+    },
+    // textField: {
+    //     width: '90%',
+    // }
+   
 });
-
+const useStyles = makeStyles({
+    paper: {
+        width: '25%',
+    },
+    
+});
 function AdditionalInfoForm(props) {
 
     const open = props.open;
@@ -196,19 +209,47 @@ function AdditionalInfoForm(props) {
         }
     )
 
-
+    const classes = useStyles();
     return (
         <Dialog
             open={open}
             onClose={onClose}
             maxWidth='lg'
+            classes={{
+                paper: classes.paper,
+            }}
+            // scroll="paper"
         >
             <DialogContent >
                 <div className="additional-info-card">
-                    <h1>Additional Information</h1>
-                    <form id='additional-info-form'onSubmit={handleFormSubmit}>
+                    <h1>Register</h1>
+                    <form id='additional-info-form' onSubmit={handleFormSubmit}>
+                        <input
+                            className="form-item"
+                            placeholder="Email"
+                            name="email"
+                            type="text"
+                            value={props.email}
+                            onChange={handleChange('email')}
+                        />
+                        <input
+                            className="form-item"
+                            placeholder="Password"
+                            name="password1"
+                            type="password"
+                            value={props.password1}
+                            onChange={handleChange('password1')}
+                        />
+                        <input
+                            className="form-item"
+                            id="form-item-last"
+                            placeholder="Confirm password"
+                            name="password2"
+                            type="password"
+                            value={props.password2}
+                            onChange={handleChange('password2')}
+                        />
                         <TextField
-                            // classes={props.classes.root}
                             id='additional-form-textfield'
                             select
                             label="Gender"
@@ -291,10 +332,11 @@ function AdditionalInfoForm(props) {
 
                         <input
                             className="login-form-submit"
-                            value="SUBMIT"
+                            value="Submit"
                             type="submit"
                         />
                     </form>
+                    {props.errorMessage != null ? props.errorMessage : null}
                 </div>
             </DialogContent>
         </Dialog>

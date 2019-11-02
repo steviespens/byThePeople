@@ -37,4 +37,3 @@ class MemberBillVotes(models.Model):
     # class Meta:
     #     unique_together = (('member', 'bill'))
 
-#hi

@@ -36,8 +36,8 @@ export default function MenuBar(props) {
     // });
     const linkList = titles.map((title, index) => {
       
-        return (<Link className="link" to={links[index]}>
-            <MenuListItem id={title} value={title} onClick={() => onClick(title)} key={title}>
+        return (<Link className="link" to={links[index]} key={title}>
+            <MenuListItem id={title} value={title} onClick={() => onClick(title)} >
                 
             </MenuListItem>
 
@@ -58,7 +58,7 @@ export default function MenuBar(props) {
         <MainFeedList className="menu-bar">
             {linkList}
 
-            <button type="button" className="logout-button" onClick={props.handleLogout}>Logout</button>
+            {/* <button type="button" className="logout-button" onClick={props.handleLogout}>Logout</button> */}
 
         </MainFeedList>
     );

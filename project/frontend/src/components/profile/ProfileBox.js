@@ -2,18 +2,19 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import AuthService from '../home/AuthService';
 import { useState, useEffect } from 'react';
-import SimpleMenu from '../reps/SimpleMenu';
-
+import SimpleMenu from './SimpleMenu';
+import { isLoggedIn } from '../utilities/helpers';
 
 export default function ProfileBox(props) {
 
     const Auth = new AuthService();
-    const [email, setEmail] = useState('');
-    const [gender, setGender] = useState('')
+    const [email, setEmail] = useState('User is not logged in');
+    const [gender, setGender] = useState(null);
     const [userMetadata, setUserMetadata] = useState(null);
-    const [politicalParty, setPoliticalParty] = useState('')
+    const [politicalParty, setPoliticalParty] = useState(null);
    
     useEffect(() => {
+        if (!isLoggedIn()) return;
         Auth.fetch('api/get_user_metadata/').then((data) => {
             data = JSON.parse(data);
             setEmail(data.email);
@@ -28,6 +29,9 @@ export default function ProfileBox(props) {
         <MenuItem onClick={handleClose}>Profile</MenuItem>
 
     }
+    const makeSubLine = () => {
+        return (gender == null || politicalParty == null) ? null : (<p>{gender + ' | ' + politicalParty}</p>);
+    }
     return (
         <div className="profile-box">
            
@@ -35,7 +39,8 @@ export default function ProfileBox(props) {
            
             
             <p>{email}</p>
-            <p>{gender + ' | ' + politicalParty}</p>
+            {makeSubLine()}
+            {/* <p>{gender + ' | ' + politicalParty}</p> */}
             <SimpleMenu userMetadata={userMetadata}>
 
             </SimpleMenu>

@@ -18,7 +18,6 @@ const LoginForm = (props) => {
     useEffect(() => {
       
     }, )
- 
     return (
         <div className="card">
             <h1>Login</h1>

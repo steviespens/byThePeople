@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import './Login.css';
-import RegisterForm from './RegisterForm'
+import RegisterForm from './RegisterForm';
 import AuthService from '../home/AuthService';
 import LoginForm from './LoginForm';
 
@@ -73,8 +73,10 @@ class Login extends Component {
                             See what your Reps have been up to
                         </p>
                 </div>
-                <div className="right">
-                    <div className="card">
+                <div className="right"> 
+                {/* <LoginForm handleChange={this.handleChange} handleFormSubmit={this.handleFormSubmit}></LoginForm> */}
+                
+                    {/* <div className="card">
                         <h1>Login</h1>
                         <form onSubmit={this.handleFormSubmit}>
                             <input
@@ -97,7 +99,7 @@ class Login extends Component {
                                 type="submit"
                             />
                         </form>
-                    </div>
+                    </div>  */}
                     <RegisterForm history={this.props.history} />
 
                 </div>

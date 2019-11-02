@@ -35,7 +35,6 @@ const styles = createStyles({
 
 
 function PollList(props) {
-
     const question = props.question;
 
     return (

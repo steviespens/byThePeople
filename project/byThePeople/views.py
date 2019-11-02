@@ -66,7 +66,7 @@ class JSONFileView(viewsets.ModelViewSet):
     #         json_data = json.load(jsonfile)
     #     return Response(json_data)
     
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,), )
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,), )
     def get_bill_data(self, request, *args, **kwargs):
         data = json.loads(request.body.decode())
         congress = data['congress_num']
@@ -98,7 +98,7 @@ class TextFileView(viewsets.ModelViewSet):
         # root_path = 'https://s3.amazonaws.com/bythepeople/' + prefix + billNumber + '/text-versions/ih/document.txt'
         # f = requests.get(root_path)
         # return Response(json.dumps({'full_text': f.decode()}))
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,), )
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,), )
     def get_bill_html(self, request, *args, **kwargs):
         data = json.loads(request.body.decode())
         congress = data['congress_num']
@@ -153,7 +153,7 @@ class UpcomingBillListCreate(viewsets.ModelViewSet):
         return UpcomingBill.objects.all()
 
     # @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,), url_path='get_related_polls/(?P<bill_id>[^/.]+)')
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,),)
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,),)
     def get_related_polls(self, request, *args, **kwargs):
         data = json.loads(request.body.decode())
         bill_id = data['bill_id']
@@ -166,12 +166,12 @@ class UpcomingBillListCreate(viewsets.ModelViewSet):
             return Response(json.dumps({'exists': True, 'polls': serializer.data}))
         return Response(json.dumps({'exists': False}))
 
-    @action(detail=False, methods=['get'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['get'], permission_classes=(AllowAny,))
     def get_soup(self, request):
         title = get_html()
         return Response(json.dumps({'title': title}))
     
-    @action(detail=False, methods=['get'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['get'], permission_classes=(AllowAny,))
     def get_recent_bills(self, request, *args, **kwargs):
         def process_new_bills(bills):
             for i in bills:
@@ -256,16 +256,16 @@ class HeadlineListCreate(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
     # permission_classes = (IsAuthenticated,)
 
-    # def get_queryset(self):
-    #     # get_headlines()
-    #     return Headline.objects.all()
-    queryset = Headline.objects.all()
+    def get_queryset(self):
+        get_headlines()
+        return Headline.objects.all()
+    # queryset = Headline.objects.all()
     serializer_class = HeadlineSerializer
 
 
 class PollListCreate(viewsets.ModelViewSet):
     authentication_classes = (JWTTokenUserAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     serializer_class = PollSerializer
     def get_queryset(self):
         return Poll.objects.all()
@@ -275,7 +275,7 @@ class PollListCreate(viewsets.ModelViewSet):
             return Poll.objects.filter(topic=topic)[:NUM_TO_RETURN]
         return Poll.objects.all()[:NUM_TO_RETURN]
     
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
     def get_topic(self, request, *args, **kwargs):
         data = json.loads(request.body.decode())
         topic = data['topic']
@@ -294,7 +294,7 @@ class PollListCreate(viewsets.ModelViewSet):
         return Response(ser)
 
     #HANDLE if there are no votes yet
-    @action(detail=False, methods=['get'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['get'], permission_classes=(AllowAny,))
     def get_recommended_polls(self, request, *args, **kwargs):
         recs = compute_recommended_polls_list(user_id=request.user.id)
         rec_polls = []
@@ -449,7 +449,7 @@ class CommentListCreate(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     # def get_queryset(self, request, bill_id):  #only receives the self argument
     #     return Comment.objects.filter(bill=bill_id)
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
     def get_comment_for_bill(self, request, *args, **kwargs):
         data = json.loads(request.body.decode())
         bill_id = data['bill_id']
@@ -478,7 +478,7 @@ class CommentListCreate(viewsets.ModelViewSet):
     def remove_comment(self, request, comment_id):
         return
 
-    @action(detail=False, methods=['post'], permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
 
     def get_user_email_for_comment(self, request, *args, **kwargs):
         data = json.loads(request.body.decode())

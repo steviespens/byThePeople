@@ -12,19 +12,15 @@ const AboutFeed = () =>  {
                 constituents and representatives by enabling voters to express
                 opinions, socialize political views, and gather policy information
                 in a simple, comprehensive manner, shifting the democratic process
-            back into the hands of those that matter most, The People.
-                {/* </p> */}
-            {/* </div> */}
-            {/* <div className='about-our-data'> */}
-                {/* <p> */}
-                    We source most of our data, including recent bills, 
+                back into the hands of those that matter most, The People. We source 
+                most of our data, including recent bills, 
                     Congressperson biographical information, and voting records 
                     from&nbsp;
                     <a href='https://www.propublica.org' target="_blank">ProPublica</a>
                     's API. This API in turn directly scrapes data from the&nbsp;
                     <a href='https://www.congress.gov' target="_blank">Congress</a>
                     &nbsp;website. Full bill text is usually unavailable until a couple 
-                    of days after introduction.
+                    of days after introduction, but we scrape this ourselves from <a href='https://www.congress.gov' target="_blank">congress.gov</a>.
                     <br></br>
                     <br></br>
                     Our polls are created by us, and for polls that are related to 

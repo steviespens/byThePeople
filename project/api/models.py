@@ -57,6 +57,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
+    
     MALE = 'male'
     FEMALE = 'female'
     NON_BINARY = 'non-binary'
@@ -99,7 +100,7 @@ class User(AbstractBaseUser):
     )
     district = models.IntegerField(default=0)
 
- 
+    
     # date_of_birth = models.DateField()
     # is_active = models.BooleanField(default=True)
     # is_admin = models.BooleanField(default=False)
