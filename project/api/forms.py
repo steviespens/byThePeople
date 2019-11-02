@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
 from api.models import User
 
 
@@ -30,7 +30,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'gender', 'political_party',)
+        fields = ('email', 'gender', 'political_party', 'ethnicity', 'education', 'salary', 'age')
 
     def clean_password2(self):
         # Check that the two password entries match

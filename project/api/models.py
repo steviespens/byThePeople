@@ -92,6 +92,83 @@ class User(AbstractBaseUser):
         default=INDEPENDENT,
     )
 
+    CAUCASIAN = 'caucasian'
+    AFRICAN_AMERICAN = 'african-american'
+    AMERICAN_INDIAN = 'american-indian'
+    HISPANIC = 'hispanic'
+    ASIAN = 'asian'
+    PACIFIC_ISLANDER = 'pacific-islander'
+    OTHER_ETHNICITY = 'other'
+    ETHNICITY_CHOICES = (
+        (CAUCASIAN, 'caucasian'),
+        (AFRICAN_AMERICAN, 'african-american'),
+        (AMERICAN_INDIAN, 'american-indian'),
+        (HISPANIC, 'hispanic'),
+        (PACIFIC_ISLANDER, 'pacific-islander'),
+        (OTHER_ETHNICITY, 'other'),
+    )
+    ethnicity = models.CharField(
+        max_length=20,
+        choices=ETHNICITY_CHOICES,
+        default=OTHER_ETHNICITY,
+    )
+
+    LESS = 'less-than-high-school'
+    HIGH_SCHOOL = 'high-school'
+    SOME_COLLEGE = 'some-college'
+    ASSOCIATE = 'associate'
+    UNDERGRAD = 'undergraduate'
+    MASTER = 'master'
+    DOCTORATE = 'doctorate'
+    EDUCATION_CHOICES = (
+        (LESS, 'less-than-high-school'),
+        (HIGH_SCHOOL, 'high-school'),
+        (SOME_COLLEGE, 'some-college'),
+        (ASSOCIATE, 'associate'),
+        (UNDERGRAD, 'undergraduate'),
+        (MASTER, 'master'),
+        (DOCTORATE, 'doctorate'),
+    )
+    education = models.CharField(
+        max_length=26,
+        choices=EDUCATION_CHOICES,
+        default=LESS,
+    )
+    LEVEL_0 = 0
+    LEVEL_1 = 1
+    LEVEL_2 = 2
+    LEVEL_3 = 3
+    LEVEL_4 = 4
+    LEVEL_5 = 5
+    LEVEL_6 = 6
+    SALARY_CHOICES = (
+        (LEVEL_0, 0),
+        (LEVEL_1, 1),
+        (LEVEL_2, 2),
+        (LEVEL_3, 3),
+        (LEVEL_4, 4),
+        (LEVEL_5, 5),
+        (LEVEL_6, 6),
+    )
+    salary = models.IntegerField(
+            choices=SALARY_CHOICES,
+            default=LEVEL_0,
+        )
+    MINOR = 0
+    ELDER = 80
+
+    AGE_CHOICES = (
+        (MINOR, 0),
+        *[(i,i) for i in range(ELDER)],
+        (ELDER, 100),
+    )
+
+    age = models.IntegerField(
+            choices=AGE_CHOICES,
+            default=MINOR,
+        )
+    
+
     is_admin = models.BooleanField(default=False)
 
     state = models.CharField(
@@ -108,7 +185,7 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['gender', 'political_party']
+    REQUIRED_FIELDS = ['gender', 'political_party', 'ethnicity', 'education', 'salary', 'age']
 
     # def get_full_name(self):
     #     # The user is identified by their email address
