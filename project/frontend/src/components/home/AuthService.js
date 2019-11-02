@@ -64,7 +64,7 @@ class AuthService {
     }
 
 
-    register(email, gender, politicalParty, ethnicity, education, salary, age, password1, password2) {
+    register(email, gender, political_party, ethnicity, education, salary, age, password1, password2) {
         const csrftoken = this.getCookie('csrftoken');
         const headers = {
             'Accept': 'application/json',
@@ -77,7 +77,7 @@ class AuthService {
             body: JSON.stringify({
                 email,
                 gender,
-                politicalParty,
+                political_party,
                 ethnicity,
                 education,
                 salary,

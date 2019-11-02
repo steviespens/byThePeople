@@ -267,8 +267,8 @@ function AdditionalInfoForm(props) {
                             select
                             label="Political Party"
                             className={"political-selector " + props.classes.root}
-                            value={props.politicalParty}
-                            onChange={handleChange('politicalParty')}
+                            value={props.political_party}
+                            onChange={handleChange('political_party')}
                         >
                             {politicalParties.map(option =>
                                 <MenuItem key={option.value} value={option.value}>

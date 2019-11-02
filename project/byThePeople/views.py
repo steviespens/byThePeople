@@ -258,7 +258,8 @@ class HeadlineListCreate(viewsets.ModelViewSet):
 
     def get_queryset(self):
         get_headlines()
-        return Headline.objects.all()
+        NUM_HEADLINES_TO_RETURN = 20
+        return Headline.objects.all()[:NUM_HEADLINES_TO_RETURN]
     # queryset = Headline.objects.all()
     serializer_class = HeadlineSerializer
 

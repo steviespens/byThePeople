@@ -61,6 +61,7 @@ def signup(request):
     
     #need to sqlinjection cleanse
     if request.method == 'POST':
+        print(request.data)
         form = UserCreationForm(request.data)
         if form.is_valid():
             user = form.save()

@@ -16,7 +16,7 @@ class RegisterForm extends Component {
             password1: '',
             password2: '',
             gender: '',
-            politicalParty: '',
+            political_party: '',
             ethnicity: '',
             education: '',
             salary: '',
@@ -53,8 +53,9 @@ class RegisterForm extends Component {
     //reqchange
     handleFormSubmit(e) {
         //make sure that all fields are
+        console.log(this.state)
         e.preventDefault();
-        this.Auth.register(this.state.email, this.state.gender, this.state.politicalParty, this.state.ethnicity, this.state.education, this.state.salary, this.state.age,
+        this.Auth.register(this.state.email, this.state.gender, this.state.political_party, this.state.ethnicity, this.state.education, this.state.salary, this.state.age,
             this.state.password1, this.state.password2)
             .then(res => {
                 // console.log(res)
@@ -139,7 +140,7 @@ class RegisterForm extends Component {
                     password1={this.state.password1}
                     password2={this.state.password2}
                     gender={this.state.gender}
-                    politicalParty={this.state.politicalParty}
+                    political_party={this.state.political_party}
                     ethnicity={this.state.ethnicity}
                     education={this.state.education}
                     salary={this.state.salary}
