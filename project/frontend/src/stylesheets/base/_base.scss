@@ -4,8 +4,6 @@
 $menu-bar-width: 241px;
 $font-menu-bar-item: 'Times New Roman', Times, serif;
 $feed-height: 100%;
-// $feed-width: 550px; CHANGE
-// $feed-height: 27%;
 $feed-width: 80%;
 $feed-border: 1px solid $color-border;
 $root-height: 600px;
@@ -13,38 +11,20 @@ $root-width: 1200px;
 
 $subfeed-width: 350px;
 %box-container {  //this is being used only for MainFeed and MenuFeed
-    // border: $feed-border;
-    // border-collapse: collapse;
     background-color: $color-background;
     align-items: center;
     list-style: none;
     height: 100%;
-    
-
-    
-    // width: $feed-width;
-    // height: $feed-height;
-
-
 };
 
 %feed {
     width: $feed-width;
     height: $feed-height;
-    // border: $feed-border;
-    // outline: 1px solid black;
-    // outline-offset: -1px;
     margin-left: 1%;
-    // border: 1px solid $color-border;
-    // border-radius: $radius;
-    // padding: 1%;
 }
 
 
-
 $main-feed-first-row-box-height: calc(#{$root-height} / 2);
-// $main-feed-first-row-box-height: 30%;
-// $main-feed-second-row-box-height: 30%;
 
 $main-feed-second-row-box-height: calc(#{$root-height} / 2);
 %main-feed-first-row-box {
@@ -52,8 +32,6 @@ $main-feed-second-row-box-height: calc(#{$root-height} / 2);
     height: calc(#{$main-feed-first-row-box-height} - 2vh);
     width: 30%;
     height: 100%;
-    // outline: 1px solid black;
-    // outline-offset: -1px;
     box-sizing: border-box;
     flex-grow: 1;
     h5 {
@@ -66,20 +44,15 @@ $main-feed-second-row-box-height: calc(#{$root-height} / 2);
 }
 %main-feed-second-row-box{
     overflow: scroll;
-
-    // height: calc(#{$main-feed-second-row-box-height} - 2vh);
-    // outline: 1px solid black;
-    // outline-offset: -1px;
     margin: 0%;
-
     h5 {
         margin-top: 0%;
     }
     border: 2px solid $color-border;
     border-radius: $radius;
     margin-top: 2%;
-
 }
+
 html {
     height: 100%;
     font-size: .69vw;
@@ -87,10 +60,8 @@ html {
 
 .box-header {
         position: absolute;
-        // z-index: 2;
         background: $dark-green;
         width: 25%;
-
     }
 
 

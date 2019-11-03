@@ -27,6 +27,7 @@ function Admin(props) {
     const [numChoices, setNumChoices] = useState(0);
     const [counter, setCounter] = useState(0);
     const [related_bill, setRelatedBill] = useState('');
+    const MAX_QUESTION_LEN = 48;
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -47,7 +48,7 @@ function Admin(props) {
             window.location.reload();
         })
     }
-    
+
     const updateChoices = e => {
         setChoices({
             ...choices,
@@ -74,7 +75,7 @@ function Admin(props) {
     //returns false if input is invalid
     //relatedBill field is not required
     const isInputValid = () => {
-        if (question == '' || topic == '' || numChoices < 1) {
+        if (question == '' || question.length > MAX_QUESTION_LEN || topic == '' || numChoices < 1) {
             return false;
         }
         for (var c of Object.entries(choices)) {

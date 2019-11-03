@@ -1,7 +1,6 @@
 @import "../base/base";
 
 .about-feed {
-    // max-height: 600px;
     @extend %feed;
     overflow: auto;
     margin-top: 0%;
@@ -11,27 +10,11 @@
     align-items: center;
     border: 2px solid $color-border;
     border-radius: $radius;
-    // p {
-    //     padding: 2vh;
-    //     justify-content: space-between;
-    //     align-items: center;
-
-    // }
     p {
         font-size: 1.4rem;
-        // text-align: center;
-        // vertical-align: middle;
         margin: 2%;
     }
     
-
-    // div {
-    //     margin: 1vh;
-    //     padding: 1vh;
-    //     border: 1px solid black;
-        
-
-    // }
     
 }
 .about-feed-img-container {

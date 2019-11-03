@@ -3,55 +3,29 @@
 .representatives {
     
     display: flex;
-    // justify-content: space-between;
     overflow: auto;
     margin-top: 0%;
-    // float: left;
     @extend %feed;
-    // padding-left: 1%;
     margin: 0%;
     .left {
-
-        // height: 100%;
         width: 25%;
         display: flex;
         flex-direction: column;
         overflow: scroll;
-        // margin-top: 0%;
-        // margin: 1vh;
         margin-left: 1%;
         flex-grow: .3;
         border: 2px solid $color-border;
         border-radius: $radius;
-
         box-sizing: border-box;
-
-        // float: left;
-        // .top {
-        //     height: 100%;
-
-        //     display: flex;
-        //     flex-direction: column;
-        //     overflow: scroll;
-        //     margin: 1vh;
-        // }
         .bottom {
             height: 35%;
             display: flex;
             flex-direction: column;
-
         }
         .autocomplete {
             display: flex;
             justify-self: flex-end;
         }
-        
-
-        // .reps-list {
-        //     position: relative;
-        //     z-index: 1;
-        // }
-
     }
     .middle {
         height: 100%;
@@ -60,7 +34,6 @@
         flex-direction: column;
         justify-content: space-between;
         overflow: auto;
-        // margin-top: 0%;
         overflow: scroll;
         border: 2px solid $color-border;
         border-radius: $radius;
@@ -70,17 +43,13 @@
                 font-size: 1.2rem;
                 margin: 1% 2% 1%;
             }
-
         }
         flex-grow: .9;
         box-sizing: border-box;
-
-        // float: left;
     }
     .right {
         width: 25%;
         overflow: scroll;
-
         border: 2px solid $color-border;
         border-radius: $radius;
         .single-rep-recent-votes {
@@ -88,22 +57,14 @@
                 font-size: 1.2rem;
                 margin: 1% 2% 1%;
             }
-            // width: 100%;
-            // margin-left: 1%;
-
         }
         flex-grow: 1;
-
         box-sizing: border-box;
-
-
     }
-
 
 }
 
 #list-item-icon {
     align-self: center;
     margin: 0% .5% 0% 2%;
-    // color: red;
 }

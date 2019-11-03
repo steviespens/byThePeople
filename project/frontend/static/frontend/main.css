@@ -5008,6 +5008,7 @@ html {
   display: block;
   align-items: flex-start;
   height: 100%;
+  will-change: transform;
 }
 .polls-row-box h1, .polls-row-box h2, .polls-row-box h3, .polls-row-box h4, .polls-row-box h5 {
   font-size: 1vw;
@@ -5025,7 +5026,6 @@ html {
   outline-offset: -1vh;
   margin-left: 1%;
   flex-shrink: 0;
-  display: flex;
 }
 
 .polls-row::-webkit-scrollbar {

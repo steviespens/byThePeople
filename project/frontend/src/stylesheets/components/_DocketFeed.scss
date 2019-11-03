@@ -2,12 +2,9 @@
 
 .docket-feed {
     
-    // width: 1000px;
     display: flex;
     justify-content: space-between;
-    // overflow: auto;
     margin-top: 0%;
-    // float: left;
     @extend %feed;
    
 }
@@ -19,7 +16,6 @@
     overflow: auto;
     border: 2px solid $color-border;
     border-radius: $radius;
-    // padding: 1%;
 
 }
 

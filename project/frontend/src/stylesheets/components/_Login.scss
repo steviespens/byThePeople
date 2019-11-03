@@ -3,8 +3,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 .login{
-    // font-family: 'Raleway', sans-serif;
-    // background-color: #1abc9c;
     position: absolute;
     height: 82vh;
     width: 100%;
@@ -19,7 +17,6 @@
         width: 60%;
         height: 75vh;
         display: grid;
-        // flex-direction: column;
         grid-template-rows: minmax(30px, 110px) minmax(30px, 120px) minmax(30px, 230px);
         grid-template-columns: 60% 40%;
         grid-gap: 10% 4.1%;
@@ -33,38 +30,22 @@
         }
        
         .img1 {
-            // align-self: center;
-            // display: flex;
-            // flex-direction: column;
-            // flex-shrink: 1;
-            // text-align: center;
             grid-area: top1;
             justify-self: center;
 
         }
         .img2 {
-            // align-self: center;
-            // display: flex;
-            // flex-direction: column;
             grid-area: middle1;
             justify-self: center;
-            // text-align: center;
-
 
         }
         .img3 {
-            // align-self: center;
-            // display: flex;
-            // flex-direction: column;
             grid-area: bottom1;
             justify-self: center;
-            // text-align: center;
-
 
         }
         img {
             margin: 0%;
-            // min-width: 100%;
             width: 100%;
             height: auto;
         }
@@ -76,18 +57,15 @@
             font-style: italic;
         }
         .p1 {
-            // align-self: flex-start;
             grid-area: top2;
             
         }
         .p2 {
-            // align-self: center;
             grid-area: middle2;
            
 
         }
         .p3 {
-            // align-self: flex-end;
             grid-area: bottom2;
         }
     }
@@ -95,26 +73,19 @@
         height: 100%;
         width: 25%;
         padding: 2%;
-        // justify-self: flex-end;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-
-
-      
 
     }
 }
 
 .login-form-submit{
-    // font-family: 'Raleway', sans-serif;
     height: 3rem;
     width: 35%;
     margin-top: 7%;
     color: #fff;
     background: $color-background;
-    // background-color: inherit;
-    // letter-spacing: 0.2rem;
     transition: 0.3s opacity ease;
     cursor: pointer;
     border: 1px solid $color-border;
@@ -125,20 +96,11 @@
     background: $color-hover;
 }
 
-
-// #additional-info-form {
-//     height: 100%;
-//     h1 {
-//         margin: 0;
-//     }
-    
-// }
 .gender-selection {
     width: 70%;
 }
 .additional-info-card {
     background-color: #fff;
-    // background: $color-background;
     border-radius: 15px;
     padding: 0.8rem;
     display: flex;
@@ -191,7 +153,6 @@
     margin-bottom: 1%;
 }
 .form-item{
-    // font-family: 'Raleway', sans-serif;
     padding: 1%;
     margin-bottom: 2rem;
     height: 10%;
@@ -206,7 +167,6 @@
 }
 
 .form-submit{
-    // font-family: 'Raleway', sans-serif;
     height: 20%;
     color: #fff;
     background-color: inherit;

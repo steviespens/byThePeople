@@ -4,11 +4,7 @@
     // overflow: scroll;
     @extend %main-feed-second-row-box;
     overflow-x: auto;
-    // overflow-y: hidden;
     white-space: nowrap;
-    
-
-
 
     h5 {
         margin: 0%;
@@ -16,7 +12,6 @@
     }
 
     #poll-individual {
-        // display: inline-block;
         width: 40%;
         border: 2px solid $color-border;
         border-radius: 4px;

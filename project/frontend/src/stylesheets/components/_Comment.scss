@@ -28,13 +28,6 @@
         border-radius: $radius;
         
     }
-    // .dislikeButton {
-    //     width: 0;
-    //     height: 0;
-    //     display: flex;
-    //     justify-content: center;
-    //     border-radius: $radius;
-    // }
 
     .comment-h4 {
         font-size: 8px;
@@ -64,7 +57,6 @@
 .comment-box {
     min-height: 0%;
     flex-grow: 1;
-    // max-height: 80%;
     display: flex;
     flex-direction: column;
     border-top: 1px solid $color-border;
@@ -78,7 +70,6 @@
         .form-item {
             padding: 0%;
             margin: 0%;
-            // width: 70%;
             display: flex;
             flex-grow: 1;
 
@@ -97,7 +88,6 @@
 .comment-list {
     overflow: scroll;
     margin: 1%;
-    // width: 93%;
 }
 
 .comment-form {
@@ -125,18 +115,13 @@
     width: 20%;
     border-radius: 5px;
     border: 1px solid black;
-    // display: flex;
     margin-left: 1%;
-    // justify-content: center;
     background: inherit;
     color: $white;
     border: 1px solid $color-border;
     border-radius: $radius;
     text-align: center;
     padding-top: .55%;
-    
-
-
 
 }
 .form-submit-comment:hover {

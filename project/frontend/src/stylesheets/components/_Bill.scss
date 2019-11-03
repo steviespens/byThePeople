@@ -1,18 +1,12 @@
 @import "../base/base";
 
 .bill {
-    // margin-left: $feed-width;
-    // margin-top: 0px;
-    // float: right;
-    // height: $feed-height;
-    // width: $subfeed-width;
     display: flex;
     flex-direction: column;
     border: 2px solid $color-border;
     border-radius: $radius;
     margin-left: 1%;
     width: 48%;
-    // align-items: center;
     flex-flow: column;
     height: 100%;
     
@@ -35,7 +29,6 @@
         max-height: 40%;
         min-height: 24%;
         overflow: scroll;
-        // align-items: flex-start;
         margin: 1%;
    }
    .bottom {
@@ -63,8 +56,6 @@
     flex-direction: row;
     justify-content: space-between;
     height: 18%;
-    // border: 1px solid $color-border;
-    // width: 50%;
 }
 #dialogue2 {
     white-space: pre-wrap;
@@ -90,10 +81,7 @@
     border: 1px solid $color-border;
     border-radius: $radius;
     text-align: center;
-    // margin-bottom: 1%;
     font-size: 1.2rem;
-    
-
     
 }
 .sponsor-button:hover {
