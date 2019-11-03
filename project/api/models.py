@@ -1,50 +1,30 @@
-# from rest_framework import generics
 from django.db import models
 from enum import Enum
-
-# from django.contrib.auth.models import AbstractBaseUser
-
-#if need to use User in models 
-# from django.contrib.auth import get_user_model
-# User = get_user_model()
-
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager)
 
 
-# class User(AbstractBaseUser): #maybe abstractBaseUser
-#     # username = models.CharField(max_length=40, unique=True)
-#     # USERNAME_FIELD = 'username'
-#     # class Meta:
-#     #     abstract = False
-#     #     app_label = 'api'
-#     email = models.EmailField(
-#                         verbose_name='email address',
-#                         max_length=255,
-#                         unique=True,
-#                     )
-#     # date_of_birth = models.DateField()
-#     # is_active = models.BooleanField(default=True)
-
-#     USERNAME_FIELD = 'email'
-#     # REQUIRED_FIELDS = ['email']
-
-#     # pass
-
 class UserManager(BaseUserManager):
-    def create_user(self, email, gender, political_party, password=None):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
+    def create_user(self, email, gender, political_party, ethnicity, education, salary, age, password=None):
         if not email:
             raise ValueError('Users must have an email address')
         elif not gender:
             raise ValueError('Users must select a gender')
+        elif not political_party:
+            raise ValueError('Users must select a political party')
+        elif not ethnicity:
+            raise ValueError('Users must select an ethnicity')
+        elif not salary:
+            raise ValueError('Users must select a salary')
+        elif not age:
+            raise ValueError('Users must select an age')
         user = self.model(
             email=self.normalize_email(email),
             gender=gender,
             political_party=political_party,
-            
+            ethnicity=ethnicity,
+            education=education,
+            salary=salary,
+            age=age,
         )
 
         user.set_password(password)
@@ -154,20 +134,18 @@ class User(AbstractBaseUser):
             choices=SALARY_CHOICES,
             default=LEVEL_0,
         )
+
     MINOR = 0
     ELDER = 80
-
     AGE_CHOICES = (
         (MINOR, 0),
         *[(i,i) for i in range(ELDER)],
         (ELDER, 100),
     )
-
     age = models.IntegerField(
             choices=AGE_CHOICES,
             default=MINOR,
         )
-    
 
     is_admin = models.BooleanField(default=False)
 
@@ -177,24 +155,12 @@ class User(AbstractBaseUser):
     )
     district = models.IntegerField(default=0)
 
-    
-    # date_of_birth = models.DateField()
-    # is_active = models.BooleanField(default=True)
-    # is_admin = models.BooleanField(default=False)
-
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['gender', 'political_party', 'ethnicity', 'education', 'salary', 'age']
 
-    # def get_full_name(self):
-    #     # The user is identified by their email address
-    #     return self.email
-
-    # def get_short_name(self):
-    #     # The user is identified by their email address
-    #     return self.email
-
+   
     def __str__(self):              # __unicode__ on Python 2
         return self.email
     
@@ -207,12 +173,3 @@ class User(AbstractBaseUser):
     def get_all(self):
         return {'email': self.email, 'gender': self.gender, 'political_party': self.political_party,
             'state': self.state, 'district': self.district}
-
-            # politicalParty: '',
-            # ethnicity: '',
-            # education: '',
-            # salary: '',
-            # age: ''
-
-    
-

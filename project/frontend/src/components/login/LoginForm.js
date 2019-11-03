@@ -1,23 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
-//quoted import statements contain a string with the path to a file
-import DataProvider from "../unused/DataProvider";
-import Poll from "../polls/Poll";
-import PropTypes from "prop-types";
-import TextField from '\@material-ui/core/TextField';
-import { map } from "bluebird";
-import { useState, useEffect, useRef } from 'react';
-import AuthService from '../home/AuthService';
-
-import PollsRow from '../polls/PollsRow';
-
-
+import { useEffect } from 'react';
 
 const LoginForm = (props) => {
-
-    useEffect(() => {
-      
-    }, )
+    
     return (
         <div className="card">
             <h1>Login</h1>

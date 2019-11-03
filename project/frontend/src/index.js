@@ -1,30 +1,23 @@
-//import React from 'react'; //this line I think could be here and not in each component
-import Home from "./components/home/Home";
-// import MenuBar from "./components/MenuBar";
-// import MainFeed from "./components/MainFeed";
-import HeaderBar from "./components/home/HeaderBar";
-// import News from "./components/News";
-// import Docket from "./components/Docket";
-// import UserPage from "./components/UserPage";
-// import UserBox from "./components/UserBox";
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Login from './components/login/Login';
 
-// import App from './components/App';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Home from "./components/home/Home";
+import HeaderBar from "./components/home/HeaderBar";
+import Login from './components/unused/Login';
 import Admin from './components/admin/Admin';
 
 
-
-// ReactDOM.render(<Home />, document.querySelector('#view'));
+//using top level component <Home> instead of <App>
 ReactDOM.render(
+
     <React.Fragment>
     
-    <Router>
+        <Router>
+
             <HeaderBar></HeaderBar>
+
             <Route exact path="/" component={Home} />
             <Route exact path="/about"
                 render={(props) => <Home {...props} refreshRoute={"/about"}/>}
@@ -38,10 +31,9 @@ ReactDOM.render(
             <Route exact path="/representatives"
                 render={(props) => <Home {...props} refreshRoute={"/representatives"} />}
             />
-
             <Route exact path="/register" component={Login} />
             <Route exact path="/admin" component={Admin} />
         
         </Router>
-    </React.Fragment>,
-        document.getElementById('view'));
+
+    </React.Fragment>, document.getElementById('view'));

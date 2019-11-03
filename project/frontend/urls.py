@@ -1,5 +1,6 @@
-from django.urls import path, re_path
+from django.urls import path
 from . import views
+
 urlpatterns = [
     path('', views.index),
     path('home/', views.index),
@@ -10,5 +11,4 @@ urlpatterns = [
     path('register/', views.index),
     path('admin/', views.index),
     
-    # re_path(r'.*', views.index), #directly routing the path 'login/' to views.index would also work
 ]

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 
 function ListItem(props) {
@@ -14,9 +14,9 @@ function ListItem(props) {
                 </span>
             </div>
         </div>
-
     );
 
 }
+
 export default ListItem;
 

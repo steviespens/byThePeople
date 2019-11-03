@@ -1,13 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { range } from '../utilities/helpers';
 import AuthService from '../home/AuthService';
-import { RepsContext } from '../home/Home';
 import YourRepsBox from './YourRepsBox';
 import { isLoggedIn } from '../utilities/helpers';
-
 
 function SimpleMenu(props) {
     const Auth = new AuthService();
@@ -17,7 +15,6 @@ function SimpleMenu(props) {
     const [districtAnchorEl, setDistrictAnchorEl] = useState(null);
     const [stateSelection, setStateSelection] = useState(msg);
     const [districtSelection, setDistrictSelection] = useState(msg2);
-    const reps = useContext(RepsContext);
 
     function handleClick(event) {
         setStateAnchorEl(event.currentTarget);
@@ -79,11 +76,13 @@ function SimpleMenu(props) {
         'SC': 7, 'SD': 1, 'TN': 9, 'TX': 36, 'UT': 4, 'VA': 11, 'VT': 1, 'WA': 10, 'WI': 8,
         'WV': 3, 'WY': 1
     };
+
     const statesList = () => {
         return Object.keys(states).map((el, index) => {
             return (<MenuItem key={index} value={el} onClick={handleClose}>{el}</MenuItem>);
         })
     }
+
     const districtsList = () => {
         if (stateSelection == msg) return;
         let d = states[stateSelection];
@@ -91,11 +90,13 @@ function SimpleMenu(props) {
             return (<MenuItem key={el} value={el} onClick={handleClose2}>{el}</MenuItem>);
         })
     }
+    
     return (
         <div className="simple-menu-profile-box">
             
             <div id="simple-menu-1">
                 <p>Voting District</p>
+
                 <Button
                     aria-owns={stateAnchorEl ? 'simple-menu' : undefined}
                     aria-haspopup="true"
@@ -104,29 +105,33 @@ function SimpleMenu(props) {
                 >
                     {stateSelection}
                 </Button>
+
                 <Menu id="simple-menu" anchorEl={stateAnchorEl} open={Boolean(stateAnchorEl)} onClose={handleClose}>
                     {statesList()}
                 </Menu>
+
                 <Button
                     aria-owns={districtAnchorEl ? 'simple-menu2' : undefined}
                     aria-haspopup="true"
                     onClick={handleClick2}
                     style={{ color: '#cccccc' }}
-
                 >
                     {districtSelection}
                 </Button>
+
                 <Menu id="simple-menu2" anchorEl={districtAnchorEl} open={Boolean(districtAnchorEl)} onClose={handleClose2}>
                     {/* {stateSelection != msg ? districtsList() : null} */}
                     {districtsList()}
                 </Menu>
+
                 <Button onClick={onSubmit}
                     style={{ color: '#cccccc' }}>
                     Save
                 </Button>
-
             </div>
+
             <YourRepsBox state={stateSelection} district={districtSelection}></YourRepsBox>
+
         </div>
     );
 }

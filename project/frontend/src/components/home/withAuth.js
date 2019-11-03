@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
 
+//HOC component responsible for redirecting to login page when 
+//  not logged in
+//currently commented out to allow access to most application 
+//  functionality even when user not logged in 
+
 export default function withAuth(AuthComponent) {
-    const Auth = new AuthService(); //changed from 8080
+    const Auth = new AuthService(); 
     return class AuthWrapped extends Component {
         constructor() {
             super();
@@ -44,15 +49,13 @@ export default function withAuth(AuthComponent) {
             // }
         }
         componentWillUpdate() {
-            console.log('component will update')
+            return
         }
 
         render() {
             if (true || this.state.user) {
-
                 return (
                     <AuthComponent history={this.props.history} user={this.state.user} />
-
                 )
             }
             else {

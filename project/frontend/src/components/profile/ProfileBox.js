@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import AuthService from '../home/AuthService';
 import { useState, useEffect } from 'react';
 import SimpleMenu from './SimpleMenu';
 import { isLoggedIn } from '../utilities/helpers';
 
 export default function ProfileBox(props) {
-
     const Auth = new AuthService();
     const [email, setEmail] = useState('User is not logged in');
     const [gender, setGender] = useState(null);
@@ -23,33 +21,19 @@ export default function ProfileBox(props) {
             setUserMetadata(data);
         });
     }, [email, gender]);
-    
-    const stateList = () => {
 
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-
-    }
     const makeSubLine = () => {
         return (gender == null || politicalParty == null) ? null : (<p>{gender + ' | ' + politicalParty}</p>);
     }
+
     return (
         <div className="profile-box">
-           
             <h6>{props.title}</h6>
-           
-            
             <p>{email}</p>
             {makeSubLine()}
-            {/* <p>{gender + ' | ' + politicalParty}</p> */}
-            <SimpleMenu userMetadata={userMetadata}>
-
-            </SimpleMenu>
-
-
+            <SimpleMenu userMetadata={userMetadata}></SimpleMenu>
         </div>
-
     );
-    
 };
 
 function capitalizeFirstLetter(string) {

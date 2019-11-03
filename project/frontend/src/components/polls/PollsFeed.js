@@ -1,14 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PollsRow from './PollsRow';
-
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-
 
 const PollsFeed = (props) => {
 
-    const title = "Polls";
     const topics = [
         'Data Privacy',
         'Health Care',
@@ -17,16 +11,19 @@ const PollsFeed = (props) => {
         'Environment',
         'General'
     ]
+
     const NUM_ADDL_POLLROWS = topics.length;
 
+    //change line below to allow user to set the order of topics in PollsFeed
     const [selectedTopics, setSelectedTopics] = useState([]);
+
     useEffect(() => {
         if (selectedTopics.length == 0) {
             setSelectedTopics(randTopics(NUM_ADDL_POLLROWS));
-                
-
         }
     })
+
+    //returns list of topics in random order
     const randTopics = (n) => {
         var l = [];
         var j = 0;
@@ -40,30 +37,25 @@ const PollsFeed = (props) => {
         }
         return l;
     }
+
     const makePollRows = () => {
         return selectedTopics.map((t, index) => {
             return (
                 <PollsRow
+                    key={index}
                     title={t}
                     topic={t}
-                    // topics={topics}
-                    // options={[t].concat(topics.filter((el) => !selectedTopics.includes(el)))}
-                    // setSelectedTopics={(l) => setSelectedTopics(l)}
                 />
             )
         })
     }
+
     return (
         <div className="polls-feed">
             <PollsRow title='Recommended For You' topic='get_recommended_polls' />
             {makePollRows()}
-
-
-
         </div>
     );
-    
-
 }
         
 export default PollsFeed;

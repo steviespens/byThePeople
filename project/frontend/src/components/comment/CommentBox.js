@@ -1,26 +1,15 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { useState, useEffect } from 'react';
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
-import Comment from "./Comment";
 import AuthService from '../home/AuthService';
 import { withStyles, createStyles } from '@material-ui/styles';
 
 
-const styles = createStyles({
-    root: {
-        overflow: 'scroll',
-
-    },
-
-});
-
 function CommentBox(props) {
-
-    const [comments, setComments] = useState([]);
-    // const [id, setId] = useState(props.id);
+    
     const Auth = new AuthService();
+    const [comments, setComments] = useState([]);
     const [formText, setFormText] = useState('');
     const [update, setUpdate] = useState(false);
 
@@ -40,9 +29,11 @@ function CommentBox(props) {
             }
             setUpdate(false);
         });
+
         return () => {
             return;
         }
+
     }, [props, update]);
  
     return (
@@ -52,9 +43,15 @@ function CommentBox(props) {
                     setFormText(e.target.value);                  
                 }} />   
             <CommentList comments={comments} />
-
         </div>
 
     );
 }
+
+const styles = createStyles({
+    root: {
+        overflow: 'scroll',
+    },
+});
+
 export default withStyles(styles)(CommentBox);

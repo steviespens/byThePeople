@@ -1,26 +1,26 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { useState, useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
 import AuthService from '../home/AuthService';
 import { isLoggedIn } from '../utilities/helpers';
 
 
 export default function CommentForm(props) {
 
-    const [id, setId] = useState(props.id);
     const Auth = new AuthService();
+    const [id, setId] = useState(props.id);
    
+
     useEffect(() => {
         props.setFormText('');
     }, [props.id]);
+
 
     const submit = () => {
         if (!isLoggedIn()) {
             alert('Please create an account to leave a commment')
             return
         };
-        // const obj = JSON.stringify({ "bill": props.id.toString(), "text": props.formText });
+
         const options = {
             method: 'POST',
             body: JSON.stringify({
@@ -29,7 +29,6 @@ export default function CommentForm(props) {
             })
         }
 
-       
         Auth.fetch('/api/comments/add_comment/', options).then((data) => {
             props.setFormText('');
             props.setUpdate(true);
@@ -55,8 +54,6 @@ export default function CommentForm(props) {
                 onClick={submit}
             />
         </form>
-
     );
-
 }
 

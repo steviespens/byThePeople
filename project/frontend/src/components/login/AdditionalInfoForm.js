@@ -1,56 +1,13 @@
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useState, useEffect } from 'react';
-
 import { withStyles, createStyles } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/styles';
 
-// import AuthService from './AuthService';
-
-const styles = createStyles({
-    root: {
-        width: '90%',
-
-        // minHeight: '80vh',
-        // maxHeight: '80vh',
-        // minWidth: '80vw',
-        // maxWidth: '80vw',
-        // background: '#eee',
-        // marginBottom: '2%',
-    },
-    dialog: {
-        // minHeight: '80vh',
-        maxHeight: '100vh',
-        // minWidth: '80vw',
-        maxWidth: '100vw',
-    },
-    dialogContent: {
-        maxHeight: '70vh',
-        width: '77vw',
-        background: '#121848',
 
 
-    },
-    paper: {
-        width: '40%',
-    },
-    // textField: {
-    //     width: '90%',
-    // }
-   
-});
-const useStyles = makeStyles({
-    paper: {
-        width: '25%',
-    },
-    
-});
 function AdditionalInfoForm(props) {
 
     const open = props.open;
@@ -97,7 +54,6 @@ function AdditionalInfoForm(props) {
             label: 'Other',
         }
     ]
-
     const ethnicities = [
         {
             value: 'caucasian',
@@ -218,7 +174,6 @@ function AdditionalInfoForm(props) {
             classes={{
                 paper: classes.paper,
             }}
-            // scroll="paper"
         >
             <DialogContent >
                 <div className="additional-info-card">
@@ -276,7 +231,6 @@ function AdditionalInfoForm(props) {
                                 </MenuItem>
                             )}
                         </TextField>
-
                         <TextField
                             select
                             label="Ethnicity"
@@ -329,7 +283,6 @@ function AdditionalInfoForm(props) {
                                 </MenuItem>
                             )}
                         </TextField>
-
                         <input
                             className="login-form-submit"
                             value="Submit"
@@ -341,8 +294,33 @@ function AdditionalInfoForm(props) {
             </DialogContent>
         </Dialog>
     );
-
-
 }
+
+const styles = createStyles({
+    root: {
+        width: '90%',
+    },
+    dialog: {
+        maxHeight: '100vh',
+        maxWidth: '100vw',
+    },
+    dialogContent: {
+        maxHeight: '70vh',
+        width: '77vw',
+        background: '#121848',
+    },
+    paper: {
+        width: '40%',
+    },
+
+});
+
+const useStyles = makeStyles({
+    paper: {
+        width: '25%',
+    },
+
+});
+
 export default withStyles(styles)(AdditionalInfoForm);
 

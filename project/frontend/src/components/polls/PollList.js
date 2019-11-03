@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import { withStyles, createStyles } from '@material-ui/styles';
 
+function PollList(props) {
+    const question = props.question;
+
+    return (
+        <div className={props.classes.root}>
+            <p className={props.classes.heading}>{question}</p>
+            {props.children}
+            {/* <div>
+                {props.children}
+            </div> */}
+            <p className={props.classes.heading}>{props.numVotes}</p>
+        </div>
+    );
+}
+
 const styles = createStyles({
     root: {
         justifyContent: 'space-evenly',
@@ -28,26 +43,10 @@ const styles = createStyles({
         textAlign: 'center',
 
 
-        
+
     },
-   
+
 });
 
-
-function PollList(props) {
-    const question = props.question;
-
-    return (
-        <div className={props.classes.root}>
-            <p className={props.classes.heading}>{question}</p>
-            {props.children}
-            {/* <div>
-                {props.children}
-            </div> */}
-            <p className={props.classes.heading}>{props.numVotes}</p>
-        </div>
-    );
-
-}
 export default withStyles(styles)(PollList);
 

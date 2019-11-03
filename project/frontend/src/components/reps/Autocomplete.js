@@ -12,7 +12,6 @@ class Autocomplete extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             // The active selection's index
             activeSuggestion: 0,
@@ -27,7 +26,6 @@ class Autocomplete extends Component {
 
     onChange = e => {
         const { suggestions } = this.props;
-        
         const userInput = e.currentTarget.value;
 
         // Filter our suggestions that don't contain the user's input
@@ -78,7 +76,6 @@ class Autocomplete extends Component {
             if (activeSuggestion === 0) {
                 return;
             }
-
             this.setState({ activeSuggestion: activeSuggestion - 1 });
         }
         // User pressed the down arrow
@@ -86,11 +83,9 @@ class Autocomplete extends Component {
             if (activeSuggestion === filteredSuggestions.length - 1) {
                 return;
             }
-
             this.setState({ activeSuggestion: activeSuggestion + 1 });
         }
-
-
+        
     };
 
     render() {

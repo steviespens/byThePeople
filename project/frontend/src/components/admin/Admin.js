@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import AuthService from '../home/AuthService';
 import TextField from '@material-ui/core/TextField';
 import { withStyles, createStyles } from '@material-ui/styles';
@@ -10,18 +10,13 @@ const styles = createStyles({
         flexDirection: 'column',
         margin: '0%',
         padding: '1%',
-        // alignItems: 'center',
-
     },
     form: {
         margin: '0%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-
-
     },
-
 });
 
 function Admin(props) {
@@ -35,9 +30,11 @@ function Admin(props) {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+
         if (!isInputValid()) {
             return
         }
+
         Auth.fetch('api/polls/add_poll/', {
             method: 'POST',
             body: JSON.stringify({
@@ -47,10 +44,10 @@ function Admin(props) {
                 related_bill
             })
         }).then(data => {
-            console.log(data)
             window.location.reload();
         })
     }
+    
     const updateChoices = e => {
         setChoices({
             ...choices,

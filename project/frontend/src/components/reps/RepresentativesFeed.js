@@ -1,27 +1,16 @@
-import React, { Component, useState, useEffect, useContext, Fragment } from "react";
-import Docket from '../docket/Docket';
-import { parseBillID, makeRepName_db_compatible } from '../utilities/helpers';
-import AuthService from '../home/AuthService';
+import React, { useState, useEffect, useContext } from "react";
 import Autocomplete from './Autocomplete';
-
 import SingleRepBox from './SingleRepBox';
 import SingleRepBills from './SingleRepBills';
 import SingleRepRecentVotes from './SingleRepRecentVotes';
-
-import List from '../UIElements/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { RepsContext } from '../home/Home';
+
 export default function RepresentativesFeed(props) {
 
-
-    const Auth = new AuthService();
     const context = useContext(RepsContext);
-    // const [reps, setReps] = useState(context);
-    // const [reps, setReps] = useState([]);
     const reps = context;
     const [selectedRep, setSelectedRep] = useState(null);
-    // const [suggestions, setSuggestions] = useState([])
+
     useEffect(() => {
         if (props.location.state && context.length > 0) {
             const requestedName = props.location.state.detail;
@@ -34,8 +23,8 @@ export default function RepresentativesFeed(props) {
             setSelectedRep(reps[rand]);
         }
     }, [props])
+
     const selectRepFromName = (name) => {
-        
         //get the index in reps[] given a string of firstName + " " + lastName
         let index = reps.findIndex((el) => {
             const name_without_middle = el.member.first_name + " " + el.member.last_name;
@@ -46,34 +35,16 @@ export default function RepresentativesFeed(props) {
         setSelectedRep(rep);
     }
 
-    const onClick = (rep) => {
-        setSelectedRep(rep);
-    }
-    const makeRepName = (rep) => {
-        
-        const name = rep.member.short_title + ' ' + rep.member.first_name + ' ' + rep.member.last_name;
-        const subheading = '[' + rep.member.party + ' - ' + rep.member.state.toUpperCase() + ']';
-        return name + '   ' + subheading;
-    }
-    //DEPENDENCY in this component on how json for reps is structured. would like to update db to have district and make variable names compatible with how json will be received using external API calls
-    // const repsList = () => {
-    //     return reps.map((el) => {
-    //         //got rid of secondary attribute
-    //         return (
-    //             < ListItem button key={el.member.id} onClick={() => {onClick(el)}}>
-    //                 <ListItemText primary={makeRepName(el)} />
-    //             </ListItem >);
-    //     })
-    // }
-
     const suggestions = () => {
         if (reps == null) return []
         return reps.map(el => {
             return el.member.first_name + " " + el.member.last_name;
-    })};
+        })
+    };
+    
     return (
         <div className="representatives">
-
+            
             <div className="left">
                 <Autocomplete
                     setSelectedRep={selectRepFromName}
@@ -98,6 +69,7 @@ export default function RepresentativesFeed(props) {
                     : null
                 }
             </div>
+
         </div>
     );
 };

@@ -1,6 +1,26 @@
 import React, { Component } from "react";
 import { withStyles, createStyles } from '@material-ui/styles';
 
+
+function PollListItem(props) {
+    
+    const text = props.text;
+    const percentage = props.percentage;
+    //dynamic style object that fills vote percentage bar with color, depending on vote percentages
+    const gradientStyle = {
+        backgroundImage: '-webkit-linear-gradient(left, #0618e0, #0618e0 ' + percentage + ', #121848 ' + percentage + ', #121848 100%) ',
+    };
+
+    return (
+        <div className={props.classes.root} style={gradientStyle}>
+            <p className={props.classes.left}></p>
+            <p className={props.classes.middle}>{text} </p>
+            <p className={props.classes.right}>{percentage}</p>
+       </div>
+    );
+
+}
+
 const styles = createStyles({
     root: {
         backgroundColor: 'white',
@@ -29,7 +49,7 @@ const styles = createStyles({
         marginLeft: '3%',
         width: '33%',
         justifyContent: 'center',
-        
+
     },
     right: {
         margin: '0%',
@@ -42,30 +62,6 @@ const styles = createStyles({
         justifyContent: 'flex-end',
         width: '33%',
     }
-    
 });
 
-//returns an item with text in middle, string of percentage on right, gradient filled up as much as percentage
-function PollListItem(props) {
-
-    const text = props.text;
-    const percentage = props.percentage;
-    const s = {
-        backgroundImage: '-webkit-linear-gradient(left, #0618e0, #0618e0 ' + percentage + ', #121848 ' + percentage + ', #121848 100%) ',
-    };
-    return (
-        <div className={props.classes.root} style={s}>
-            {/* <h6></h6> */}
-            <p className={props.classes.left}></p>
-            <p className={props.classes.middle}>{text} </p>
-            <p className={props.classes.right}>{percentage}</p>
-       </div>
-    );
-
-}
-
-
 export default withStyles(styles)(PollListItem);
-// export default PollListItem;
-
-            //     <ListItemText primary={choice.choice} secondary={(n * 100).toFixed().toString() + '%'} />
