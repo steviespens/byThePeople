@@ -568,7 +568,10 @@ def get_headlines():
         title = i['title']
         description = i['description']
         url = i['url']
-        j,k = Headline.objects.get_or_create(title = title, description = description, url = url)
+        try:
+            j, k = Headline.objects.get_or_create(title=title, description=description, url=url)
+        except Exception as e:
+           return
 
 
 

@@ -90,7 +90,8 @@ class AuthService {
             return res.json()
                 .then((json) => {
                     if (res.ok) {
-                    return Promise.resolve(json)
+                        return this.login(email, password1)
+                    // return Promise.resolve(json)
                 } throw new Error(json)
             })
             // try {
