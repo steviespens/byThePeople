@@ -26,7 +26,7 @@ const styles = createStyles({
         alignItems: 'center',
         height: '80%',
         alignSelf: 'center',
-        width: '100%',
+        // width: '100%',
 
 
     },
