@@ -7,12 +7,12 @@
     "dev": "webpack --config ./webpack.config.js --mode development",
     "test": "jest --config ./jest.config.json"
   },
-"jest": {
-  "automock": false,
-  "setupFiles": [
-    "./jest.setup.js"
-  ]
-},
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./jest.setup.js"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
@@ -27,7 +27,7 @@
     "jest-plugin-context": "^2.9.0",
     "prop-types": "^15.6.2",
     "react": "^16.11.0",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.11.0",
     "react-test-renderer": "^16.11.0",
     "weak-key": "^1.0.1",
     "webpack": "^4.29.3",
@@ -35,9 +35,12 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.7.0",
     "@material-ui/icons": "^4.4.1",
     "@material-ui/styles": "^3.0.0-alpha.10",
     "axios": "^0.19.0",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "jest-fetch-mock": "^2.1.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",

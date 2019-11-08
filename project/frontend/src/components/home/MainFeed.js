@@ -4,7 +4,12 @@ import DocketBox from "../docket/DocketBox";
 import PollsBox from "../polls/PollsBox";
 import ProfileBox from "../profile/ProfileBox";
 
+
 export default class MainFeed extends Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (

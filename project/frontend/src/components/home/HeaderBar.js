@@ -1,6 +1,6 @@
 import React from "react";
 import { isLoggedIn } from '../utilities/helpers';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import LoginHeader from '../login/LoginHeader';
 import AuthService from './AuthService';
 
@@ -23,7 +23,7 @@ const HeaderBar = (props) => {
     );
 };
 
-export default withRouter(HeaderBar);
+export default HeaderBar;
 
 
 

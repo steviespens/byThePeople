@@ -7,7 +7,7 @@ import AuthService from './AuthService';
 //  functionality even when user not logged in 
 
 export default function withAuth(AuthComponent) {
-    const Auth = new AuthService(); 
+    const Auth = new AuthService();
     return class AuthWrapped extends Component {
         constructor() {
             super();
@@ -15,14 +15,14 @@ export default function withAuth(AuthComponent) {
                 user: null
             }
         }
-        
+
         componentWillMount() {
             // if (!Auth.loggedIn()) {
             //     try {
             //         // console.log('tried Auth.refresh')
             //         Auth.refresh();
             //         const profile = Auth.getProfile()
-                    
+
             //         this.setState({
             //             user: profile
             //         })
@@ -64,4 +64,3 @@ export default function withAuth(AuthComponent) {
         }
     };
 }
-

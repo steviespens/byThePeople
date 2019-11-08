@@ -5,7 +5,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { isLoggedIn } from '../utilities/helpers';
 
 function Comment(props) {
-    
+
     const Auth = new AuthService();
     const [email, setEmail] = useState('');
     const [likeStatus, setLikeStatus] = useState(0);
@@ -16,7 +16,6 @@ function Comment(props) {
     const dislikes = comment.dislikes;
     const numLikes = likes - dislikes;
 
-
     useEffect(() => {
         const options = {
             method: 'POST',
@@ -24,9 +23,12 @@ function Comment(props) {
                 "comment_id": id,
             })
         }
-
+        
         Auth.fetch('/api/comments/get_user_email_for_comment/', options).then((data) => {
             setEmail(data);
+        })
+            .catch((rej) => {
+            console.log(rej)
         });
 
         checkUserLikedComment();

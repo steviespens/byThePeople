@@ -80,7 +80,7 @@ class Home extends Component {
         );
     }
 
-    
+
     saveStateToLocalStorage() {
         // for every item in React state
         for (let key in this.state) {

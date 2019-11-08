@@ -221,9 +221,9 @@ class AuthService {
     }
 
     hasTokenInLocalStorage() {
-        return localStorage.getItem("id_token") != null && localStorage.getItem("refresh_token") != null; 
+        return localStorage.getItem("id_token") != null && localStorage.getItem("refresh_token") != null;
     }
-    
+
     setToken(idToken) {
         // Saves user token to localStorage
         localStorage.setItem('id_token', idToken)
@@ -271,7 +271,7 @@ class AuthService {
             return false;
         }
     }
-    
+
     _checkStatus(response) {
         // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) {
@@ -288,8 +288,7 @@ class AuthService {
         var parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
-    
+
 }
 
 export default AuthService;
-

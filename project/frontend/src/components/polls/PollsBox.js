@@ -16,7 +16,7 @@ const PollsBox = (props) => {
             sessionStorage.setItem("scrollPosition", scrollPosition);
         }
     }, [props])
-    
+
     return (
         <div className="polls-box" ref={ref} id="polls-box">
             <h5>{props.title}</h5>

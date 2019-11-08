@@ -56,7 +56,7 @@ export default function DocketFeed(props) {
             setBill(bill);
         });
     }
-    
+
     return (
         <div className='docket-feed'>
             <List className='docket-feed-list'>
