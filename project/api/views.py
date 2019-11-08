@@ -12,6 +12,7 @@ from api.forms import UserCreationForm
 
 import json
 
+
 @api_view(['POST', ])
 def save_voting_district(request):
     try:
