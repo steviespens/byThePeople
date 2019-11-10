@@ -16,7 +16,7 @@ export default function withAuth(AuthComponent) {
             }
         }
 
-        componentWillMount() {
+        componentDidMount() {
             // if (!Auth.loggedIn()) {
             //     try {
             //         // console.log('tried Auth.refresh')
@@ -48,7 +48,7 @@ export default function withAuth(AuthComponent) {
             //     }
             // }
         }
-        componentWillUpdate() {
+        componentDidUpdate() {
             return
         }
 

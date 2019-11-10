@@ -84,7 +84,6 @@ function Comment(props) {
 
     return (
         <div className='comment'>
-            <p value={likeStatus}>{likeStatus}</p>
             <div className='left'>
                 <button style={likeButtonStyle} className='like-button' value={1} onClick={likeComment}>
                     <KeyboardArrowUpIcon value={1} style={{ height: '8px', color: 'black'}}> </KeyboardArrowUpIcon>

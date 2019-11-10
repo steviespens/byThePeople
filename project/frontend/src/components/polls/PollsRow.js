@@ -21,14 +21,18 @@ const PollsRow = (props) => {
                 'topic': makeTopicParameter()
             })
         };
+        let isSubscribed = true
         Auth.fetch(urlToGet, options)
-        .then((data) => {
-            setPolls(data);
+            .then((data) => {
+                if (isSubscribed) {
+                    setPolls(data);
+                }
         });
 
         return () => {
             var scrollPosition = ref.current.scrollLeft;
             sessionStorage.setItem("scrollPosition", scrollPosition);
+            isSubscribed = false
         }
     }, [props])
 

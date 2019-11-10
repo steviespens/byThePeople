@@ -28,7 +28,7 @@ $main-feed-first-row-box-height: calc(#{$root-height} / 2);
 
 $main-feed-second-row-box-height: calc(#{$root-height} / 2);
 %main-feed-first-row-box {
-    overflow: scroll;
+    overflow: auto;
     height: calc(#{$main-feed-first-row-box-height} - 2vh);
     width: 30%;
     height: 100%;

@@ -33,9 +33,13 @@ const SingleRepRecentVotes = (props) => {
     }
     
     useEffect(() => {
+        let isSubscribed = true
         Auth.fetch('reps/member/get_recent_votes_by_member_by_id/', options).then((data) => {
-            setVotes(data);
+            if (isSubscribed) {
+                setVotes(data);
+            }
         })
+        return () => isSubscribed = false
     }, [props])
     
     const onClick = (bill_id) => {        

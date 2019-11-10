@@ -20,11 +20,15 @@ const SingleRepBox = (props) => {
     }
 
     useEffect(() => {
+        let isSubscribed = true
         Auth.fetch('reps/member/get_member_by_id/', options).then((d) => {
-            
             const data = JSON.parse(d).results[0];
-            setRepData(data);
+            if (isSubscribed) {
+                setRepData(data);
+            }
         })
+        return () => isSubscribed = false
+        
     }, [props])
     
     const makeRepName = () => {

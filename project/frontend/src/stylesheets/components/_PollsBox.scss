@@ -1,7 +1,6 @@
 @import "../base/base";
 
 .polls-box {
-    // overflow: scroll;
     @extend %main-feed-second-row-box;
     overflow-x: auto;
     white-space: nowrap;

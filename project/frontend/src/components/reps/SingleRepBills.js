@@ -28,9 +28,14 @@ const SingleRepBills = (props) => {
     }
 
     useEffect(() => {
+        let isSubscribed = true
         Auth.fetch('reps/member/get_bills_by_member_by_id/', options).then((data) => {
-            setBills(data);
+            if (isSubscribed) {
+                setBills(data);
+            }
         })
+        return () => isSubscribed = false
+
     }, [props])
 
     const onClick = (bill_id) => {

@@ -20,20 +20,20 @@ function CommentBox(props) {
                 "bill_id": props.id,
             })
         }
-
+        let isSubscribed = true;
         Auth.fetch('/api/comments/get_comment_for_bill/', options).then((data) => {
-            if (typeof data[0] !== 'undefined') {
-                setComments(data);
-            } else {
-                setComments([]);
+            if (isSubscribed) {
+                if (typeof data[0] !== 'undefined') {
+                    setComments(data);
+                } else {
+                    setComments([]);
+                }
+                setUpdate(false);
             }
-            setUpdate(false);
         });
 
-        return () => {
-            return;
-        }
-
+        return () => isSubscribed = false;
+         
     }, [props, update]);
  
     return (
