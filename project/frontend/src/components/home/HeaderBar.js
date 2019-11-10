@@ -1,6 +1,5 @@
 import React from "react";
 import { isLoggedIn } from '../utilities/helpers';
-// import { withRouter } from 'react-router-dom';
 import LoginHeader from '../login/LoginHeader';
 import AuthService from './AuthService';
 

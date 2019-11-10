@@ -14,7 +14,7 @@ import json
 
 
 @api_view(['POST', ])
-def save_voting_district(request):
+def save_voting_district(request, *args, **kwargs):
     try:
         data = json.loads(request.body.decode())
         if request.user.is_anonymous:
@@ -28,7 +28,7 @@ def save_voting_district(request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST', ])
-def get_user_metadata(request):
+def get_user_metadata(request, *args, **kwargs):
     try:
         user = User.objects.get(id=request.user.id)
         return Response(json.dumps(user.get_all()))
@@ -37,7 +37,7 @@ def get_user_metadata(request):
 
 @csrf_exempt
 @api_view(['GET', 'POST', ])
-def signup(request):
+def signup(request, *args, **kwargs):
     if request.method == 'POST':
         form = UserCreationForm(request.data)
         if form.is_valid():

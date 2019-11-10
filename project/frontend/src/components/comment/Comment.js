@@ -8,8 +8,8 @@ function Comment(props) {
 
     const Auth = new AuthService();
     const [email, setEmail] = useState('');
-    const [likeStatus, setLikeStatus] = useState(0);
-    const [comment, setComment] = useState(props.comment);
+    const [likeStatus, setLikeStatus] = React.useState(0);
+    const [comment, setComment] = React.useState(props.comment);
     const text = props.comment.text;
     const id = props.comment.id;
     const likes = comment.likes;
@@ -26,14 +26,15 @@ function Comment(props) {
         
         Auth.fetch('/api/comments/get_user_email_for_comment/', options).then((data) => {
             setEmail(data);
-        })
-            .catch((rej) => {
-            console.log(rej)
+        }).catch((rej) => {
+
         });
 
         checkUserLikedComment();
 
-    }, [likeButtonStyle, dislikeButtonStyle])
+    },
+        [likeButtonStyle, dislikeButtonStyle]
+    )
 
 
     const likeComment = (e) => {
@@ -73,6 +74,8 @@ function Comment(props) {
             } else if (data == dislikeInt) {
                 setLikeStatus(dislikeInt)
             }
+        }).catch((rej) => {
+
         });
     }
 
@@ -81,7 +84,7 @@ function Comment(props) {
 
     return (
         <div className='comment'>
-
+            <p value={likeStatus}>{likeStatus}</p>
             <div className='left'>
                 <button style={likeButtonStyle} className='like-button' value={1} onClick={likeComment}>
                     <KeyboardArrowUpIcon value={1} style={{ height: '8px', color: 'black'}}> </KeyboardArrowUpIcon>
