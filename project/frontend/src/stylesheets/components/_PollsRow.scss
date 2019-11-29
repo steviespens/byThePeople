@@ -30,23 +30,19 @@
         flex-shrink: 0;
 
 }
-::-webkit-scrollbar {
+
+#news-box::-webkit-scrollbar, 
+#docket-box::-webkit-scrollbar, 
+#docket-feed-list::-webkit-scrollbar,
+#bill-top::-webkit-scrollbar,
+#comment-list::-webkit-scrollbar, 
+#bill-info::-webkit-scrollbar,
+#reps-left::-webkit-scrollbar,
+#reps-middle::-webkit-scrollbar,
+#reps-right::-webkit-scrollbar {
     display: none;
 }
-::-webkit-scrollbar {
-    height: 1rem;
-}
- 
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
- 
-::-webkit-scrollbar-thumb {
-  background-color: $color-border;
-  border-radius: $radius;
-  outline: 1px solid slategrey;
-}
+
 .polls-row::-webkit-scrollbar {
     height: 1rem;
 }

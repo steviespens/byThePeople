@@ -30,7 +30,7 @@ const NewsBox = (props) => {
     }
 
     return (
-        <div className="news-box">
+        <div className="news-box" id='news-box'>
             <h5>{props.title}</h5>
             <List>
                 {headlines != null ? headlineList() : <div></div>}

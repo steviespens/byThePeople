@@ -59,7 +59,7 @@ export default function DocketFeed(props) {
 
     return (
         <div className='docket-feed'>
-            <List className='docket-feed-list'>
+            <List className='docket-feed-list' id='docket-feed-list'>
                 {createList()}
             </List>
             <Bill className='bill' bill={bill}/>

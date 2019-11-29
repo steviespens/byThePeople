@@ -82,13 +82,13 @@ const Bill = (props) => {
 
         <div className="bill">
 
-            <div className="top">
+            <div className="top" id='bill-top'>
                 <h3>{title}</h3>
                 <div className="bill-button-row">
                     {makeSponsorButton(props.bill)}
                     {loaded != 'Loading...' ? (<button className='full-text-button' onClick={handleClickOpen}>Full Text</button>) : null}      
                 </div>
-                <div className='bill-info'>
+                <div className='bill-info' id='bill-info'>
                     <p>{billInformation[1]}</p>
                     <p>{billInformation[2]}</p>
                     <p>{billInformation[3] == 'Summary: No summary available' && summary != '' ? 'Summary: ' + summary : billInformation[3]}</p>

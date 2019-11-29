@@ -10,7 +10,7 @@ function CommentList(props) {
     });
     
     return (
-        <div className='comment-list'>
+        <div className='comment-list' id='comment-list'>
             {list}
         </div>
     );

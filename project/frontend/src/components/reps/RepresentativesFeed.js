@@ -45,7 +45,7 @@ export default function RepresentativesFeed(props) {
     return (
         <div className="representatives">
             
-            <div className="left">
+            <div className="left" id='reps-left'>
                 <Autocomplete
                     setSelectedRep={selectRepFromName}
                     className="autocomplete"
@@ -57,11 +57,11 @@ export default function RepresentativesFeed(props) {
                 }
             </div>
 
-            <div className="middle">
+            <div className="middle" id='reps-middle'>
                 {selectedRep != null ? <SingleRepBills rep={selectedRep}></SingleRepBills> : null}
             </div>
 
-            <div className="right">
+            <div className="right" id='reps-right'>
                 {selectedRep != null ?
                     <SingleRepRecentVotes
                         rep={selectedRep}>
