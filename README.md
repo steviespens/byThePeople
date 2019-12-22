@@ -18,7 +18,7 @@ frontend/src/components - contains directories containing related React componen
   
 HTML/CSS:
 
-frontend/src/stylesheets/components - contains Sass files for various React components
+frontend/src/stylesheets/components - contains Sass files for various React components <br />
 frontend/templates/frontend - html files where top-level React component is mounted
 
 
