@@ -13,8 +13,8 @@ project/representatives - functionality related to Congresspeople
 
 React:
 
-frontend/src/components - contains directories containing related React components
-  e.g. frontend/src/components/comment has files for posting/liking comments
+frontend/src/components - contains directories containing related React components <br />
+&nbsp;&nbsp;&nbsp;&nbsp;    e.g. frontend/src/components/comment has files for posting/liking comments
   
 HTML/CSS:
 
