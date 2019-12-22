@@ -8,8 +8,8 @@ Relevant source code located within 'project' directory
 Python:
 
 project/app - functionality related to registration/login
-
 project/byThePeople - functionality related to polls/bills 
+
 project/representatives - functionality related to Congresspeople
 
 React:
