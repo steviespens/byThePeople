@@ -175,7 +175,7 @@ function AdditionalInfoForm(props) {
                 paper: classes.paper,
             }}
         >
-            <DialogContent >
+            <DialogContent id='additional-info-card-dialog-content'>
                 <div className="additional-info-card">
                     <h1>Register</h1>
                     <form id='additional-info-form' onSubmit={handleFormSubmit}>

@@ -9,6 +9,7 @@ import List from '../UIElements/List';
 import ListItem from '../UIElements/ListItem';
 import AuthService from '../home/AuthService';
 import Bill from '../docket/Bill';
+import { Hidden } from "@material-ui/core";
 
 
 const SingleRepBills = (props) => {
@@ -79,7 +80,7 @@ const SingleRepBills = (props) => {
                     <List>
                         {makeBills()}
                     </List>
-                    <Dialog 
+                    <Dialog
                         open={open}
                         onClose={() => setOpen(false)}
                     >
@@ -109,7 +110,8 @@ const styles = createStyles({
         maxHeight: '70vh',
         width: '77vw',
         background: '#121848',
-    }
+    },
+    
 });
 
 export default withStyles(styles)(SingleRepBills);

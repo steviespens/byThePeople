@@ -13,7 +13,7 @@ export default class MainFeed extends Component {
 
     render() {
         return (
-            <div className="main-feed">
+            <div className="main-feed" id='main-feed'>
                 <div className="main-feed-row-top">
                     <ProfileBox title="Profile" />
                     <DocketBox title="Docket" />

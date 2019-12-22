@@ -51,7 +51,7 @@ const PollsFeed = (props) => {
     }
 
     return (
-        <div className="polls-feed">
+        <div className="polls-feed" id='polls-feed'>
             <PollsRow title='Recommended For You' topic='get_recommended_polls' />
             {makePollRows()}
         </div>

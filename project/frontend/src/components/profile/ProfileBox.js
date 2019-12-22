@@ -27,7 +27,7 @@ export default function ProfileBox(props) {
     }
 
     return (
-        <div className="profile-box">
+        <div className="profile-box" id='profile-box'>
             <h6>{props.title}</h6>
             <p>{email}</p>
             {makeSubLine()}

@@ -35,12 +35,23 @@
 #docket-box::-webkit-scrollbar, 
 #docket-feed-list::-webkit-scrollbar,
 #bill-top::-webkit-scrollbar,
-#comment-list::-webkit-scrollbar, 
+#comment-box::-webkit-scrollbar, 
 #bill-info::-webkit-scrollbar,
 #reps-left::-webkit-scrollbar,
 #reps-middle::-webkit-scrollbar,
-#reps-right::-webkit-scrollbar {
+#reps-right::-webkit-scrollbar,
+#polls-feed::-webkit-scrollbar,
+#polls-box::-webkit-scrollbar,
+#profile-box::-webkit-scrollbar,
+#main-feed::-webkit-scrollbar,
+#additional-info-card-dialog-content::-webkit-scrollbar,
+#suggestions::-webkit-scrollbar {
     display: none;
+}
+
+.age-selector::-webkit-scrollbar {
+    display: none;
+    overflow: hidden;
 }
 
 .polls-row::-webkit-scrollbar {

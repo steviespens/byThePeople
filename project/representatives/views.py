@@ -169,11 +169,20 @@ class MemberView(viewsets.ModelViewSet):
                     bill_slug, congress = bill_id.split('-')  
                     if bill_slug[:2] == 'pn':
                         continue
+                    if bill_slug == 'adjourn':
+                        continue
 
                     url2 = 'https://api.propublica.org/congress/v1/' + congress + '/bills/' + bill_slug + '.json'
                     headers2 = {'X-API-KEY': '6vuSMgGaUFGdMVpgYFfptgttAtlCeOwuYcRCU9h7'}
                     r2 = requests.get(url=url2, headers=headers2).json()
                     bill = r2['results'][0]
+
+                    #catch errors from fetching previously unseen bill types e.g. adjourn
+                    try:
+                        bill = r2['results'][0]
+                    except:
+                        continue
+
                     bill_type = bill['bill_type']  
                     bill_uri = bill['bill_uri']
                     title = bill['title']
@@ -226,7 +235,6 @@ class MemberView(viewsets.ModelViewSet):
         url = 'https://api.propublica.org/congress/v1/members/' + id + '/votes.json'
         headers = API_HEADERS
         r = requests.get(url=url, headers=headers).json()
-
         bills = r['results'][0]['votes']
         l = process_recent_votes(bills, id)
         MemberBillVotes.objects.bulk_create(l) 
