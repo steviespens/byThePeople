@@ -7,9 +7,8 @@ Relevant source code located within 'project' directory
 
 Python:
 
-project/app - functionality related to registration/login
-project/byThePeople - functionality related to polls/bills 
-
+project/app - functionality related to registration/login <br />
+project/byThePeople - functionality related to polls/bills <br />
 project/representatives - functionality related to Congresspeople
 
 React:
