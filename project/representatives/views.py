@@ -60,28 +60,29 @@ class MemberView(viewsets.ModelViewSet):
     @action(detail=False, methods=['post'], permission_classes=(AllowAny,))
     def get_member_by_id(self, request, *args, **kwargs):
 
+        #changed url and text below due to external webpage changes
         def get_bio(id):
-            url = 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + id
+            # url = 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + id
+            url = 'http://bioguideretro.congress.gov/Home/MemberDetails?memIndex=' + id
             r = requests.get(url=url)
             html = r.content
             soup = BeautifulSoup(html, features="html.parser")
-            text = soup.find('p').text
+            # text = soup.find('p').text
+            text = soup.find('biography').text
             import bleach
             clean = bleach.clean(text, tags=[], strip=True)
-            return clean
+            return clean[2:] #remove unnecessary lowercase 'a' character
 
         data = json.loads(request.body.decode())
         id = data['id']
         url = 'https://api.propublica.org/congress/v1/members/' + id + '.json'
-        headers = API_HEADERS
+        headers = API_HEADERS        
         r = requests.get(url=url, headers=headers)
         tmp = r.json()
-
         bio = get_bio(id)
 
         #modifying the json received from propublica api by adding a bio field
         tmp['results'][0]['bio'] = bio
-    
         data = json.dumps(tmp)
         return Response(data)
 
